@@ -2,37 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>IIT Gandhinagar Homecoming 2026</title>
-<meta name="description" content="Homecoming 2026 at IIT Gandhinagar. See who's coming home, pin a memory and relive the campus years.">
-<meta name="theme-color" content="#0f1420">
-
-<!-- how the link looks when shared on WhatsApp, LinkedIn, email -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="IIT Gandhinagar Homecoming 2026">
-<meta property="og:description" content="See who's coming home, pin a memory and relive the campus years. December 2026, Palaj.">
-<meta property="og:image" content="https://lh3.googleusercontent.com/d/1CDSWLwTZNb9Qv_HwoZGuhV_FHm86-M8v=w1200">
-<meta name="twitter:card" content="summary_large_image">
-
-<style>
-  html, body { margin: 0; padding: 0; height: 100%; background: #0f1420; overflow: hidden; }
-  iframe { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-  .loading { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
-             color: #e2a33a; font: italic 18px Georgia, serif; letter-spacing: .04em; transition: opacity .6s; }
-  .loading.gone { opacity: 0; pointer-events: none; }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IITGN Alumni</title>
+<!-- for now the main address forwards to this year's Homecoming website -->
+<meta http-equiv="refresh" content="0; url=/homecoming2026/">
+<link rel="canonical" href="https://iitgnalumni.github.io/homecoming2026/">
+<script>location.replace('/homecoming2026/' + location.hash);</script>
+<style>body{margin:0;background:#0f1420;color:#e2a33a;font:italic 18px Georgia,serif;display:flex;align-items:center;justify-content:center;height:100vh}</style>
 </head>
-<body>
-<div class="loading" id="loading">Coming home&hellip;</div>
-<iframe id="site" title="IIT Gandhinagar Homecoming 2026" allow="autoplay; fullscreen; clipboard-write"></iframe>
-<script>
-  // The live website (Google Apps Script). Content still updates from Google Drive and the RSVP form.
-  var SITE = 'https://script.google.com/macros/s/AKfycbxHuA-ehL_NMnmK6pjTsb_36z0hHAG3Il0cN-Vz1XYRYAQmvujZzPJ1Ou91rY0H2dFd5Q/exec';
-  var PAGE = document.documentElement.getAttribute('data-page') || '';
-  var f = document.getElementById('site');
-  f.addEventListener('load', function () { document.getElementById('loading').className = 'loading gone'; });
-  f.src = SITE + (PAGE ? '?page=' + PAGE : '') + location.hash;
-</script>
-<noscript><p style="color:#fff;font-family:sans-serif;padding:24px">Open the site here: <a style="color:#e2a33a" href="https://script.google.com/macros/s/AKfycbxHuA-ehL_NMnmK6pjTsb_36z0hHAG3Il0cN-Vz1XYRYAQmvujZzPJ1Ou91rY0H2dFd5Q/exec">IITGN Homecoming 2026</a></p></noscript>
-</body>
+<body><a style="color:#e2a33a" href="/homecoming2026/">Coming home&hellip;</a></body>
 </html>
