@@ -1,0 +1,1 @@
+Put awardee photos here as .jpg files named exactly as listed in README.txt, e.g. parichita-kapoor.jpg
