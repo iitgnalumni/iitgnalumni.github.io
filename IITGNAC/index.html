@@ -204,6 +204,10 @@ section[id]{scroll-margin-top:72px}
 .step p{font-size:.93rem;max-width:32ch}
 .step .price{font:800 1.6rem var(--h);color:var(--navy)}
 .step .btn.sm{margin-top:6px}
+.step .price sup{font-size:.55em;margin-left:2px;vertical-align:super;line-height:0}
+.fee-note{margin:40px auto 0;max-width:980px;text-align:center;font-size:.85rem;color:var(--muted)}
+.fee-note sup{color:var(--navy);font-weight:800;margin-right:2px}
+.fee-note + .note{margin-top:20px}
 .step .price small{display:block;font:600 .74rem var(--f);color:var(--muted);letter-spacing:.04em;margin-top:2px}
 @media (max-width:820px){
   .path{grid-template-columns:1fr;gap:34px}
@@ -418,9 +422,10 @@ const COMMITTEE = [
     </div>
     <div class="path rv">
       <div class="step"><span class="num">1</span><div><h3>You graduate</h3><p>All IITGN alumni are, by default, members of IITGN-AC as <b>General Alumni Members</b>.</p></div></div>
-      <div class="step"><span class="num">2</span><div><h3>Choose to upgrade</h3><p>Pay a one-time, non-refundable lifetime fee to become a Participating Member.</p><div class="price">₹3,000<small>Lifetime fee</small></div><a class="btn sm js-pay" target="_blank" rel="noopener">Pay membership fee <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div></div>
+      <div class="step"><span class="num">2</span><div><h3>Choose to upgrade</h3><p>Pay a one-time, non-refundable lifetime fee to become a Participating Member.</p><div class="price">₹3,000<sup>*</sup><small>Lifetime fee</small></div><a class="btn sm js-pay" target="_blank" rel="noopener">Pay membership fee <svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div></div>
       <div class="step"><span class="num">3</span><div><h3>Participating Member</h3><p>Avail of the benefits of membership and appear in the register of Participating Members.</p></div></div>
     </div>
+    <p class="fee-note rv"><sup>*</sup> Current fee. The membership fee is revised from time to time; the amount payable is the one in effect at the time of payment.</p>
     <div class="note rv">
       <div><h3>Pledged ₹3,000 at graduation?</h3><p>Alumni who opted for Alumni Association membership by pledging <b>₹3,000</b> during their graduation already qualify as Participating Members. No need to pay again.</p></div>
       <a class="btn sky js-members" target="_blank" rel="noopener">Check the member list <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
