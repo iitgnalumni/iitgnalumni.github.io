@@ -84,7 +84,10 @@ section[id]{scroll-margin-top:84px}
 .pagetitle h1{font-size:clamp(2rem,4vw,2.75rem)}
 .split{display:grid;grid-template-columns:1fr 1fr;background:var(--panel)}
 .split .art{position:relative;background:#26101c;overflow:hidden;display:block;padding:0;align-self:stretch}
-.split .art img{display:block;width:100%;height:auto}
+.split .art img{display:block;width:100%;height:100%;min-height:420px;object-fit:cover;object-position:center 40%}
+.nomtag{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:#c0392b;padding:5px 12px;border-radius:999px}
+.nomtag.closed{background:var(--muted)}
+.deadline{background:#fff;border-left:4px solid var(--navy);padding:12px 16px;font-weight:600;color:var(--ink)}
 .split .art svg{position:absolute;right:-40px;top:-30px;height:120%;width:auto;opacity:.55}
 .lockup{position:relative;display:flex;align-items:center;gap:16px;color:#fff;font-size:1.3rem;font-weight:500}
 .lockup b{font-weight:700;color:#fff}
@@ -98,7 +101,7 @@ section[id]{scroll-margin-top:84px}
 .btn{display:inline-block;align-self:flex-start;background:var(--navy);color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;letter-spacing:.04em;padding:.75em 1.4em;border:0;cursor:pointer;transition:background .15s}
 .btn:hover{background:var(--navy-deep)}
 .btn.sm{font-size:.86rem;padding:.55em 1.05em}
-@media (max-width:860px){.split{grid-template-columns:1fr}.split .art img{height:auto}.split .nom{padding:32px 24px}}
+@media (max-width:860px){.split{grid-template-columns:1fr}.split .art img{min-height:0;height:auto;aspect-ratio:3/2}.split .nom{padding:32px 24px}}
 
 /* ---------- current recipients ---------- */
 .intro{padding-block:72px 44px}
@@ -241,12 +244,12 @@ footer a:hover{color:var(--sky)}
 
   <section id="nominate" class="container">
     <div class="split">
-      <div class="art"><img id="poster" src="" alt="Young Alumni Excellence Award 2025 poster: Parichita Kapoor, Akanksha Jagwani and Prasannajeet Mane"></div>
+      <div class="art"><img id="poster" src="" alt="IIT Gandhinagar campus"></div>
       <div class="nom">
-        <h2>Submit a Nomination</h2>
-        <p>Do you know an IITGN graduate worthy of recognition for a particular achievement, a successful entrepreneurial venture, or excellence in leadership, public influence, societal impact and volunteerism? Nominate an alumnus to receive the Young Alumni Excellence Award.</p>
-        <p id="nomDeadline"></p>
-        <p class="status" id="nomStatus"></p>
+        <span class="nomtag" id="nomTag"></span>
+        <h2 id="nomHead">Nominations open for YAEA 2026</h2>
+        <p>Do you know an IITGN graduate worthy of recognition for a particular achievement, a successful entrepreneurial venture, or excellence in leadership, public influence, societal impact and volunteerism? Nominate an alumnus for the <strong id="nomAward">Young Alumni Excellence Award 2026</strong>.</p>
+        <p class="deadline" id="nomDeadline"></p>
         <p style="font-size:.86rem;color:var(--muted)">Eligibility: five years since the first IITGN degree, and under 45 years of age. Anonymous or self-nominations are not considered.</p>
         <a class="btn" id="nomBtn" href="#" target="_blank" rel="noopener">Nominate an alumnus</a>
       </div>
@@ -340,7 +343,7 @@ footer a:hover{color:var(--sky)}
    1. Add the new cohort's awardees to AWARDEES (newest year first).
    2. Set FEATURED_YEAR to that year.
    3. Update NOMINATIONS (open/closed, deadline, form link).
-   4. Put the new year's poster in the "images" folder and update POSTER.
+   4. (Optional) Change the picture beside "Submit a Nomination" (POSTER).
    PHOTOS: put a .jpg in the "photos" folder named exactly as the "slug" below
            (e.g. photos/parichita-kapoor.jpg). No code change is needed.
            Until a photo is added, the person's initials are shown.
@@ -350,9 +353,9 @@ footer a:hover{color:var(--sky)}
    ====================================================================== */
 var FEATURED_YEAR = 2025;
 
-/* Poster shown beside "Submit a Nomination". Put the new poster in the
-   "images" folder each year and change the file name here. */
-var POSTER = "images/yaea-2025-poster.jpg";
+/* Picture shown beside "Submit a Nomination". To change it, put a new
+   picture in the "images" folder and change the file name here. */
+var POSTER = "images/iitgn-campus.jpg";
 
 var NOMINATIONS = {
   open: true,
@@ -502,7 +505,6 @@ document.getElementById("recTitle").textContent = FEATURED_YEAR+" Young Alumni E
 document.getElementById("recCount").textContent = NUM[cur.length]||cur.length;
 document.getElementById("navRecip").textContent = FEATURED_YEAR+" Recipients";
 document.getElementById("poster").src = (window.POSTER_DATA || POSTER);
-document.getElementById("poster").alt = "Young Alumni Excellence Award "+FEATURED_YEAR+" poster: "+byYear(FEATURED_YEAR).map(function(a){return a.name}).join(", ");
 document.getElementById("rows").innerHTML = cur.map(function(a){
   return '<article class="row">'+photo(a)+'<div class="body">'+
     '<span class="cat">'+esc(CATEGORIES[a.cat].name)+'</span>'+
@@ -531,11 +533,15 @@ document.getElementById("sinceLine").textContent = "Since the first felicitation
 var catItems = Object.keys(CATEGORIES).map(function(k){return '<li>'+esc(CATEGORIES[k].name)+'</li>'}).join("");
 document.getElementById("catList").innerHTML = catItems;
 document.getElementById("faqCats").innerHTML = catItems;
-var dl = NOMINATIONS.deadline ? "The last date for submitting nominations for the "+(FEATURED_YEAR+1)+" awards is "+NOMINATIONS.deadline+"." : "The closing date for the "+(FEATURED_YEAR+1)+" awards will be announced by the Alumni Relations Office.";
+var NY=FEATURED_YEAR+1;
+var dl = NOMINATIONS.deadline ? "Last date for YAEA "+NY+" nominations: "+NOMINATIONS.deadline : "The last date for YAEA "+NY+" nominations will be announced by the Alumni Relations Office.";
 document.getElementById("nomDeadline").textContent = dl;
 document.getElementById("faqDeadline").textContent = dl;
 document.getElementById("flash").hidden = !NOMINATIONS.open;
-document.getElementById("nomStatus").textContent = NOMINATIONS.open ? "Nominations are currently open." : "The nomination period is currently closed.";
+document.getElementById("nomTag").textContent = NOMINATIONS.open ? "Now open · YAEA "+NY : "Closed · YAEA "+NY;
+if(!NOMINATIONS.open) document.getElementById("nomTag").classList.add("closed");
+document.getElementById("nomHead").textContent = NOMINATIONS.open ? "Nominations open for YAEA "+NY : "Nominations for YAEA "+NY+" are closed";
+document.getElementById("nomAward").textContent = "Young Alumni Excellence Award "+NY;
 var nb=document.getElementById("nomBtn"); nb.href=NOMINATIONS.form;
 if(!NOMINATIONS.open){nb.hidden=true}
 

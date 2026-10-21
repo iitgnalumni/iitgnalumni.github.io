@@ -5,7 +5,7 @@ IIT Gandhinagar, Office of Alumni Relations
 WHAT IS IN THIS FOLDER
   index.html    The complete website (one page). The IITGN logo is built in.
   photos/       Awardee photos go here.
-  images/       The YAEA poster shown beside "Submit a Nomination".
+  images/       The campus picture shown beside "Submit a Nomination".
   README.txt    This file.
 
 FOR THE PERSON LAUNCHING THE SITE
