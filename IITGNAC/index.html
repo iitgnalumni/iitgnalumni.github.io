@@ -35,7 +35,6 @@ img{max-width:100%}
 .container{max-width:1200px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 section[id]{scroll-margin-top:72px}
 .kicker{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--link)}
-.kicker::before{content:"";width:28px;height:2px;background:currentColor}
 .sec-title{font-size:clamp(2rem,4.2vw,3rem);margin-top:14px}
 
 /* ---------- header ---------- */
@@ -296,12 +295,7 @@ const LINKS = {
   contact: [
     { label:"President", email:"president.alumnicollective@iitgn.ac.in" },
     { label:"Secretary", email:"secretary.alumnicollective@iitgn.ac.in" }
-  ],
-  facebook:     "https://www.facebook.com/337192609991379",
-  instagram:    "https://www.instagram.com/iitgn.alumnirelations/",
-  linkedin:     "https://www.linkedin.com/company/ariitgn/",
-  twitter:      "https://twitter.com/alumni_iitgn",
-  youtube:      "https://www.youtube.com/channel/UCeFG6XW2oO0YAkIkEP5Py2w"
+  ]
 };
 
 /* Committee. Photo: photos/<slug>.jpg in the photos folder (square, about 600 x 600).
@@ -369,11 +363,11 @@ const COMMITTEE = [
   <section class="hero" aria-labelledby="hero-h">
     <div class="bg" role="img" aria-label="IIT Gandhinagar campus"></div>
     <div class="container">
-      <h1 id="hero-h">The IITGN <em>Alumni Collective</em></h1>
+      <h1 id="hero-h">IITGN <em>Alumni Collective</em></h1>
       <p class="lede">A dedicated platform that brings IITGN alumni together across batches, programmes and continents, to support one another and to help shape the institute that shaped us.</p>
       <div class="btns">
         <a class="btn sky" href="#committee">Meet the Committee <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn line-w" href="#membership">Become a member</a>
+        <a class="btn line-w" href="#membership">Become a Participating Member</a>
       </div>
       <div class="pillars">
         <div class="pillar"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M3 19c.6-3.3 3-5 6-5s5.4 1.7 6 5M15 14.6c2.6-.4 4.7.9 5.5 3.9"/></svg></span><div><h3>Community</h3><p>Keep batches connected with each other and with campus.</p></div></div>
@@ -398,7 +392,7 @@ const COMMITTEE = [
       </a>
       <a class="doc js-members" target="_blank" rel="noopener">
         <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
-        <span><b>Participating Members</b><span>The public register of members</span></span>
+        <span><b>Participating Members</b><span>The public register of Participating Members</span></span>
         <span class="go" aria-hidden="true">→</span>
       </a>
     </div>
@@ -455,7 +449,6 @@ const COMMITTEE = [
     <div>
       <a class="wordmark" href="#top"><span class="t"><b>IITGN Alumni Collective</b></span></a>
       <p class="addr">Palaj, Gandhinagar, Gujarat 382055, India</p>
-      <div class="social" id="social"></div>
     </div>
     <nav aria-label="Footer"><a href="#about">About</a><a href="#committee">Committee</a><a href="#membership">Membership</a><a href="#faq">FAQ</a><a class="js-constitution" target="_blank" rel="noopener">Constitution</a></nav>
   </div>
@@ -523,16 +516,6 @@ const COMMITTEE = [
   modal.addEventListener("click",e=>{ if(e.target===modal) closeModal(); });
   document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !modal.hidden) closeModal(); });
 
-  // socials
-  const IC={
-    linkedin:'<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11.2 22 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V21h-4z"/>',
-    instagram:'<path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3.1 0-4.1.06C4.6 2.2 2.2 4.6 2.06 7.9 2 8.9 2 9.3 2 12s0 3.1.06 4.1c.14 3.3 2.54 5.7 5.84 5.84 1 .06 1.4.06 4.1.06s3.1 0 4.1-.06c3.3-.14 5.7-2.54 5.84-5.84.06-1 .06-1.4.06-4.1s0-3.1-.06-4.1C21.8 4.6 19.4 2.2 16.1 2.06 15.1 2 14.7 2 12 2z"/>',
-    facebook:'<path d="M14 8V6.2c0-.8.2-1.2 1.4-1.2H17V2h-2.6C11.3 2 10 3.5 10 6v2H8v3h2v11h4V11h2.7l.3-3z"/>',
-    twitter:'<path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.3 4.7H5.5z"/>',
-    youtube:'<path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/>'
-  };
-  const names={linkedin:"LinkedIn",instagram:"Instagram",facebook:"Facebook",twitter:"X (Twitter)",youtube:"YouTube"};
-  $("#social").innerHTML=Object.keys(IC).filter(k=>LINKS[k]).map(k=>'<a href="'+esc(LINKS[k])+'" target="_blank" rel="noopener" aria-label="'+names[k]+'"><svg viewBox="0 0 24 24">'+IC[k]+'</svg></a>').join("");
 
   $$(".copy").forEach(b=>b.onclick=()=>{ if(navigator.clipboard) navigator.clipboard.writeText(b.dataset.email).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1500);}); });
 
