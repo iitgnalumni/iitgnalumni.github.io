@@ -169,6 +169,16 @@ section[id]{scroll-margin-top:72px}
 .drawer .contacts{margin-top:14px}
 .card.out{display:none}
 
+/* stacked profiles */
+.plist{display:flex;flex-direction:column;gap:22px}
+.prow{display:grid;grid-template-columns:190px minmax(0,1fr);gap:40px;align-items:start;background:var(--navy);border:1px solid rgba(179,234,249,.15);border-radius:20px;padding:36px 40px}
+.prow .photo{width:190px;height:190px;border-radius:50%;box-shadow:0 0 0 5px var(--navy),0 0 0 7px rgba(179,234,249,.55)}
+.prow .body{display:flex;flex-direction:column;gap:6px;min-width:0}
+.prow h3{color:#fff;font-size:1.6rem;margin-top:6px}
+.prow .cred{color:var(--sky);font-weight:600;font-size:.9rem}
+.prow .bio{display:flex;flex-direction:column;gap:10px;margin-top:12px;font-size:.94rem;color:#d0dde6;max-width:80ch}
+.prow .contacts{justify-content:flex-start;margin-top:16px}
+@media (max-width:760px){.prow{grid-template-columns:1fr;gap:20px;padding:26px 20px}.prow .photo{width:150px;height:150px}.prow h3{font-size:1.4rem}}
 /* photo */
 .photo{position:relative;background:#cddbe5;overflow:hidden}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
@@ -396,8 +406,8 @@ const COMMITTEE = [
         <p>After the first election, we are delighted to introduce the first Executive Committee of IITGN-AC.</p>
       </div>
     </div>
-    <div class="group"><h3 class="gh rv"><span>Office Bearers</span></h3><div class="cards" id="ob"></div></div>
-    <div class="group"><h3 class="gh rv"><span>Members</span></h3><div class="cards" id="mb"></div></div>
+    <h3 class="gh rv"><span>Office Bearers</span></h3>
+    <div class="plist" id="ob"></div>
   </div></section>
 
   <section class="mem" id="membership" aria-labelledby="mem-h"><div class="container">
@@ -489,16 +499,12 @@ const COMMITTEE = [
   const bio=p=>p.bio.map(b=>"<p>"+esc(b)+"</p>").join("");
 
   COMMITTEE.forEach(p=>{
-    const c=document.createElement("article"); c.className="card rv";
-    c.dataset.g = p.role==="Member" ? "m" : "ob";
-    const o=document.createElement("button"); o.type="button"; o.className="open";
-    o.setAttribute("aria-label",p.name+", "+p.role+". Read profile");
-    o.appendChild(photo(p));
-    o.insertAdjacentHTML("beforeend",'<span class="role">'+esc(p.role)+'</span><h4>'+esc(p.name)+'</h4><span class="cred">'+esc(p.cred)+'</span><span class="rd">Read profile →</span>');
-    o.onclick=()=>openModal(p);
-    c.appendChild(o); c.insertAdjacentHTML("beforeend",contacts(p));
-    $(p.role==="Member" ? "#mb" : "#ob").appendChild(c);
+    const r=document.createElement("article"); r.className="prow rv";
+    r.appendChild(photo(p));
+    r.insertAdjacentHTML("beforeend",'<div class="body"><span class="chip">'+esc(p.role)+'</span><h3>'+esc(p.name)+'</h3><div class="cred">'+esc(p.cred)+'</div><div class="bio">'+bio(p)+'</div>'+contacts(p)+'</div>');
+    $("#ob").appendChild(r);
   });
+
 
 
   // drawer
