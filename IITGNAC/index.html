@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IITGN Alumni Collective</title>
+<meta name="description" content="The IIT Gandhinagar Alumni Collective (IITGN-AC) brings IITGN alumni together for community, growth and service to the institute. Meet the Executive Committee and learn how to become a Participating Member.">
+<meta property="og:title" content="IITGN Alumni Collective">
+<meta property="og:description" content="Meet the first Executive Committee of IITGN-AC and find out how to become a Participating Member.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#163850">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --navy:#163850; --navy-deep:#0f2a3d; --sky:#b3eaf9; --link:#2f7fd6;
+  --ink:#232a31; --text:#454b52; --muted:#737b84; --line:#dfe5ea;
+  --panel:#f1f5f8; --white:#ffffff;
+  --f:"Public Sans","Open Sans",Helvetica,Arial,sans-serif;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--f);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+h1,h2,h3,h4{color:var(--ink);margin:0;font-weight:700;line-height:1.2;text-wrap:balance}
+p{margin:0}
+.container{max-width:1180px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+section[id]{scroll-margin-top:84px}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+
+/* ---------- header (text wordmark, no logo) ---------- */
+.site-head{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.98);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);box-shadow:0 2px 10px -6px rgba(15,42,61,.25)}
+.site-head .container{position:relative;display:flex;align-items:center;gap:24px;min-height:78px}
+.wordmark{display:flex;flex-direction:column;text-decoration:none;line-height:1.15;flex:none}
+.wordmark b{color:var(--navy);font-size:1.18rem;font-weight:800;letter-spacing:-.01em}
+.wordmark span{color:var(--muted);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.mainnav{display:flex;align-items:center;gap:30px;margin-left:auto}
+.mainnav a{color:#111;text-decoration:none;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;padding:28px 0 25px;border-bottom:3px solid transparent}
+.mainnav a:hover,.mainnav a.on{color:var(--navy);border-bottom-color:var(--navy)}
+.menu-btn{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--line);background:#fff;cursor:pointer;flex:none;margin-left:auto}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--navy);position:relative}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:20px;height:2px;background:var(--navy);transition:transform .2s}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-btn[aria-expanded="true"] span{background:transparent}
+.menu-btn[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:900px){
+  .site-head .container{position:static;min-height:68px}
+  .menu-btn{display:inline-flex}
+  .mainnav{display:none;position:absolute;left:0;right:0;top:100%;background:#fff;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--line);box-shadow:0 12px 24px -12px rgba(15,42,61,.35);padding:4px 20px 12px}
+  .mainnav.open{display:flex}
+  .mainnav a{padding:14px 2px;border-bottom:1px solid var(--line)}
+  .mainnav a:last-child{border-bottom:0}
+  .mainnav a.on{border-bottom-color:var(--line);color:var(--link)}
+}
+@media (max-width:420px){.wordmark b{font-size:1.02rem}.wordmark span{font-size:.64rem}}
+
+/* ---------- title + split banner ---------- */
+.pagetitle{padding-block:40px 30px}
+.pagetitle h1{font-size:clamp(1.9rem,4vw,2.75rem)}
+.pagetitle p{margin-top:8px;color:var(--muted);font-size:1rem}
+.split{display:grid;grid-template-columns:1fr 1fr;background:var(--panel)}
+.split .art{position:relative;overflow:hidden;background:var(--navy)}
+.split .art img{display:block;width:100%;height:100%;min-height:440px;object-fit:cover;object-position:center 40%}
+.split .txt{padding:48px 44px;display:flex;flex-direction:column;justify-content:center;gap:16px;font-size:.98rem}
+.split h2{font-size:clamp(1.7rem,3vw,2.1rem)}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pills span{font-size:.78rem;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);padding:4px 12px;border-radius:999px}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;letter-spacing:.04em;padding:.75em 1.4em;border:1px solid var(--navy);cursor:pointer;transition:background .15s}
+.btn:hover{background:var(--navy-deep)}
+.btn.ghost{background:transparent;color:var(--navy)}
+.btn.ghost:hover{background:var(--navy);color:#fff}
+.btn svg{width:15px;height:15px;fill:currentColor}
+@media (max-width:860px){.split{grid-template-columns:1fr}.split .art img{min-height:0;height:auto;aspect-ratio:3/2}.split .txt{padding:32px 22px}}
+
+/* ---------- aims ---------- */
+.aims{padding-block:72px 64px}
+.aims .head{max-width:760px;display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.aims h2{font-size:clamp(1.8rem,3.4vw,2.5rem)}
+.aim-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.aim{border-top:3px solid var(--navy);background:var(--panel);padding:26px 26px 28px;display:flex;flex-direction:column;gap:8px}
+.aim .n{font-size:.8rem;font-weight:800;color:var(--link);letter-spacing:.1em}
+.aim h3{font-size:1.15rem}
+.aim p{font-size:.93rem}
+@media (max-width:860px){.aim-grid{grid-template-columns:1fr}}
+
+/* ---------- committee ---------- */
+.ec{padding-block:72px 80px;border-top:1px solid var(--line)}
+.ec .head{max-width:760px;display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.ec h2{font-size:clamp(1.8rem,3.4vw,2.5rem)}
+.row{display:grid;grid-template-columns:330px minmax(0,1fr);background:var(--panel);min-height:330px;margin-bottom:48px}
+.row .photo{aspect-ratio:1/1;width:100%;align-self:center}
+.row .body{padding:34px 40px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0}
+.tag{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:var(--sky);align-self:flex-start;padding:3px 9px;margin-bottom:8px}
+.row h3{font-size:1.6rem}
+.cred{font-size:.9rem;color:var(--muted);font-weight:500}
+.row .bio{display:flex;flex-direction:column;gap:10px;font-size:.92rem;margin-top:12px;max-width:80ch}
+@media (max-width:860px){.row{grid-template-columns:1fr}.row .photo{max-width:420px}.row .body{padding:26px 22px}}
+.sub{font-size:1.05rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.sub::after{content:"";flex:1;height:1px;background:var(--line)}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 28px;margin-bottom:48px}
+.grid4:last-child{margin-bottom:0}
+@media (max-width:1000px){.grid4{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.grid4{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 18px}}
+.person{display:flex;flex-direction:column;gap:4px;min-width:0}
+.person .photo{width:100%;aspect-ratio:1/1;margin-bottom:8px}
+.person .tag{margin-bottom:2px;font-size:.66rem}
+.person h4{font-size:1.02rem}
+.person .cred{font-size:.84rem;line-height:1.45}
+.more{align-self:flex-start;margin-top:8px;font:600 .86rem var(--f);color:var(--link);background:none;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.more:hover{text-decoration:underline}
+.more svg{width:12px;height:12px}
+
+/* photo */
+.photo{position:relative;background:#dfe7ed;overflow:hidden}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.photo .ini{position:absolute;inset:0;display:grid;place-items:center;font-size:3.2rem;font-weight:300;color:var(--navy);background:linear-gradient(160deg,#e6eef3,#cddbe5)}
+
+/* ---------- membership ---------- */
+.mem{background:var(--panel);padding-block:72px 80px}
+.mem .grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.mem h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin:12px 0 16px}
+.mem .lead{display:flex;flex-direction:column;gap:18px;font-size:.96rem}
+.tiers{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tier{background:#fff;border:1px solid var(--line);padding:26px;display:flex;flex-direction:column;gap:10px}
+.tier.hi{border-top:4px solid var(--navy)}
+.tier h3{font-size:1.15rem}
+.tier .price{font-size:1.9rem;font-weight:800;color:var(--navy);line-height:1}
+.tier .price small{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-top:6px;letter-spacing:.02em}
+.tier ul{margin:0;padding-left:1.15em;font-size:.92rem;display:flex;flex-direction:column;gap:6px}
+.how{grid-column:1/-1;background:#fff;border-left:4px solid var(--navy);padding:18px 22px;font-size:.93rem}
+.how b{color:var(--ink)}
+@media (max-width:900px){.mem .grid{grid-template-columns:1fr;gap:32px}}
+@media (max-width:560px){.tiers{grid-template-columns:1fr}}
+
+/* ---------- faq ---------- */
+.faqs{padding-block:72px}
+.faqs .grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:56px}
+@media (max-width:860px){.faqs .grid{grid-template-columns:1fr;gap:24px}}
+.faqs h2{font-size:2.1rem;margin-top:12px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 34px 18px 0;font-weight:600;color:var(--ink);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:1.4rem;font-weight:400;color:var(--navy)}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 0 20px;font-size:.94rem;display:flex;flex-direction:column;gap:8px}
+.mailrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.mailrow code{font-family:var(--f);font-weight:600;color:var(--navy);user-select:all;word-break:break-all}
+.copy{font:600 .76rem var(--f);padding:.45em .9em;border:1px solid var(--line);background:#fff;color:var(--text);cursor:pointer}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy);color:#cfdbe4;font-size:.88rem}
+footer .container{padding-block:52px 26px}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px}
+@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot{grid-template-columns:1fr}}
+.fmark b{display:block;color:#fff;font-size:1.25rem;font-weight:800;margin-bottom:4px}
+.fmark span{color:var(--sky);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.fmark p{margin-top:14px;max-width:38ch}
+footer h4{color:#fff;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;line-height:2}
+footer a{color:#cfdbe4;text-decoration:none}
+footer a:hover{color:var(--sky)}
+.social{display:flex;gap:8px;margin-top:16px}
+.social a{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+.social a:hover{background:rgba(255,255,255,.12)}
+.social svg{width:15px;height:15px;fill:currentColor}
+.copyright{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.78rem;color:#9fb3c2}
+
+/* ---------- profile window ---------- */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(15,42,61,.75);display:grid;place-items:center;padding:16px}
+.modal-box{position:relative;background:#fff;width:min(940px,100%);max-height:calc(100dvh - 32px);overflow-y:auto;display:grid;grid-template-columns:300px minmax(0,1fr)}
+.modal-box .photo{aspect-ratio:1/1;align-self:start}
+.modal-box .body{padding:36px 40px;display:flex;flex-direction:column;gap:6px}
+.modal-box h3{font-size:1.6rem}
+.modal-box .bio{display:flex;flex-direction:column;gap:10px;font-size:.92rem;margin-top:14px}
+.x{position:absolute;right:10px;top:10px;width:38px;height:38px;border:0;background:var(--panel);color:var(--ink);font-size:1.4rem;cursor:pointer;z-index:2}
+@media (max-width:700px){.modal-box{grid-template-columns:1fr}.modal-box .photo{max-width:260px}.modal-box .body{padding:24px 20px}}
+</style>
+</head>
+<body id="top">
+
+<script>
+/* =====================================================================
+   EDIT HERE  (all the content that changes lives in this block)
+   ===================================================================== */
+const LINKS = {
+  constitution: "https://drive.google.com/file/d/1xa8O3Wy77i3zWDPFLFGnhjl-BuwolSo7/view?usp=sharing",
+  members:      "https://docs.google.com/spreadsheets/d/1ME8PRy-NJPC4RH5qBVO1jpWLhbiGLSvmUC_WDfvtzmI/edit?usp=sharing",
+  email:        "alumnirelations@iitgn.ac.in",
+  facebook:     "https://www.facebook.com/337192609991379",
+  instagram:    "https://www.instagram.com/iitgn.alumnirelations/",
+  linkedin:     "https://www.linkedin.com/company/ariitgn/",
+  twitter:      "https://twitter.com/alumni_iitgn",
+  youtube:      "https://www.youtube.com/channel/UCeFG6XW2oO0YAkIkEP5Py2w"
+};
+
+/* Committee. Photo: put  photos/<slug>.jpg  in the photos folder.
+   Until then the old Google Site picture (oldPhoto) is used, then initials. */
+const G = "https://sites.google.com/sitesv-images-rt/";
+const COMMITTEE = [
+ { slug:"abhishek-kandoi", name:"Abhishek Kandoi", cred:"BTech, Mechanical Engineering, 2012", role:"President",
+   oldPhoto:G+"AMxu72usFQ4JD1BleyPbPzwss1vTdECKAJKsoMIzSUIAv0IHTwwJInEY6Gbhj6wYrVijB6ZoNhhm2PC67C6V0kXYZPuAA2mvDBPXoCEPmHY5NuslwYnr847sJcnM3JOIHJgFVZP1EihZz7yR3F0sA_dV-DDZni7wzO7xkRayHzpcZvU97DUuewWu7v0xRe1wXr3SzwliqB7yPKbgql8JfU91_S4nbfpCnK0_c1tiCPReD08=w1280",
+   bio:[
+   "Abhishek Kandoi is a seasoned business leader and product strategist with over a decade of experience spanning safety certification, product development, and business growth. Currently serving as the Business Head for Asia and North Africa at Applus+ Laboratories, he manages a $25 million annual business portfolio across product certification and advisory services in safety, security, and sustainability.",
+   "An alumnus of IIT Gandhinagar with a B.Tech in Mechanical Engineering, Abhishek has further enhanced his expertise through specialized programs in AI/ML at Plaksha Tech Leaders Fellowship. His career journey includes significant roles at UL Solutions, where he was one of the first employees in their Middle East office, and TinkerTank Design and Technology, a social enterprise focused on developing low-cost technological solutions.",
+   "Beyond his corporate achievements, Abhishek is deeply committed to social impact. He has established two scholarships at IIT Gandhinagar, served as Alumnus-in-Residence, co-founded Anistrita to support youth mental health, and actively participates in micro-lending initiatives. He also maintains an active interest in startup ecosystems, having invested in several early-stage ventures and serving as a mentor to emerging entrepreneurs."]},
+ { slug:"eepsit-tiwari", name:"Eepsit Tiwari", cred:"BTech, Mechanical Engineering, 2015", role:"Vice-President (UG)",
+   oldPhoto:G+"AMxu72v0HaGod77pjWph8YXu0IY1746iz_3C2UuiX2oZVm6kgAdkQzQcT_rNpu9hIa-UBYXcxuHWMp-i57DUmfR6zg2niobNDPA0Qw4Jvannr08n8CoHA3y5k4M0VHt6m2yki6xW1L8z1x-J_aXEMS9-CZ3UU8h4LfXeoi4W_GNj8ITNRyYoVSlE_EB5tpYzV4eTDflZKyfdaxDl5TvMnixnhjBBNe1VMqg9bAa4hpJr=w1280",
+   bio:[
+   "Eepsit is a proud member of the 2011 batch of Mechanical Engineering. During his final year of college, Eepsit began his professional journey by founding a virtual reality and interactive media company, focused on solutions for the real estate and hospitality industries. Over five years, Eepsit and his co-founders bootstrapped and built the business, navigating the challenges of entrepreneurship and gaining valuable experience in building and managing operations.",
+   "After this, he joined an early-stage startup (Affable) in Singapore as their first bizdev hire. In this role, he helped them establish the sales ops across Southeast Asia, contributing to the company’s growth and helping it achieve USD 1 million ARR.",
+   "During the second COVID-19 wave, Eepsit returned to India to focus on impact-driven work. He is currently the Head of Growth at Wysa, a global mental health platform, leading their India impact and government initiatives while also driving the company’s international growth. Passionate about solving global mental health, Eepsit is dedicated to addressing challenges in the mental well-being space and making care accessible and sustainable for underserved communities."]},
+ { slug:"sujay-kadam", name:"Sujay Dilip Kadam", cred:"PhD, Electrical Engineering, 2021", role:"Vice-President (PG)",
+   oldPhoto:G+"AMxu72syxeIDYjpzlgn2TeSKV8SERXsrFV2_nPVm2KU2meM5PcDg_XE9L5cpPzuxFGAVMKCnBKRxYMmAVHlzpc0KfIIZRlpJYarM4q2SVvDPZ8DsqRWx6WRlqsBHi15FBitCq8K6mGHSZ02t3zK2ILK5lYEQJryQsX3PmUpo8Mfbf5wioIqsJvdPs92A_zyFD7I=w1280",
+   bio:[
+   "Sujay Kadam is an academic and researcher specializing in robotics, control theory, computational neuroscience, IoT, and sustainability. He leads the S.A.R.V.A.T.R.A. Lab at DA-IICT, Gandhinagar, and is actively involved in the BSES Smart Energy Learning Centre, focusing on IoT-based energy monitoring and green energy solutions.",
+   "He earned his PhD from IIT Gandhinagar (2014–2021) in control theory and was a visiting researcher at the University of Washington (2019). He previously completed his BE in Instrumentation and Control from Pune University (Rank 1) and an MTech at SGGSIE&T, Nanded, working on a DRDO-Naval Research Board project.",
+   "Dr. Kadam was a Postdoctoral Fellow at IITGN (2021–2022), a faculty member at NIT Sikkim (2022–2023), and joined DA-IICT in 2023. His research spans autonomous systems, reinforcement learning, and energy optimization, integrating sustainability into intelligent systems and robotics."]},
+ { slug:"shashwat-jain", name:"Shashwat Jain", cred:"BTech (CE), 2023", role:"Secretary",
+   oldPhoto:G+"AMxu72v-uvqdZNmb8lOhXOdkbw-i_9E14tN0hJLpVs94hYnpDgmTv3W2XgdOWYFrf1kVIYW8OQL0XXCPczUUY8wsOR8f-Tp14WZTFJaWC8CzOuUKojqo-8tUcg51YySdiB9_lNWrQNdYdUE05p2HVRfihkA9TnuwdgQ3PRm6lA7JXJaHufK-M-vZ9L9oEjbvp5wrDAIep0Q8unbRlKSxrFmScBv5SRy-e908hm5y49APB0k=w1280",
+   bio:[
+   "Shashwat is a dynamic leader with a strong background in entrepreneurship, business analysis, and project management. He has led teams across diverse domains, from bid management and strategic consulting to VR gaming and healthcare innovation. As the Overall Coordinator of Entrepreneurship Initiative IITGN, he fostered a culture of innovation. His leadership at CCL IIT Gandhinagar led to groundbreaking engineering prototypes. With expertise in financial analysis, procurement, and data-driven decision-making, Shashwat thrives in high-impact, strategic roles."]},
+ { slug:"samarpita-mallick", name:"Samarpita Mallick", cred:"MSc, Cognitive Science, 2023", role:"Treasurer",
+   oldPhoto:G+"AMxu72so-GxoKWTxwuEB2IHzO9nGv8NwzkqHIntTrC3qh1vMfye9vrZHeXMIkHO_T1WJhnl6mYmfcza99N8-A7PDtB-UP7OfZmEzh4XhBZRbJlSw87pSJLj9jM4dnF9jYUYzuVmqLSll9AQWcoQUmZWZk6-aGJiydxQqkijo1UQgpAhqOlr9KBsSLMBaeG3pEzVnemTcb_-97G1icwyf2QgRzD5hgCaEpuKm10TL7tZg=w1280",
+   bio:[
+   "Samarpita, an alumna of IIT Gandhinagar with an MSc in Cognitive Science (2023), has played a key role in strengthening alumni connections with the institute. She started as a student volunteer and later worked as an Assistant Executive in Alumni Relations, playing a key role in achieving more than 50% of alumni engagement with the institute since FY 2021-2022. Now, as a Program Assistant, she organizes reunions, plans alumni sessions, and works with students to keep alumni connected. Her dedication and teamwork have helped build a strong alumni network, creating lasting relationships between past and present students."]},
+ { slug:"ihsan-k", name:"Ihsan K", cred:"MSc, Cognitive Science, 2020", role:"Member",
+   oldPhoto:G+"AMxu72uqsSOvGCYul2NSdtKZxfN2P6qkPU8cj5Gp0s3zV4oVTXh8xXFHmeEh1Sc7S3Rb-LEFcOdjY8_pHAWupF2DBIfeKrEVqVRWTSL0oPZtAv-LgxknI1xVRc7pxj-FHrdHVUweWzl2-OVUKwV88l3KwxWf3RrtqI__2j7FFdblnrCmRUiYBIaFtMTak7Lp-0lmQZdhqYs4kGOQYxty88WKOHwX0ezdnhev75NV3INW0CU=w1280",
+   bio:[
+   "Ihsan is an alumnus of IIT Gandhinagar, who completed MSc Cognitive Science in 2020. He is currently pursuing his PhD in Cognitive Science and working in curiosity, learning and memory research. He worked with an Ed tech startup after his MSc by leading the team to design programs at the intersection of Neuroscience and AI.",
+   "Later, he worked as Junior Research Fellow at IIT Gandhinagar on how curiosity could improve the learning outcomes, for instance, in classrooms, and how different techniques could enhance the learning experience and make it more enjoyable. He continued this work into his PhD and is currently exploring how mental semantic network exploration is associated with varying levels of curiosity.",
+   "He also works with the Institute of Design at Nirma University. Additionally, he was the Student Council Chairman during his bachelor's and had been a part of Nyasa during his Master's at IIT Gandhinagar."]},
+ { slug:"jainam-shah", name:"Jainam Shah", cred:"BTech, Mechanical Engineering, 2021", role:"Member",
+   oldPhoto:G+"AMxu72v-a7o-J5JVxIDpOtgasGi5O3XVyR_vlaTzdgqGfO8weGhijhahIj0E9Zwnrd-YuMVQaihPtuqizskr9e1XopVY4EBChj8G3OiBhO86sJC8rAUqjV4FUTwb2ZTepF55e8U--aw_ogspR8HgMgLEtXsG5AC8QTN12rQuY-horhbaE-QyOahZyo0a3PpHkstrpI0bAXbQpAT3Tf-a882cEDcZCnzAN0uMC9Ms33aaDcA=w1280",
+   bio:[
+   "Jainam Shah, Class of 2021, has done his graduation in the discipline of Mechanical Engineering with Minors in Management. He was associated as a Program Manager at an Ed-Tech Startup in Mumbai and is now into School Management in Ahmedabad."]},
+ { slug:"hyma-balakrishnan", name:"Hyma Balakrishnan", cred:"MA, Society and Culture, 2022", role:"Member",
+   oldPhoto:G+"AMxu72tUl04Ok_MfTFe3a9ilcvT-xlJmJzH7gp_o--kE-CqElDW5VEXQW63JktxgHYRB744MzrbTtwEQKaEXvzSQsakLMyKzCN-5ZVpoyuyUpWTvH0eJ5mqFLKWYvoyivmjyMGCd83nyA2RLk9qRJCySuKLWzDCCeCSs4ZFDRj2iIc7cuorXwRxLacgGkjBHxXv3T8CpI0TRYgTLX_LV9MZ5QvqS_hJcXUXq7z5yDQxTqSo=w1280",
+   bio:[
+   "Hyma is currently an associate at the Social Action and Policy Lab, IIT Gandhinagar, and works on the intersections of public health, gender, and governance. Her work spans ethnographic research to inform policy and she is passionate about driving meaningful social change. She holds an M.A. degree in Society and Culture from IIT Gandhinagar (Batch of 2022) and aspires to explore new possibilities to create a just and more inclusive world."]}
+];
+/* ===================================================================== */
+</script>
+
+<header class="site-head"><div class="container">
+  <a class="wordmark" href="#top" aria-label="IITGN Alumni Collective, home"><b>IITGN Alumni Collective</b><span>IIT Gandhinagar · IITGN-AC</span></a>
+  <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+  <nav class="mainnav" id="nav" aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#committee">Executive Committee</a>
+    <a href="#membership">Membership</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<main>
+  <div class="container pagetitle">
+    <h1>Indian Institute of Technology Gandhinagar Alumni Collective</h1>
+    <p>One network for every IITGN graduate, across batches, programmes and continents.</p>
+  </div>
+
+  <section class="split" id="about" aria-labelledby="about-h">
+    <div class="art"><img src="images/iitgn-campus.jpg" alt="IIT Gandhinagar campus"></div>
+    <div class="txt">
+      <span class="eyebrow">About IITGN-AC</span>
+      <h2 id="about-h">A home for the IITGN alumni community</h2>
+      <p>The IIT Gandhinagar Alumni Collective (IITGN-AC) is a dedicated platform to foster a strong network among IITGN alumni. It aims to enhance the sense of community, provide opportunities for professional and personal growth, and contribute to the development of IIT Gandhinagar.</p>
+      <p>As members of IITGN-AC, alumni can engage in various activities, events, and initiatives that promote collaboration and mutual support.</p>
+      <div class="btns">
+        <a class="btn js-constitution" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm4 18H6V4h7v5h5zM8 13h8v2H8zm0 4h8v2H8z"/></svg>Read the Constitution</a>
+        <a class="btn ghost" href="#membership">Become a member</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="aims" aria-labelledby="aims-h"><div class="container">
+    <div class="head">
+      <span class="eyebrow">What we do</span>
+      <h2 id="aims-h">Three things the Collective works for</h2>
+    </div>
+    <div class="aim-grid">
+      <div class="aim"><span class="n">01</span><h3>Community</h3><p>Strengthen the bond among IITGN alumni through reunions, meet-ups and sessions that keep batches connected with each other and with campus.</p></div>
+      <div class="aim"><span class="n">02</span><h3>Growth</h3><p>Open up opportunities for professional and personal growth through mentoring, networking and shared experience across fields.</p></div>
+      <div class="aim"><span class="n">03</span><h3>Giving back</h3><p>Contribute to the development of IIT Gandhinagar and its students through collaboration, support and initiatives led by alumni.</p></div>
+    </div>
+  </div></section>
+
+  <section class="ec" id="committee" aria-labelledby="ec-h"><div class="container">
+    <div class="head">
+      <span class="eyebrow">Leadership</span>
+      <h2 id="ec-h">The Executive Committee</h2>
+      <p>After the first election, we are delighted to introduce the first Executive Committee of IITGN-AC.</p>
+    </div>
+    <div id="president"></div>
+    <h3 class="sub">Office bearers</h3>
+    <div class="grid4" id="officers"></div>
+    <h3 class="sub">Members</h3>
+    <div class="grid4" id="members"></div>
+  </div></section>
+
+  <section class="mem" id="membership" aria-labelledby="mem-h"><div class="container"><div class="grid">
+    <div class="lead">
+      <div>
+        <span class="eyebrow">Membership</span>
+        <h2 id="mem-h">How to enrol as a member of IITGN-AC</h2>
+        <p>Every IITGN alumnus is already part of the Collective. Alumni can choose to upgrade to Participating Membership to avail of its benefits.</p>
+      </div>
+      <div class="btns">
+        <a class="btn js-members" target="_blank" rel="noopener">List of Participating Members</a>
+        <a class="btn ghost js-mail">Ask about membership</a>
+      </div>
+    </div>
+    <div class="tiers">
+      <div class="tier">
+        <span class="tag">Default</span>
+        <h3>General Alumni Member</h3>
+        <div class="price">Free<small>Automatic for all graduates</small></div>
+        <ul><li>All IITGN alumni are General Alumni Members by default.</li><li>Can upgrade to Participating Membership at any time.</li></ul>
+      </div>
+      <div class="tier hi">
+        <span class="tag">Upgrade</span>
+        <h3>Participating Member</h3>
+        <div class="price">₹3,000<small>One-time, non-refundable lifetime fee</small></div>
+        <ul><li>Avail of the benefits of Participating Membership.</li><li>Listed in the public register of Participating Members.</li></ul>
+      </div>
+      <div class="how"><b>Already pledged?</b> Alumni who opted for Alumni Association membership by pledging ₹3,000 at graduation already qualify as Participating Members. Others can upgrade by paying the ₹3,000 lifetime fee.</div>
+    </div>
+  </div></div></section>
+
+  <section class="faqs" id="faq" aria-labelledby="faq-h"><div class="container"><div class="grid">
+    <div><span class="eyebrow">FAQ</span><h2 id="faq-h">Common questions</h2></div>
+    <div class="faq">
+      <details><summary>Who is a member of IITGN-AC?</summary><div class="ans"><p>Every IIT Gandhinagar alumnus is a member by default, as a General Alumni Member.</p></div></details>
+      <details><summary>What is the difference between a General and a Participating Member?</summary><div class="ans"><p>General Alumni Membership is automatic and free. Participating Membership is an upgrade that lets alumni avail of the Collective's benefits, for a one-time lifetime fee of ₹3,000.</p></div></details>
+      <details><summary>I pledged ₹3,000 when I graduated. Do I need to pay again?</summary><div class="ans"><p>No. Alumni who opted for Alumni Association membership by pledging ₹3,000 at graduation already qualify as Participating Members. You can check your name in the <a class="js-members" target="_blank" rel="noopener">list of Participating Members</a>.</p></div></details>
+      <details><summary>Where can I read the rules of the Collective?</summary><div class="ans"><p>The <a class="js-constitution" target="_blank" rel="noopener">IITGN-AC Constitution</a> sets out how the Collective and its Executive Committee work.</p></div></details>
+      <details><summary>How do I get in touch?</summary><div class="ans"><p>Write to the Office of Alumni Relations:</p><div class="mailrow"><code class="js-mailtext"></code><button class="copy" type="button">Copy</button></div></div></details>
+    </div>
+  </div></div></section>
+</main>
+
+<footer id="contact"><div class="container">
+  <div class="foot">
+    <div class="fmark">
+      <b>IITGN Alumni Collective</b><span>Office of Alumni Relations, IIT Gandhinagar</span>
+      <p>Palaj, Gandhinagar, Gujarat 382055, India</p>
+      <div class="social" id="social"></div>
+    </div>
+    <div><h4>On this site</h4><ul><li><a href="#about">About</a></li><li><a href="#committee">Executive Committee</a></li><li><a href="#membership">Membership</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+    <div><h4>Resources</h4><ul><li><a class="js-constitution" target="_blank" rel="noopener">Constitution</a></li><li><a class="js-members" target="_blank" rel="noopener">Participating Members</a></li><li><a class="js-mail">Email us</a></li></ul></div>
+  </div>
+  <div class="copyright"><span>© <span id="yr"></span> Alumni Relations, IIT Gandhinagar</span><span>IITGN-AC</span></div>
+</div></footer>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="m-name">
+  <div class="modal-box">
+    <button class="x" type="button" aria-label="Close">×</button>
+    <div class="photo" id="m-photo"></div>
+    <div class="body"><span class="tag" id="m-role"></span><h3 id="m-name"></h3><div class="cred" id="m-cred"></div><div class="bio" id="m-bio"></div></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const ini=n=>n.split(/\s+/).filter(Boolean).map(w=>w[0]).slice(0,2).join("").toUpperCase();
+
+  // links
+  $$(".js-constitution").forEach(a=>a.href=LINKS.constitution);
+  $$(".js-members").forEach(a=>a.href=LINKS.members);
+  $$(".js-mail").forEach(a=>a.href="mailto:"+LINKS.email);
+  $$(".js-mailtext").forEach(c=>c.textContent=LINKS.email);
+  $("#yr").textContent=new Date().getFullYear();
+
+  // photo: local file -> old Google Site picture -> initials
+  function photo(p){
+    const box=document.createElement("div"); box.className="photo";
+    const srcs=["photos/"+p.slug+".jpg", p.oldPhoto].filter(Boolean);
+    const img=new Image(); img.alt=p.name; img.loading="lazy"; let i=0;
+    img.onerror=()=>{ i++; if(i<srcs.length) img.src=srcs[i]; else { img.remove(); box.innerHTML='<div class="ini" aria-hidden="true">'+ini(p.name)+'</div>'; } };
+    img.src=srcs[0]; box.appendChild(img); return box;
+  }
+  const arrow='<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h8M6.5 2.5L10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>';
+
+  // president row
+  const pres=COMMITTEE.find(p=>p.role==="President");
+  if(pres){
+    const r=document.createElement("article"); r.className="row";
+    r.appendChild(photo(pres));
+    r.insertAdjacentHTML("beforeend",'<div class="body"><span class="tag">'+esc(pres.role)+'</span><h3>'+esc(pres.name)+'</h3><div class="cred">'+esc(pres.cred)+'</div><div class="bio">'+pres.bio.map(b=>"<p>"+esc(b)+"</p>").join("")+'</div></div>');
+    $("#president").appendChild(r);
+  }
+  function card(p){
+    const c=document.createElement("article"); c.className="person";
+    c.appendChild(photo(p));
+    c.insertAdjacentHTML("beforeend",'<span class="tag">'+esc(p.role)+'</span><h4>'+esc(p.name)+'</h4><div class="cred">'+esc(p.cred)+'</div><button class="more" type="button">Read profile '+arrow+'</button>');
+    c.querySelector(".more").onclick=()=>openModal(p);
+    return c;
+  }
+  COMMITTEE.filter(p=>p!==pres && p.role!=="Member").forEach(p=>$("#officers").appendChild(card(p)));
+  COMMITTEE.filter(p=>p.role==="Member").forEach(p=>$("#members").appendChild(card(p)));
+
+  // modal
+  const modal=$("#modal"); let last=null;
+  function openModal(p){
+    last=document.activeElement;
+    const ph=$("#m-photo"); ph.replaceWith(Object.assign(photo(p),{id:"m-photo"}));
+    $("#m-role").textContent=p.role; $("#m-name").textContent=p.name; $("#m-cred").textContent=p.cred;
+    $("#m-bio").innerHTML=p.bio.map(b=>"<p>"+esc(b)+"</p>").join("");
+    modal.hidden=false; document.body.style.overflow="hidden"; modal.querySelector(".x").focus();
+  }
+  function closeModal(){ modal.hidden=true; document.body.style.overflow=""; if(last) last.focus(); }
+  modal.querySelector(".x").onclick=closeModal;
+  modal.addEventListener("click",e=>{ if(e.target===modal) closeModal(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape" && !modal.hidden) closeModal(); });
+
+  // socials
+  const IC={
+    linkedin:'<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 11.2 22 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V21h-4z"/>',
+    instagram:'<path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3.1 0-4.1.06C4.6 2.2 2.2 4.6 2.06 7.9 2 8.9 2 9.3 2 12s0 3.1.06 4.1c.14 3.3 2.54 5.7 5.84 5.84 1 .06 1.4.06 4.1.06s3.1 0 4.1-.06c3.3-.14 5.7-2.54 5.84-5.84.06-1 .06-1.4.06-4.1s0-3.1-.06-4.1C21.8 4.6 19.4 2.2 16.1 2.06 15.1 2 14.7 2 12 2z"/>',
+    facebook:'<path d="M14 8V6.2c0-.8.2-1.2 1.4-1.2H17V2h-2.6C11.3 2 10 3.5 10 6v2H8v3h2v11h4V11h2.7l.3-3z"/>',
+    twitter:'<path d="M17.8 3h3.1l-6.8 7.8L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L1.9 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.3 4.7H5.5z"/>',
+    youtube:'<path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.75 15.02V8.98L15.5 12z"/>'
+  };
+  const names={linkedin:"LinkedIn",instagram:"Instagram",facebook:"Facebook",twitter:"X (Twitter)",youtube:"YouTube"};
+  $("#social").innerHTML=Object.keys(IC).filter(k=>LINKS[k]).map(k=>'<a href="'+esc(LINKS[k])+'" target="_blank" rel="noopener" aria-label="'+names[k]+'"><svg viewBox="0 0 24 24">'+IC[k]+'</svg></a>').join("");
+
+  // copy email
+  $$(".copy").forEach(b=>b.onclick=()=>{ navigator.clipboard&&navigator.clipboard.writeText(LINKS.email).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1500);}); });
+
+  // mobile menu
+  const btn=$(".menu-btn"), nav=$("#nav");
+  btn.onclick=()=>{ const o=nav.classList.toggle("open"); btn.setAttribute("aria-expanded",o); };
+  nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{ nav.classList.remove("open"); btn.setAttribute("aria-expanded","false"); }));
+
+  // highlight current section in nav
+  const links=[...nav.querySelectorAll("a")];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id)); } }),{rootMargin:"-45% 0px -50% 0px"});
+  ["about","committee","membership","faq"].forEach(id=>{ const s=document.getElementById(id); if(s) io.observe(s); });
+})();
+</script>
+</body>
+</html>

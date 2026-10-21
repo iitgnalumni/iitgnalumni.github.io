@@ -1,0 +1,31 @@
+# IITGN Alumni Collective website
+
+A one-page static website for the IIT Gandhinagar Alumni Collective (IITGN-AC), made for GitHub Pages. No build step, database or plugins.
+
+## Files
+- `index.html` – the whole website
+- `images/iitgn-campus.jpg` – campus photo beside "About"
+- `photos/` – Executive Committee photos
+- `.nojekyll` – tells GitHub Pages to serve the files as they are
+
+## Publish on GitHub Pages
+1. Create a public repository under the iitgnalumni account (for example `IITGNAC`).
+2. Upload everything in this folder so `index.html` sits at the top level.
+3. Settings → Pages → Source: "Deploy from a branch", branch `main`, folder `/ (root)` → Save.
+4. After a minute the site is live at `https://iitgnalumni.github.io/IITGNAC`.
+
+## Editing
+Open `index.html` (pencil icon on GitHub) and search for **EDIT HERE**.
+- `LINKS` – Constitution, Participating Members sheet, email, social media.
+- `COMMITTEE` – name, degree, role and biography of each person. The President is shown large; other office bearers and Members appear in the grids automatically.
+
+## Photos
+Save each photo as a square `.jpg` (about 600 × 600 px) named exactly:
+
+    abhishek-kandoi.jpg   eepsit-tiwari.jpg      sujay-kadam.jpg
+    shashwat-jain.jpg     samarpita-mallick.jpg  ihsan-k.jpg
+    jainam-shah.jpg       hyma-balakrishnan.jpg
+
+and put it in `photos/`. Until a file is there, the site shows the picture from the old Google Site, and if that is unavailable, the person's initials. Add your own copies before the Google Site is deleted.
+
+Contact: alumnirelations@iitgn.ac.in
