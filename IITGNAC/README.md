@@ -20,12 +20,12 @@ Open `index.html` (pencil icon on GitHub) and search for **EDIT HERE**.
 - `COMMITTEE` – name, degree, role, biography, `linkedin` and `email` of each person. Until a LinkedIn link or email is filled in, its icon shows faded. Everyone is listed as an Office Bearer, one below the other, in the order they appear in COMMITTEE.
 
 ## Photos
-Save each photo as a square `.jpg` (about 600 × 600 px) named exactly:
+Each person's photo is `photos/<slug>.jpg` (square, about 600 × 600 px), named exactly:
 
     abhishek-kandoi.jpg   eepsit-tiwari.jpg      sujay-kadam.jpg
     shashwat-jain.jpg     samarpita-mallick.jpg  ihsan-k.jpg
     jainam-shah.jpg       hyma-balakrishnan.jpg
 
-and put it in `photos/`. Until a file is there, the site shows the picture from the old Google Site, and if that is unavailable, the person's initials. Add your own copies before the Google Site is deleted.
+To change a photo, upload a new file with the same name. If a photo is missing, the person's initials are shown.
 
 Contact: alumnirelations@iitgn.ac.in
