@@ -527,6 +527,7 @@ document.getElementById("pastGroups").innerHTML = past.map(function(y){
     }).join("")+'</div></div>';
 }).join("");
 document.getElementById("ddMenu").innerHTML = past.map(function(y){return '<a href="#y'+y+'">YAEA '+y+' <small>'+byYear(y).length+' awardees</small></a>'}).join("");
+document.getElementById("footYears").innerHTML = years.map(function(y){return '<li><a href="'+(y===FEATURED_YEAR?'#recipients':'#y'+y)+'">YAEA '+y+' Recipients</a></li>'}).join("");
 document.getElementById("sinceLine").textContent = "Since the first felicitation ceremony on 23 December 2022, "+AWARDEES.length+" alumni have received the award.";
 
 /* categories, nominations */
