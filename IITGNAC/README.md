@@ -16,8 +16,8 @@ A one-page static website for the IIT Gandhinagar Alumni Collective (IITGN-AC), 
 
 ## Editing
 Open `index.html` (pencil icon on GitHub) and search for **EDIT HERE**.
-- `LINKS` – Constitution, Participating Members sheet, IITGN-AC email (shows "coming soon" while empty), social media.
-- `COMMITTEE` – name, degree, role, biography, `linkedin` and `email` of each person. Until a LinkedIn link or email is filled in, its icon shows faded. Everyone is listed as an Office Bearer, one below the other, in the order they appear in COMMITTEE.
+- `LINKS` – Constitution, Participating Members sheet, membership payment link, the emails shown in "Get in touch" (`contact`), social media.
+- `COMMITTEE` – name, degree, role, biography, `linkedin` and `email` of each person. A person's email is shown as text only when filled in; until a LinkedIn link is filled in, its icon shows faded. Everyone is listed as an Office Bearer, one below the other, in the order they appear in COMMITTEE.
 
 ## Photos
 Each person's photo is `photos/<slug>.jpg` (square, about 600 × 600 px), named exactly:
