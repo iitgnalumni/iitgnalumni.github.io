@@ -10,24 +10,40 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Download photos from the old Google Site
+        shell: bash
         run: |
-          set -e
-          sudo apt-get -qq update >/dev/null && sudo apt-get -qq install -y imagemagick >/dev/null
-          get() { curl -fsSL -A "Mozilla/5.0" -o /tmp/$1.img "$2" && convert /tmp/$1.img -auto-orient -resize "700x700>" -quality 86 IITGNAC/photos/$1.jpg && echo "ok $1"; }
-          get abhishek-kandoi "https://sites.google.com/sitesv-images-rt/AMxu72usFQ4JD1BleyPbPzwss1vTdECKAJKsoMIzSUIAv0IHTwwJInEY6Gbhj6wYrVijB6ZoNhhm2PC67C6V0kXYZPuAA2mvDBPXoCEPmHY5NuslwYnr847sJcnM3JOIHJgFVZP1EihZz7yR3F0sA_dV-DDZni7wzO7xkRayHzpcZvU97DUuewWu7v0xRe1wXr3SzwliqB7yPKbgql8JfU91_S4nbfpCnK0_c1tiCPReD08=w1280"
-          get eepsit-tiwari "https://sites.google.com/sitesv-images-rt/AMxu72v0HaGod77pjWph8YXu0IY1746iz_3C2UuiX2oZVm6kgAdkQzQcT_rNpu9hIa-UBYXcxuHWMp-i57DUmfR6zg2niobNDPA0Qw4Jvannr08n8CoHA3y5k4M0VHt6m2yki6xW1L8z1x-J_aXEMS9-CZ3UU8h4LfXeoi4W_GNj8ITNRyYoVSlE_EB5tpYzV4eTDflZKyfdaxDl5TvMnixnhjBBNe1VMqg9bAa4hpJr=w1280"
-          get sujay-kadam "https://sites.google.com/sitesv-images-rt/AMxu72syxeIDYjpzlgn2TeSKV8SERXsrFV2_nPVm2KU2meM5PcDg_XE9L5cpPzuxFGAVMKCnBKRxYMmAVHlzpc0KfIIZRlpJYarM4q2SVvDPZ8DsqRWx6WRlqsBHi15FBitCq8K6mGHSZ02t3zK2ILK5lYEQJryQsX3PmUpo8Mfbf5wioIqsJvdPs92A_zyFD7I=w1280"
-          get shashwat-jain "https://sites.google.com/sitesv-images-rt/AMxu72v-uvqdZNmb8lOhXOdkbw-i_9E14tN0hJLpVs94hYnpDgmTv3W2XgdOWYFrf1kVIYW8OQL0XXCPczUUY8wsOR8f-Tp14WZTFJaWC8CzOuUKojqo-8tUcg51YySdiB9_lNWrQNdYdUE05p2HVRfihkA9TnuwdgQ3PRm6lA7JXJaHufK-M-vZ9L9oEjbvp5wrDAIep0Q8unbRlKSxrFmScBv5SRy-e908hm5y49APB0k=w1280"
-          get samarpita-mallick "https://sites.google.com/sitesv-images-rt/AMxu72so-GxoKWTxwuEB2IHzO9nGv8NwzkqHIntTrC3qh1vMfye9vrZHeXMIkHO_T1WJhnl6mYmfcza99N8-A7PDtB-UP7OfZmEzh4XhBZRbJlSw87pSJLj9jM4dnF9jYUYzuVmqLSll9AQWcoQUmZWZk6-aGJiydxQqkijo1UQgpAhqOlr9KBsSLMBaeG3pEzVnemTcb_-97G1icwyf2QgRzD5hgCaEpuKm10TL7tZg=w1280"
-          get ihsan-k "https://sites.google.com/sitesv-images-rt/AMxu72uqsSOvGCYul2NSdtKZxfN2P6qkPU8cj5Gp0s3zV4oVTXh8xXFHmeEh1Sc7S3Rb-LEFcOdjY8_pHAWupF2DBIfeKrEVqVRWTSL0oPZtAv-LgxknI1xVRc7pxj-FHrdHVUweWzl2-OVUKwV88l3KwxWf3RrtqI__2j7FFdblnrCmRUiYBIaFtMTak7Lp-0lmQZdhqYs4kGOQYxty88WKOHwX0ezdnhev75NV3INW0CU=w1280"
-          get jainam-shah "https://sites.google.com/sitesv-images-rt/AMxu72v-a7o-J5JVxIDpOtgasGi5O3XVyR_vlaTzdgqGfO8weGhijhahIj0E9Zwnrd-YuMVQaihPtuqizskr9e1XopVY4EBChj8G3OiBhO86sJC8rAUqjV4FUTwb2ZTepF55e8U--aw_ogspR8HgMgLEtXsG5AC8QTN12rQuY-horhbaE-QyOahZyo0a3PpHkstrpI0bAXbQpAT3Tf-a882cEDcZCnzAN0uMC9Ms33aaDcA=w1280"
-          get hyma-balakrishnan "https://sites.google.com/sitesv-images-rt/AMxu72tUl04Ok_MfTFe3a9ilcvT-xlJmJzH7gp_o--kE-CqElDW5VEXQW63JktxgHYRB744MzrbTtwEQKaEXvzSQsakLMyKzCN-5ZVpoyuyUpWTvH0eJ5mqFLKWYvoyivmjyMGCd83nyA2RLk9qRJCySuKLWzDCCeCSs4ZFDRj2iIc7cuorXwRxLacgGkjBHxXv3T8CpI0TRYgTLX_LV9MZ5QvqS_hJcXUXq7z5yDQxTqSo=w1280"
-          ls -la IITGNAC/photos
-      - name: Commit photos and remove this workflow
+          pip install -q pillow
+          python3 - <<'PY'
+          import re, io, urllib.request, html
+          from PIL import Image
+          UA={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36","Referer":"https://sites.google.com/"}
+          log=[]
+          page=urllib.request.urlopen(urllib.request.Request("https://sites.google.com/iitgn.ac.in/iitgnac/home",headers=UA)).read().decode("utf-8","ignore")
+          urls=[]
+          for u in re.findall(r'(https://(?:sites\.google\.com/sitesv-images-rt|lh\d\.googleusercontent\.com)/[^"\'\s\\)<>]+)',html.unescape(page)):
+              u=u.split('=w')[0]
+              if u not in urls: urls.append(u)
+          log.append(f"found {len(urls)} image urls")
+          slugs=["abhishek-kandoi","eepsit-tiwari","sujay-kadam","shashwat-jain","samarpita-mallick","ihsan-k","jainam-shah","hyma-balakrishnan"]
+          # page order: og:image duplicate of first photo may appear; keep unique order
+          for i,u in enumerate(urls):
+              try:
+                  data=urllib.request.urlopen(urllib.request.Request(u+"=w800",headers=UA),timeout=30).read()
+                  im=Image.open(io.BytesIO(data)).convert("RGB")
+                  im.thumbnail((800,800))
+                  im.save(f"IITGNAC/photos/_old-{i+1}.jpg",quality=86)
+                  log.append(f"ok {i+1} {im.size} {u[:90]}")
+              except Exception as e:
+                  log.append(f"fail {i+1} {e} {u[:90]}")
+          open("IITGNAC/photos/_fetch-log.txt","w").write("\n".join(log)+"\n")
+          print("\n".join(log))
+          PY
+      - name: Commit results and remove this workflow
+        if: always()
         run: |
           git config user.name "Claude"
           git config user.email "noreply@anthropic.com"
           git rm -q .github/workflows/fetch-iitgnac-photos.yml
           git add IITGNAC/photos
-          git commit -m "IITGNAC: add committee photos from the old Google Site"
+          git commit -m "IITGNAC: photos fetched from the old Google Site"
           git push
