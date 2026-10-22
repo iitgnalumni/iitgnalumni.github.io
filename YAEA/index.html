@@ -485,7 +485,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp
 function ini(n){var p=n.split(" ");return (p[0][0]+(p.length>1?p[p.length-1][0]:"")).toUpperCase()}
 function full(a){return (a.title?a.title+" ":"")+a.name}
 function yy(g){return "’"+String(g).slice(-2)}
-function cred(a){return a.prog+"/"+a.dept+"/"+String(a.grad).slice(-2)}
+function cred(a){return a.prog+"/"+a.dept+"/"+a.grad}
 function photoFail(img){var alt=img.getAttribute("data-alt");if(alt){img.removeAttribute("data-alt");img.src=alt}else img.remove()}
 function photo(a){
   return '<div class="photo"><div class="ini">'+ini(a.name)+'</div><img src="'+esc(PHOTO_FOLDER+a.slug+".jpg")+'"'+(a.oldphoto?' data-alt="'+esc(a.oldphoto)+'"':'')+' alt="'+esc(full(a))+'" loading="lazy" onerror="photoFail(this)"></div>';
