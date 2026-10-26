@@ -1,9 +1,18 @@
 name: probe
-on: { push: { branches: [probe] }, workflow_dispatch: {} }
+on: { push: { branches: [probe], paths: ['.github/**'] }, workflow_dispatch: {} }
+permissions: { contents: write }
 jobs:
   p:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with: { ref: probe }
       - run: |
-          curl -sSL "https://drive.google.com/embeddedfolderview?id=1nf7Njmy8O_8BMq_Y3AdlX4I_awW7Y3MQ" -o list.html -w "%{http_code}\n"; wc -c list.html; head -c 4000 list.html | sed 's/></>\n</g' | grep -i 'entry\|title\|href' | head -40
-          curl -sSL "https://drive.usercontent.google.com/download?id=1e-x9uUkX6x3n0kNg9CJd8na94JAM7mDa&export=download&confirm=t" -o a.pdf -w "%{http_code} %{content_type}\n"; ls -la a.pdf; head -c 200 a.pdf | strings | head -3
+          {
+          for f in 1nf7Njmy8O_8BMq_Y3AdlX4I_awW7Y3MQ 1bxMzPifuOyF-yhqr3wLpUoR1-L-QlZ7q; do
+            curl -sSL "https://drive.google.com/embeddedfolderview?id=$f" -o l.html -w "%{http_code}\n"; wc -c l.html; sed 's/></>\n</g' l.html | grep -i 'flip-entry\|href=' | head -30
+          done
+          curl -sSL "https://drive.usercontent.google.com/download?id=1e-x9uUkX6x3n0kNg9CJd8na94JAM7mDa&export=download&confirm=t" -o a.pdf -w "%{http_code} %{content_type}\n"; ls -la a.pdf; head -c 300 a.pdf | strings | head -5
+          } > probe-out.txt 2>&1
+          git config user.name github-actions; git config user.email github-actions@users.noreply.github.com
+          git add probe-out.txt; git commit -qm out; git push -q
