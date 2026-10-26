@@ -100,10 +100,6 @@ section[id]{scroll-margin-top:72px}
 .hero h1 em{font-style:normal;color:var(--sky)}
 .hero .lede{margin-top:22px;max-width:52ch;font-size:clamp(1rem,1.6vw,1.12rem);color:#d6e3ec}
 .hero .btns{margin-top:32px}
-.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:44px;padding-top:24px;border-top:1px solid rgba(179,234,249,.2)}
-.stats div{display:flex;flex-direction:column;line-height:1.2}
-.stats b{font:800 1.9rem var(--h);color:#fff;letter-spacing:-.02em}
-.stats span{font-size:.8rem;color:#9fb3c2;margin-top:4px}
 /* latest issue */
 .latest{justify-self:center;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;max-width:360px;width:100%}
 .latest .lbl{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);display:inline-flex;align-items:center;gap:8px}
@@ -301,7 +297,6 @@ const SITE = {
           <a class="btn sky" href="#palaj">Read Footprints in Palaj <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn line-w" href="#reports">Annual Reports</a>
         </div>
-        <div class="stats" id="stats" aria-live="polite"></div>
       </div>
       <div class="latest" id="latest" hidden></div>
     </div>
@@ -446,11 +441,6 @@ const SITE = {
       $("#latest").innerHTML='<span class="lbl">Latest issue</span><button type="button" data-id="'+esc(latest.id)+'" aria-label="Read the latest issue, '+esc(latest.title)+'">'+cover(latest)+'</button><div><h2>'+esc(p.main)+'</h2><p>Footprints in Palaj · '+latest.pages+' pages</p></div>';
       $("#latest").hidden=false;
     }
-    const pages=items.reduce((s,it)=>s+(it.pages||0),0);
-    const firstYear=Math.min(...items.map(it=>Math.floor((it.sort||999999)/100)).filter(y=>y>1990));
-    $("#stats").innerHTML=items.length?[
-      [palaj.length+arch.length,"newsletter issues"],[reps.length,"annual reports"],[isFinite(firstYear)?firstYear:"",'publishing since']
-    ].filter(s=>s[0]!=="" ).map(s=>'<div><b>'+s[0]+'</b><span>'+s[1]+'</span></div>').join(""):"";
 
     // Footprints in Palaj: lead + rest
     if(latest){
