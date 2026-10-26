@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alumni MasterClass | IIT Gandhinagar</title>
+<meta name="description" content="The IIT Gandhinagar Alumni MasterClass Series: IITGN alumni who have returned to campus to give back their time and expertise to students. Meet every speaker, read about each session and watch the recordings.">
+<link rel="canonical" href="https://iitgnalumni.github.io/masterclass/">
+<meta property="og:title" content="Alumni MasterClass | IIT Gandhinagar">
+<meta property="og:description" content="IITGN alumni who came back to give back: every MasterClass speaker, session and recording since 2020.">
+<meta property="og:image" content="https://iitgnalumni.github.io/masterclass/images/campus.jpg">
+<meta property="og:url" content="https://iitgnalumni.github.io/masterclass/">
+<meta name="theme-color" content="#163850">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--navy:#163850;--navy-deep:#0f2a3d;--sky:#b3eaf9;--sky-soft:#e3f6fc;--link:#1f6bbf;--ink:#232a31;--text:#454b52;--muted:#5f6770;--line:#dfe5ea;--panel:#f1f5f8;--red:#c0392b;--white:#fff;--f:"Public Sans","Open Sans",Helvetica,Arial,sans-serif;--h:"Manrope","Public Sans",Helvetica,Arial,sans-serif;--r:14px;--gut:clamp(16px,4vw,32px)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:#fff;color:var(--text);font-family:var(--f);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--link)}a:hover{color:var(--navy)}
+h1,h2,h3{font-family:var(--h);color:var(--ink);margin:0;overflow-wrap:anywhere}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--navy)}
+.h2{font-weight:700;font-size:clamp(28px,5vw,38px);line-height:1.15;margin-top:10px}
+.lead{margin-top:12px;max-width:64ch;color:var(--text)}
+.section{padding-top:clamp(56px,9vw,88px);padding-bottom:clamp(56px,9vw,88px)}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 22px;border-radius:8px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-deep);color:#fff}
+.btn-line{border:1.5px solid var(--navy);color:var(--navy);background:transparent}.btn-line:hover{background:var(--panel)}
+.pill{border-radius:999px}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 10px;background:var(--sky);color:var(--navy-deep);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
+/* header */
+.site-head{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.98);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);box-shadow:0 2px 10px -6px rgba(15,42,61,.25)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;min-height:68px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand img{height:46px;width:auto}
+.flash{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 14px;border-radius:999px;background:var(--red);color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.flash:hover{color:#fff;background:#a93226}
+.flash i{width:7px;height:7px;border-radius:50%;background:#fff;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.nav{display:flex;gap:4px 24px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.nav a{color:#111;text-decoration:none;padding:22px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-bottom-color:var(--navy)}
+.menu-btn{display:none;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer;color:var(--navy)}
+@media (max-width:900px){
+  .nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 12px 20px -12px rgba(15,42,61,.3);padding:6px var(--gut) 12px;display:none}
+  .nav.open{display:flex}
+  .nav a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .nav a:last-child{border-bottom:0}
+  .menu-btn{display:inline-flex}
+  .flash{display:none}
+}
+@media (max-width:420px){.brand img{height:38px}}
+
+/* hero */
+.hero{position:relative;color:#fff;background:var(--navy-deep) url("images/campus.jpg") center/cover no-repeat;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,42,61,.94) 0%,rgba(15,42,61,.86) 45%,rgba(15,42,61,.55) 100%)}
+.hero .wrap{position:relative;padding-top:clamp(64px,10vw,112px);padding-bottom:clamp(48px,8vw,88px)}
+.hero .eyebrow{color:var(--sky)}
+.hero h1{color:#fff;margin-top:18px;max-width:16ch;font-weight:700;font-size:clamp(40px,6vw,74px);line-height:1.06;letter-spacing:-.02em}
+.hero h1 span{color:var(--sky)}
+.hero .lead{color:#d7e3ec;font-size:clamp(16px,2vw,18px);max-width:58ch;margin-top:22px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn-sky{background:var(--sky);color:var(--navy-deep);font-family:var(--h);font-weight:700}.btn-sky:hover{background:#d4f3fc;color:var(--navy-deep)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.7);color:#fff;font-family:var(--h);font-weight:700;background:transparent}.btn-ghost:hover{background:rgba(255,255,255,.1);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px;margin-top:clamp(40px,7vw,64px)}
+.stat{padding:20px 22px;border-radius:var(--r);background:rgba(255,255,255,.07);border:1px solid rgba(179,234,249,.25);backdrop-filter:blur(2px)}
+.stat b{display:block;font-family:var(--h);font-weight:800;font-size:clamp(34px,5vw,44px);line-height:1;color:var(--sky)}
+.stat span{display:block;margin-top:8px;font-size:15px;color:#d7e3ec}
+
+/* next speaker */
+.next{display:flex;flex-wrap:wrap;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.next-art{flex:1 1 min(100%,360px);min-height:240px;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;text-align:center}
+.next-art .you{width:132px;height:132px;border-radius:50%;border:2px dashed var(--sky);display:flex;align-items:center;justify-content:center;font-family:var(--h);font-weight:800;font-size:40px;color:var(--sky)}
+.next-art small{font-family:var(--h);font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
+.next-body{flex:1 1 min(100%,460px);min-width:0;background:var(--panel);padding:clamp(24px,5vw,40px);display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.status{display:inline-flex;align-items:center;height:26px;padding:0 12px;border-radius:999px;background:var(--red);color:#fff;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.next-body h2{font-size:clamp(27px,5vw,36px);font-weight:700;line-height:1.15}
+.note{align-self:stretch;background:#fff;border-left:3px solid var(--navy);padding:14px 18px;font-size:15px;color:var(--ink)}
+.row-btns{display:flex;flex-wrap:wrap;gap:12px}
+
+/* recent */
+.recent-list{display:flex;flex-direction:column;gap:20px;margin-top:36px}
+.recent{display:flex;flex-wrap:wrap;gap:clamp(18px,4vw,28px);padding:clamp(16px,4vw,24px);border-radius:var(--r);background:var(--panel)}
+.recent-img{flex:1 1 240px;max-width:360px;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--navy);border:0;padding:0;cursor:pointer}
+.recent-img img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s}
+.recent-img:hover img{transform:scale(1.03)}
+.recent-body{flex:1 1 min(100%,420px);min-width:0;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.recent-body h3{font-size:clamp(21px,3vw,26px);font-weight:700;line-height:1.25;margin-top:4px}
+.recent-body h3 span,.who span{font-weight:500;color:var(--muted)}
+.role{font-style:italic;font-size:15px;color:var(--text)}
+.shared{margin-top:6px;font-size:16px;color:var(--ink)}
+.li-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #c9d3dc;background:#fff;color:var(--navy);text-decoration:none;font-size:14px;font-weight:600}
+.li-btn:hover{border-color:#0a66c2;color:#0a66c2}
+
+/* honour roll */
+.honour{background:var(--panel)}
+.honour-top{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:flex-end;justify-content:space-between}
+.honour-top h2{max-width:22ch}
+.count{font-size:15px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid #c9d3dc;background:#fff;color:var(--ink);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:18px;margin-top:28px}
+.card{text-align:left;font:inherit;color:inherit;cursor:pointer;padding:0;background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:0 12px 28px -14px rgba(15,42,61,.35);transform:translateY(-2px)}
+.card-img{aspect-ratio:4/3;overflow:hidden;background:#e4eaef;width:100%}
+.card-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.card-who{padding:18px 22px 14px}
+.card-who b{display:block;font-family:var(--h);font-weight:700;font-size:18px;line-height:1.25;color:var(--ink)}
+.card-who span{display:block;font-size:14px;color:var(--muted)}
+.card-who em{display:block;font-size:13px;color:var(--text)}
+.card-body{padding:14px 22px 20px;border-top:1px solid #edf1f4;display:flex;flex-direction:column;gap:8px;flex:1;width:100%}
+.card-body small{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.card-body strong{font-family:var(--h);font-weight:700;font-size:17px;line-height:1.35;color:var(--ink)}
+.card-foot{margin-top:auto;padding-top:6px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;font-size:13px}
+.card-foot .d{color:var(--muted)}
+.card-foot .more{font-weight:600;color:var(--link)}
+.rec{display:inline-flex;align-items:center;gap:4px;height:22px;padding:0 8px;border-radius:999px;background:#fdecea;color:#a93226;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.card-you{border:2px dashed #9fb3c3;border-radius:var(--r);padding:28px;min-height:220px;display:flex;flex-direction:column;justify-content:center;gap:10px;text-decoration:none;color:var(--ink)}
+.card-you .plus{width:64px;height:64px;border-radius:50%;border:2px dashed #9fb3c3;display:flex;align-items:center;justify-content:center;color:var(--navy)}
+.card-you b{font-family:var(--h);font-size:18px}
+.card-you span{font-size:14px;color:var(--text)}
+.card-you em{font-style:normal;font-size:14px;font-weight:600;color:var(--link)}
+
+/* expertise */
+.expertise{background:var(--navy);color:#fff}
+.expertise .eyebrow{color:var(--sky)}
+.expertise h2{color:#fff;font-size:clamp(26px,4.6vw,34px);font-weight:700;line-height:1.2;margin-top:10px}
+.themes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px;margin-top:32px}
+.theme{padding:24px;border-radius:var(--r);background:rgba(255,255,255,.06);border:1px solid rgba(179,234,249,.25)}
+.theme p:first-child{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.theme b{font-family:var(--h);font-weight:800;font-size:40px;line-height:1;color:var(--sky)}
+.theme small{font-size:14px;font-weight:600;color:var(--sky)}
+.theme h3{color:#fff;font-size:18px;margin-top:10px}
+.theme p:last-child{margin-top:4px;font-size:14px;color:#c9d8e3}
+
+/* format */
+.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:16px}
+.steps li{padding:22px;border-radius:var(--r);border:1px solid var(--line)}
+.steps li b{font-family:var(--h);font-weight:800;font-size:14px;color:var(--link)}
+.steps li h3{font-size:17px;margin-top:10px}
+.steps li p{margin-top:4px;font-size:14px}
+.steps li.hl{background:var(--navy);border-color:var(--navy)}
+.steps li.hl b{color:var(--sky)}.steps li.hl h3{color:#fff}.steps li.hl p{color:#d7e3ec}
+
+/* alumni */
+.alumni{background:var(--panel)}
+.alumni h2{max-width:24ch}
+.two{display:flex;flex-wrap:wrap;gap:20px;margin-top:36px}
+.box{flex:1 1 min(100%,440px);min-width:0;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,5vw,32px)}
+.box h3{font-size:22px}
+.howto{margin:18px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:16px}
+.howto li{display:flex;gap:14px}
+.howto li i{flex:0 0 32px;height:32px;border-radius:50%;background:var(--sky);color:var(--navy-deep);display:flex;align-items:center;justify-content:center;font-family:var(--h);font-weight:800;font-size:14px;font-style:normal}
+.howto strong,.box strong{color:var(--ink)}
+.box ul{margin:14px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:15px}
+
+/* about + faq */
+.about{display:flex;flex-wrap:wrap;gap:48px 72px}
+.about > div{flex:1 1 min(100%,420px);min-width:0}
+.about h2{font-size:clamp(26px,4.6vw,34px);font-weight:700;line-height:1.2;margin-top:10px}
+.about p{margin-top:14px}
+.faq{margin-top:14px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-family:var(--h);font-weight:700;font-size:17px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;line-height:1;color:var(--navy)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:10px;font-size:15px}
+
+/* cta + footer */
+.cta{background:var(--sky)}
+.cta .wrap{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between;padding-top:clamp(44px,7vw,64px);padding-bottom:clamp(44px,7vw,64px)}
+.cta h2{font-size:clamp(24px,4.4vw,32px);line-height:1.2;color:var(--navy-deep)}
+.cta p{margin-top:8px;color:var(--navy)}
+.cta .btn{background:var(--navy-deep);color:#fff;font-family:var(--h);font-weight:700;border-radius:999px;min-height:50px;padding:0 26px}
+.foot{background:var(--navy);color:#cfdbe4;font-size:14px}
+.foot a{color:#cfdbe4;text-decoration:none}.foot a:hover{color:#fff;text-decoration:underline}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px;padding-top:48px;padding-bottom:32px}
+.foot h4{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.foot p{margin-bottom:6px}
+.foot-bottom{border-top:1px solid rgba(207,219,228,.2);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;padding-top:18px;padding-bottom:28px;font-size:13px}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:clamp(0px,3vw,24px)}
+.modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(15,42,61,.62);border:0;padding:0;cursor:pointer}
+.dialog{position:relative;width:100%;max-width:760px;max-height:100%;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 24px 64px rgba(15,42,61,.35);overscroll-behavior:contain}
+@media (max-width:600px){.dialog{border-radius:0;height:100%}.modal{padding:0}}
+.d-head{position:sticky;top:0;z-index:2;background:var(--navy);color:#fff;padding:clamp(16px,4vw,24px) clamp(18px,4vw,28px);display:flex;gap:14px;align-items:center}
+.d-head .who{flex:1;min-width:0}
+.d-head small{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+.d-head b{display:block;margin-top:2px;font-family:var(--h);font-size:clamp(18px,3vw,22px);line-height:1.25}
+.d-head b span{color:#c9d8e3;font-weight:500}
+.d-head em{display:block;font-size:14px;color:#d7e3ec}
+.x{flex:0 0 44px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(179,234,249,.4);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.x:hover{background:rgba(255,255,255,.1)}
+.d-poster{background:var(--panel);display:flex;justify-content:center;padding:20px}
+.d-poster img{max-height:460px;width:auto;border-radius:8px;box-shadow:0 6px 20px rgba(15,42,61,.15)}
+.d-body{padding:clamp(18px,4vw,28px);display:flex;flex-direction:column;gap:18px}
+.d-body h2{font-size:clamp(21px,3.4vw,26px);line-height:1.25;font-weight:700;margin-top:10px}
+.facts{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;padding:16px;border-radius:10px;background:var(--panel)}
+.facts dt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:2px 0 0;font-size:15px;font-weight:600;color:var(--ink)}
+.d-sec h3{font-family:var(--f);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--navy)}
+.d-sec p{margin-top:10px;font-size:15px}
+.quote{margin:0;padding:16px 20px;border-radius:10px;background:var(--sky-soft);font-family:var(--h);font-weight:600;font-size:16px;line-height:1.5;color:var(--navy-deep)}
+.quote cite{display:block;margin-top:8px;font-family:var(--f);font-style:normal;font-weight:500;font-size:14px;color:var(--navy)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.gallery img{width:100%;border-radius:8px}
+.watch{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:10px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600}
+.watch:hover{background:var(--navy-deep);color:#fff}
+.norec{padding:12px 16px;border-radius:10px;background:var(--panel);font-size:14px}
+.extras a{display:block;font-size:14px;font-weight:600;margin-top:4px}
+.tagbox{border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:12px}
+.tagbox > small{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.li-solid{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;background:#0a66c2;color:#fff;text-decoration:none;font-size:14px;font-weight:600}
+.li-solid:hover{background:#004182;color:#fff}
+.li-line{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:8px;border:1.5px solid #0a66c2;color:#0a66c2;text-decoration:none;font-size:14px;font-weight:600}
+.fine{font-size:12px;color:var(--muted)}
+:focus-visible{outline:3px solid var(--link);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a href="#main" style="position:absolute;left:-9999px">Skip to content</a>
+
+<header class="site-head">
+<div class="wrap">
+  <div style="display:flex;align-items:center;gap:14px">
+    <a class="brand" href="#top" aria-label="Alumni MasterClass home"><img src="images/alumni-relations-logo.webp" alt="IIT Gandhinagar, Alumni Relations" width="130" height="46"></a>
+    <a class="flash" href="#next"><i></i>Be our next speaker</a>
+  </div>
+  <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a href="#speakers">Our speakers</a>
+    <a href="#recent">Recent</a>
+    <a href="#format">The format</a>
+    <a href="#alumni">For alumni</a>
+    <a href="#faqs">FAQs</a>
+  </nav>
+</div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+<div class="wrap">
+  <p class="eyebrow">IIT Gandhinagar · Alumni MasterClass Series</p>
+  <h1>They came back to <span>give back.</span></h1>
+  <p class="lead">Every MasterClass is a gift of time and expertise from an IITGN alum to the students who follow them. This is where we recognise each one of them, and the journeys they have shared with Palaj.</p>
+  <div class="ctas">
+    <a class="btn btn-sky pill" href="#speakers">Meet our alumni speakers <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <a class="btn btn-ghost pill" href="#alumni">Lead a MasterClass</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b data-stat="speakers">0</b><span>alumni have returned to share their journeys</span></div>
+    <div class="stat"><b data-stat="sessions">0</b><span>MasterClasses held for IITGN students</span></div>
+    <div class="stat"><b data-stat="depts">0</b><span>IITGN disciplines represented by our speakers</span></div>
+    <div class="stat"><b data-stat="first">2020</b><span>the year the first alum took the stage</span></div>
+  </div>
+</div>
+</section>
+
+<section class="wrap section" id="next" style="padding-bottom:40px">
+  <div class="next">
+    <div class="next-art"><span class="you">You?</span><small>MasterClass #<span data-stat="nextNo"></span></small></div>
+    <div class="next-body">
+      <span class="status">Up next · Open for alumni</span>
+      <h2>The next MasterClass could be yours</h2>
+      <p style="max-width:56ch">There is no session on the calendar yet, and we would love for an IITGN alum to take the stage next. Whether you build companies, lead research, serve in government or drive impact, your journey can open doors for a student who is where you once were.</p>
+      <div class="note">Tell us your topic and a few lines about your work. We will plan the date and format with you.</div>
+      <div class="row-btns">
+        <a class="btn btn-navy" href="mailto:alumnirelations@iitgn.ac.in?subject=I%20would%20like%20to%20lead%20an%20Alumni%20MasterClass">Propose a MasterClass</a>
+        <a class="btn btn-line" href="mailto:alumnirelations@iitgn.ac.in?subject=Nominating%20an%20alum%20for%20the%20MasterClass%20Series">Nominate a batchmate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" id="recent" style="padding-top:40px">
+  <p class="eyebrow">With gratitude</p>
+  <h2 class="h2">Thank you to our most recent speakers</h2>
+  <p class="lead">Each of them set aside their time to come back, speak with students and answer their questions. We are grateful.</p>
+  <div class="recent-list" id="recentList"></div>
+</section>
+
+<section class="honour section" id="speakers">
+<div class="wrap">
+  <p class="eyebrow">Honour roll</p>
+  <div class="honour-top">
+    <h2 class="h2">Every alum who has given back through a MasterClass</h2>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div>
+  <div class="chips" id="chips" role="group" aria-label="Filter by year"></div>
+  <div class="grid" id="grid"></div>
+</div>
+</section>
+
+<section class="expertise">
+<div class="wrap section">
+  <p class="eyebrow">Expertise shared</p>
+  <h2>What our alumni have brought back to campus</h2>
+  <div class="themes" id="themes"></div>
+</div>
+</section>
+
+<section class="wrap section" id="format">
+  <p class="eyebrow">The format</p>
+  <h2 class="h2">What happens at a MasterClass</h2>
+  <p class="lead">Each session is held on campus and ends by honouring the alum who made it possible. Some sessions also include a workshop, a demonstration or a panel, depending on the speaker’s field.</p>
+  <ol class="steps">
+    <li><b>01</b><h3>Welcome and introduction</h3><p>The speaker is introduced to students and faculty.</p></li>
+    <li><b>02</b><h3>Alumni keynote</h3><p>The alum shares their journey and expertise.</p></li>
+    <li><b>03</b><h3>Discussion and Q&amp;A</h3><p>Students ask questions and discuss openly.</p></li>
+    <li><b>04</b><h3>Networking</h3><p>Time with students and faculty after the talk.</p></li>
+    <li class="hl"><b>05</b><h3>Felicitation</h3><p>The Institute honours the speaker for their contribution.</p></li>
+  </ol>
+</section>
+
+<section class="alumni" id="alumni">
+<div class="wrap section">
+  <p class="eyebrow">For alumni</p>
+  <h2 class="h2">Share your journey with the students who walk the paths you once did</h2>
+  <div class="two">
+    <div class="box">
+      <h3>How to lead a MasterClass</h3>
+      <ol class="howto">
+        <li><i>1</i><span><strong>Write to us</strong> with a few lines about your work and the topic you would like to share.</span></li>
+        <li><i>2</i><span><strong>Plan it together.</strong> We agree on a date and the format that suits your field: a talk, a workshop, a demonstration or a panel.</span></li>
+        <li><i>3</i><span><strong>Meet the students.</strong> Share your journey, take their questions and spend time with students and faculty.</span></li>
+        <li><i>4</i><span><strong>Join the honour roll</strong> of alumni who have given back to IITGN through the series.</span></li>
+      </ol>
+    </div>
+    <div class="box">
+      <h3>Who we invite</h3>
+      <p style="margin-top:10px;font-size:15px">Alumni whose journeys can inspire students and offer practical insight, especially those who have:</p>
+      <ul>
+        <li>Built successful start-ups or enterprises</li>
+        <li>Contributed significantly to academia or research</li>
+        <li>Held leadership roles in industry, government or public service</li>
+        <li>Created measurable social impact</li>
+        <li>Earned national or international recognition</li>
+        <li>A genuine willingness to inspire and mentor students</li>
+      </ul>
+      <a class="btn btn-navy" style="margin-top:24px" href="mailto:alumnirelations@iitgn.ac.in?subject=Alumni%20MasterClass">Volunteer or nominate a batchmate</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="wrap section about" id="about">
+  <div>
+    <p class="eyebrow">About the series</p>
+    <h2>A flagship way for alumni to give back</h2>
+    <p>The Alumni MasterClass Series brings accomplished IITGN alumni back to campus to share their professional journeys with students, bridging classroom learning and the realities of academia, industry, entrepreneurship, public service and research.</p>
+    <p>Beyond the expertise they share, every session celebrates what our alumni have achieved and strengthens the lifelong bond between them and the Institute.</p>
+  </div>
+  <div id="faqs">
+    <p class="eyebrow">FAQs</p>
+    <div class="faq">
+      <details><summary>What is the Alumni MasterClass Series?</summary><p>It is a flagship initiative of the Office of Alumni Relations that brings IITGN alumni back to share their professional journeys and expertise with current students. Each session includes a talk by the alum, an open discussion with students, and time to connect afterwards.</p></details>
+      <details><summary>I am an alum. How can I lead a session?</summary><p>Write to <a href="mailto:alumnirelations@iitgn.ac.in">alumnirelations@iitgn.ac.in</a> with a few lines about your work and the topic you would like to share. The office will get in touch to plan a date and a format that suits you.</p></details>
+      <details><summary>What can I speak about?</summary><p>Anything from your journey that can help students: your career path, your research, building a start-up, working in industry or government, or creating social impact. Depending on your field, a session can also be a workshop, a demonstration or a panel discussion.</p></details>
+      <details><summary>Can I nominate a batchmate or another alum?</summary><p>Yes. Send their name, batch and a short note on why students would benefit from hearing them to <a href="mailto:alumnirelations@iitgn.ac.in">alumnirelations@iitgn.ac.in</a>, and the office will reach out to them.</p></details>
+      <details><summary>Who can attend a MasterClass?</summary><p>Sessions are held for IITGN students, and faculty members often join for the discussion and networking. Announcements are shared with the campus community ahead of each session.</p></details>
+      <details><summary>Are sessions held online, and are they recorded?</summary><p>The series is held on campus, though several earlier sessions took place online. Not every session is recorded. Where a recording exists, you can watch it from that session’s details on this page; sessions marked “Recorded” in the honour roll have one.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+<div class="wrap">
+  <div style="flex:1 1 min(100%,480px)">
+    <h2>Palaj shaped you. Come back and shape what comes next.</h2>
+    <p>Join the <span data-stat="speakers"></span> alumni who have already given their time and expertise to IITGN students.</p>
+  </div>
+  <a class="btn" href="mailto:alumnirelations@iitgn.ac.in">Contact Alumni Relations</a>
+</div>
+</section>
+</main>
+
+<footer class="foot">
+<div class="wrap foot-grid">
+  <div>
+    <h4>Office of Alumni Relations</h4>
+    <p>Indian Institute of Technology Gandhinagar<br>Palaj, Gandhinagar, Gujarat 382055</p>
+    <p style="margin-top:12px"><a href="mailto:alumnirelations@iitgn.ac.in" style="color:#b3eaf9">alumnirelations@iitgn.ac.in</a></p>
+  </div>
+  <div>
+    <h4>MasterClass</h4>
+    <p><a href="#speakers">Our speakers</a></p>
+    <p><a href="#next">Be our next speaker</a></p>
+    <p><a href="#format">The format</a></p>
+    <p><a href="#faqs">FAQs</a></p>
+  </div>
+  <div>
+    <h4>Alumni Relations</h4>
+    <p><a href="/YAEA/">Young Alumni Excellence Awards</a></p>
+    <p><a href="/IITGNAC/">IITGN Alumni Collective</a></p>
+    <p><a href="/homecoming2026/">Homecoming 2026</a></p>
+  </div>
+  <div>
+    <h4>Connect</h4>
+    <p><a href="https://www.linkedin.com/company/ariitgn" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com/iitgn.alumnirelations" target="_blank" rel="noopener">Instagram</a></p>
+    <p><a href="https://www.facebook.com/AR.IITGN" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/channel/UCeFG6XW2oO0YAkIkEP5Py2w" target="_blank" rel="noopener">YouTube</a></p>
+  </div>
+</div>
+<div class="wrap foot-bottom">
+  <span>© 2026 IIT Gandhinagar · Office of Alumni Relations</span>
+  <a href="https://iitgn.ac.in" target="_blank" rel="noopener">iitgn.ac.in</a>
+</div>
+</footer>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <button class="modal-bg" type="button" aria-label="Close" data-close></button>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dTitle" tabindex="-1" id="dialog"></div>
+</div>
+
+<script>
+/* =====================================================================
+   ALUMNI MASTERCLASS DATA
+   To add a new MasterClass: copy one { ... } entry, paste it at the TOP
+   of SESSIONS, edit the fields, and put its poster in the posters/ folder.
+   Fields
+     y          year, used by the year filter ("2026")
+     date, time, venue, mode ("On campus" / "Online" / "")
+     title, speaker, batch ("BTech/EE/2014"), role (at the time of the session)
+     img        poster or photo, e.g. "posters/firstname-lastname.jpg"
+     gallery    extra photos [ "posters/....jpg" ]
+     theme      one of the THEMES names below
+     attended   e.g. "50+ students" (optional)
+     summary    one line, shown for the most recent speakers
+     about      paragraphs about the session
+     bio        paragraphs about the speaker
+     quote      a line from the speaker ("" for none)
+     recording  YouTube link, or "" if not recorded
+     linkedin   speaker's LinkedIn profile, or ""
+     extras     other links [ { label: "...", url: "..." } ]
+   ===================================================================== */
+const SESSIONS = [
+  { y: "2026", date: "3 October 2026", time: "4:30 PM", venue: "AB 7/208", mode: "On campus",
+    title: "Catching the Right Wave", speaker: "Dr. Rupanjali Prasad", img: "posters/rupanjali-prasad.jpg", gallery: [], batch: "PhD/CL/2021", role: "Assistant Professor, IIT Indore", theme: "Research & Academia", attended: "50+ students",
+    summary: "More than 50 students heard how saying yes to the ‘extra’ took Rupanjali from VGEC to a PhD at IITGN and a faculty position at IIT Indore.",
+    about: ["More than 50 IITGN students came together for “Catching the Right Wave”, a session that was as much about Dr. Rupanjali Prasad’s journey as it was about the technical work she shared.",
+      "From VGEC to IITGN, from taking extra courses to a B.Tech project with Prof. Sameer Dalvi, and eventually a PhD under him, her journey was a powerful reminder that opportunities do not always arrive looking like opportunities. Sometimes, they look like extra work. She said yes to things outside the obvious path, and said yes again when a postdoc opportunity was not directly aligned with her previous research. Each time, that extra opened a door she could not have predicted.",
+      "The session also showed IITGN through her eyes: old photographs, early campus memories, the transition from VGEC to the present campus, the pandemic and an online PhD defence, stories that connected the IITGN of then with the IITGN of today. For students, it was a glimpse into how a career can unfold when you stay curious, keep saying yes and remain open to the unexpected."],
+    bio: ["Rupanjali has built an academic and research career in the field of spectroscopy and materials research. During her journey, she has worked on Raman spectroscopy, undertaken an internship in Singapore, and pursued research across various applications, including a transition from work on drug crystals to applications in nuclear-waste monitoring.",
+      "Before joining the Indian Institute of Technology Indore as an Assistant Professor in 2026, she was a Postdoctoral Fellow at the Georgia Institute of Technology."],
+    quote: "The extra makes you unique, and that uniqueness creates opportunities.", recording: "", linkedin: "https://www.linkedin.com/in/rupanjali-prasad/", extras: [] },
+
+  { y: "2026", date: "August 2026", time: "", venue: "IIT Gandhinagar", mode: "On campus",
+    title: "Smart Cities & the Urban Tomorrow", speaker: "Divyank Singh", img: "posters/divyank-singh.jpg", gallery: [], batch: "[Degree/Dept/Year]", role: "Collector & District Magistrate, Mandsaur (M.P.) · IAS, 2017 batch, Madhya Pradesh cadre", theme: "Public Service",
+    summary: "Divyank shared insights on smart infrastructure, technology-enabled governance, sustainable urban development, and the challenges and opportunities shaping India’s cities.",
+    about: ["The Alumni Masterclass on “Smart Cities & the Urban Tomorrow” at IIT Gandhinagar offered an insightful look into the future of urban India and the ways in which cities can become smarter and more sustainable.",
+      "Through an engaging and thought-provoking session, Divyank Singh shared insights on smart infrastructure, technology-enabled governance, sustainable urban development, and the challenges and opportunities shaping India’s cities. The masterclass encouraged students and participants to look beyond conventional approaches and explore how innovation and citizen-centric governance can help build the cities of tomorrow."],
+    bio: ["Divyank Singh is an alumnus of IIT Gandhinagar and a 2017-batch IAS officer of the Madhya Pradesh Cadre. Having previously served in the Indian Police Service, he has held several key leadership positions, including CEO, Indore Smart City Development Limited; CEO, Zila Panchayat Khargone; and Additional Commissioner, Urban Development.",
+      "Currently serving as Collector & District Magistrate, Mandsaur (M.P.), he brought valuable perspectives from his extensive experience in public administration and urban governance."],
+    quote: "", recording: "", linkedin: "", extras: [{ label: "See the session on Instagram", url: "https://www.instagram.com/p/DclVySBjp8V/" }] },
+
+  { y: "2026", date: "August 2026", time: "", venue: "IIT Gandhinagar", mode: "On campus",
+    title: "Pursuing a Career in the Civil Services", speaker: "Ananya Rana", img: "posters/ananya-rana.jpg", gallery: [], batch: "MSc/CH/2021", role: "All India Rank 60, UPSC Civil Services Examination · Institute Gold Medalist", theme: "Public Service",
+    summary: "Ananya shared her journey from postgraduate studies in Chemistry at IITGN to pursuing a career in the Civil Services.",
+    about: ["Ananya Rana, an Institute Gold Medalist who recently secured an All India Rank of 60 in the UPSC Civil Services Examination, returned to campus for an inspiring alumni interaction on her journey from postgraduate studies in Chemistry at IITGN to a career in the Civil Services.",
+      "She reflected on how she chose Chemistry as her optional subject for the UPSC examination, building on the strong academic foundation she had developed during her MSc in Chemistry at IITGN. The interaction was especially memorable as she reconnected with members of the Chemistry faculty who had been an important part of her IITGN journey: Prof. Chandrakumar Appayee, Prof. Sivapriya Kirubakaran, Prof. Sriram Kanvah Gundimeda, Prof. Sairam Swaroop Mallajosyula and Prof. Saumyakanti Khatua."],
+    bio: [],
+    quote: "My unforgettable and illustrious journey at IITGN is and will always be one of the best parts of my life. As I sit today to reflect on my experiences at the campus, I am overwhelmed with joy by remembering the incidents of love and care I was blessed with.",
+    recording: "", linkedin: "https://www.linkedin.com/in/ananya-rana-197b952bb/", extras: [{ label: "See the session on Instagram", url: "https://www.instagram.com/p/DcJE4QujrIl/" }] },
+
+  { y: "2026", date: "8 August 2026", time: "4:10 PM IST", venue: "AB 7/208", mode: "On campus",
+    title: "Why Content Creation Is a Must for Everyone Today", speaker: "Nikharv Shah", img: "posters/nikharv-shah.jpg", gallery: [], batch: "BTech/EE/2023", role: "Founder, Think Witus", theme: "Communication & Skills",
+    summary: "Nikharv showed students that content creation begins with having something to say, not with expertise or expensive equipment.",
+    about: ["Nikharv returned to campus to offer a broader perspective on content creation and its role in how we communicate today. Creating content, he explained, is not just about reaching an audience. It is also about having something to say and finding a way to communicate it clearly, a process that over time shapes how we think and express ourselves.",
+      "Getting started does not require expertise or expensive equipment: a useful idea, a personal experience or something one has learned can be enough to begin, and the process is as much about learning and improving as it is about creating. His journey from IITGN to building Think Witus offered students an example of how a curious mind can open new avenues for communication and creative expression, at the intersection of technology and creativity."],
+    bio: ["Nikharv Shah (B.Tech., Electrical Engineering, 2023) is the founder of Think Witus, a rapidly growing educational YouTube channel with over 150,000 subscribers, where he creates engaging content on science, technology and thought-provoking ideas.",
+      "Following his graduation, he worked at the Centre for Creative Learning (CCL), IIT Gandhinagar, developing innovative engineering projects and educational learning prototypes. During his time at IITGN, he served as the General Secretary of the Student Council, representing more than 1,600 students, and previously held key leadership roles in Amalthea, the institute’s annual technical summit."],
+    quote: "", recording: "", linkedin: "", extras: [{ label: "Visit the Think Witus YouTube channel", url: "https://www.youtube.com/@Think_Witus" }, { label: "See the session on Instagram", url: "https://www.instagram.com/p/Dc0zHS0Dnap/" }] },
+
+  { y: "2024", date: "12 August 2024", time: "", venue: "IIT Gandhinagar", mode: "On campus",
+    title: "Optimizing AI for Mobile and Low-Power Edge Devices", speaker: "Akhilesh Ravi", img: "posters/akhilesh-ravi.jpg", gallery: [], batch: "BTech/EE/2021", role: "AI acceleration and optimization, Qualcomm", theme: "Technology & AI", attended: "25+ students",
+    summary: "Akhilesh spoke on the evolution of AI for low-power devices and the latest advances in low-power AI.",
+    about: ["Held as Alumni Insights 03, this offline session saw Akhilesh elaborate on the evolution of AI for low-power devices and the latest advancements in the field of low-power AI.",
+      "More than 25 students attended the session and interacted with him over refreshments afterwards."],
+    bio: ["Akhilesh graduated from IIT Gandhinagar in 2021 with a BTech (dual major) in Electrical Engineering and Computer Science and Engineering. Since then he has been working at Qualcomm in the field of AI acceleration and AI optimizations for low-power hardware.",
+      "He follows the latest technologies and research in his field closely, and has a passion for travel, trekking and yoga that often takes him to different parts of India and the world."],
+    quote: "", recording: "", linkedin: "", extras: [{ label: "See photos from the session", url: "https://bit.ly/3Zwlfz1" }] },
+
+  { y: "2023", date: "18 October 2023", time: "7:00 PM IST", venue: "AB 1/102", mode: "On campus",
+    title: "Road to IIT Faculty Position", speaker: "Dr. Abhishek Kumar Pandey", img: "posters/abhishek-kumar-pandey.jpg", gallery: [], batch: "PhD/CE/2022", role: "Assistant Professor, IIT Dhanbad", theme: "Research & Academia",
+    summary: "Abhishek covered faculty eligibility, publications, application timing and interview preparation for students hoping to become faculty.",
+    about: ["Newly appointed as an Assistant Professor at IIT Dhanbad after completing his PhD at IIT Gandhinagar, Dr. Abhishek Kumar Pandey spoke to students interested in becoming faculty members.",
+      "He covered faculty eligibility, publications, application timing and interview preparation, and answered questions on research proposals, the impact of the PMRF, and handling rejection. He emphasised transparency, quality over quantity in publications, and presenting research as a coherent narrative."],
+    bio: [],
+    quote: "", recording: "", linkedin: "", extras: [] },
+
+  { y: "2023", date: "19 August 2023", time: "3:00 PM IST", venue: "", mode: "",
+    title: "Monitoring Bridges with Waves", speaker: "Dr. Subhra Majhi", img: "posters/subhra-majhi.jpg", gallery: ["posters/subhra-majhi-talk.jpg"], batch: "MTech/CE/2015", role: "Associate Lecturer, Curtin University", theme: "Research & Academia",
+    summary: "Subhra explained how wave-based technology is transforming bridge maintenance in Australia.",
+    about: ["Dr. Subhra Majhi delved into how wave-based technology is revolutionising bridge monitoring and maintenance in Australia, and shared his experiences at IITGN and beyond."],
+    bio: [],
+    quote: "", recording: "https://youtu.be/SDEFxWkKEIs", linkedin: "", extras: [] },
+
+  { y: "2022", date: "12 November 2022", time: "11:00 AM IST", venue: "Zoom", mode: "Online",
+    title: "The Creative in Academic Writing", speaker: "Saumya Bhandari", img: "posters/saumya-bhandari.jpg", gallery: [], batch: "MA/HSS/2016", role: "Visiting Faculty, CEPT University", theme: "Communication & Skills",
+    summary: "Saumya spoke on the creative side of academic writing and the role of writing support in student life.",
+    about: ["In this virtual MasterClass, Saumya spoke on the creative in academic writing, drawing on her experience of teaching writing to design and planning students."],
+    bio: ["Saumya Bhandari has been associated with CEPT University since 2018 and has taught various writing courses, including ‘Reading Objects, Writing Craft’ and ‘Writing the City’ for design and planning students. Before this, she worked at the Centre for Learning Futures, Ahmedabad University, as a Research Assistant and helped develop a foundation course on Academic Reading and Writing.",
+      "She holds a Master’s in English Literature from St Xavier’s, Ahmedabad, and a second Master’s in Society and Culture from IIT Gandhinagar. She is interested in academic writing, writing pedagogy and writing centres, which she sees as a crucial link in building robust support systems for students and staff. Her other research interests include empathetic writing pedagogy, gender studies and queer studies."],
+    quote: "", recording: "", linkedin: "", extras: [] },
+
+  { y: "2022", date: "20 October 2022", time: "8:00 PM IST", venue: "Zoom", mode: "Online",
+    title: "The Rise of Hyper-realistic AI-Generated Visual Content: Algorithmic Milestones and Safeguard Mechanisms", speaker: "Dr. Ekta Prashnani", img: "posters/ekta-prashnani.jpg", gallery: [], batch: "BTech/EE/2013", role: "Research Scientist, NVIDIA Research", theme: "Technology & AI",
+    summary: "Ekta traced the milestones behind hyper-realistic AI-generated images and the safeguards that help verify visual media.",
+    about: ["In this virtual MasterClass, Dr. Ekta Prashnani spoke on the rise of hyper-realistic AI-generated visual content, the algorithmic milestones behind it, and the safeguard mechanisms that help evaluate the quality and authenticity of visual media."],
+    bio: ["Dr. Ekta is a Research Scientist at NVIDIA Research in Silicon Valley, where she designs deep learning algorithms that automatically evaluate the quality and authenticity of visual media. She also explores the accurate modelling of the human visual system, generative models for images, and deep learning algorithms that learn from noisy or limited data.",
+      "She completed her PhD at the University of California, Santa Barbara, and is a recipient of an AI grant, a Google compute grant, two outstanding teaching assistant awards at UCSB for her teaching in deep learning, and a dissertation fellowship from UCSB. Her work on automatic image quality assessment has drawn a global audience across industry and academia and forms an important baseline in the research community."],
+    quote: "", recording: "https://youtu.be/mw7uhIGpkuc", linkedin: "", extras: [] },
+
+  { y: "2022", date: "27 August 2022", time: "11:00 AM IST", venue: "Zoom", mode: "Online",
+    title: "How to ‘Read’ Culture", speaker: "Dr. Pooja Susan Thomas", img: "posters/pooja-susan-thomas.jpg", gallery: [], batch: "PhD/HSS/2016", role: "Assistant Professor, MICA The School of Ideas, Ahmedabad", theme: "Research & Academia",
+    summary: "Pooja explored how to ‘read’ the culture that shapes us as individuals and as members of cultural groups.",
+    about: ["In this virtual MasterClass, Dr. Pooja Susan Thomas explored how to ‘read’ culture: the key questions that concern our cultural life, and the broad themes that shape and influence us individually and as members of various cultural groups."],
+    bio: ["Dr. Pooja has a background in literature and training in cultural studies. She has published on urban heritage politics and language dynamics in urban contexts, with manuscripts on youth, diaspora and media, on cinema and cities, and an ongoing theoretical piece on motherhood.",
+      "A TEDx speaker and a recipient of the AICTE Dr. Pritam Singh Award for excellence in management education, she holds a PhD from IIT Gandhinagar, an M.Phil (with distinction) from the University of Delhi, and a BA and MA in Literature from St. Stephen’s College. With over ten years of teaching experience, she is with the Communication Area at MICA, Ahmedabad."],
+    quote: "", recording: "", linkedin: "", extras: [] },
+
+  { y: "2021", date: "November 2021", time: "", venue: "", mode: "",
+    title: "Merging Humans and Machines with Disruptive Technologies", speaker: "Hritwick Banerjee", img: "posters/hritwick-banerjee.jpg", gallery: [], batch: "MTech/EE/2014", role: "PhD Candidate, EPFL, Switzerland", theme: "Technology & AI",
+    summary: "Hritwick spoke on how disruptive technologies are bringing humans and machines together.",
+    about: ["Hritwick Banerjee, then a PhD candidate at EPFL, Switzerland, spoke on merging humans and machines with disruptive technologies. The full talk is available to watch below."],
+    bio: [],
+    quote: "", recording: "https://www.youtube.com/watch?v=VJvaRAz_2mw", linkedin: "", extras: [] },
+
+  { y: "2021", date: "30 October 2021", time: "12:00 PM IST", venue: "Zoom", mode: "Online",
+    title: "How to Deliver an Effective, Engaging Presentation", speaker: "Harsh Gupta", img: "posters/harsh-gupta.jpg", gallery: [], batch: "BTech/ME/2015", role: "Head of Product, Wysa, Bangalore", theme: "Communication & Skills",
+    summary: "Harsh shared how to present your work for maximum impact.",
+    about: ["In this virtual MasterClass, Harsh shared practical advice on how to deliver an effective, engaging presentation and present your work for maximum impact."],
+    bio: ["Harsh received his Bachelor’s degree in Mechanical Engineering from IITGN in 2015 and is Head of Product at Wysa, Bangalore. Wysa is a chatbot that helps people manage stress and anxiety, and was named the Best App of 2020 by Google Play. Before joining Wysa, he co-founded Cretif.",
+      "On graduating, Harsh was awarded the Director’s Gold Medal for Outstanding Overall Performance, in recognition of his all-round abilities, from academics to institution building to sports and arts."],
+    quote: "", recording: "https://www.youtube.com/watch?v=tZkCufdUpUU", linkedin: "", extras: [] },
+
+  { y: "2021", date: "August 2021", time: "", venue: "", mode: "",
+    title: "Smart Electric Vehicles and Their Energy Sources", speaker: "Kislay Pankaj", img: "posters/kislay-pankaj.jpg", gallery: [], batch: "BTech/EE/2013", role: "CTO, Micelio", theme: "Technology & AI",
+    summary: "Kislay spoke on smart electric vehicles and the energy sources that power them.",
+    about: ["Kislay Pankaj, CTO at Micelio, spoke on smart electric vehicles and their energy sources. The full talk is available to watch below."],
+    bio: [],
+    quote: "", recording: "https://www.youtube.com/watch?v=YA2tcG7EHyA", linkedin: "", extras: [] },
+
+  { y: "2020", date: "22 August 2020", time: "", venue: "", mode: "",
+    title: "Emerging Paradigms in Biological Research and Career", speaker: "Dr. Yogesh Goyal", img: "posters/yogesh-goyal.jpg", gallery: [], batch: "BTech/CL/2012", role: "Postdoctoral Research Fellow, University of Pennsylvania", theme: "Research & Academia",
+    summary: "Yogesh spoke on emerging paradigms in biological research and building a research career.",
+    about: ["Dr. Yogesh Goyal spoke on emerging paradigms in biological research and careers in the field. The full talk is available to watch below."],
+    bio: ["Yogesh did much of his schooling in Jammu and Kashmir and received his undergraduate degree in Chemical Engineering with Honours from IIT Gandhinagar, where he received the Award for Outstanding Research. He earned his PhD from Princeton University in the Department of Chemical and Biological Engineering and the Lewis-Sigler Institute for Integrative Genomics, under the joint mentorship of Stanislav Shvartsman and Trudi Schüpbach, and then joined Penn Bioengineering to work with Arjun Raj.",
+      "Over the years, he has won many prestigious awards, including the Burroughs Wellcome Fund CASI Award, the Jane Coffin Childs Fellowship, the Schmidt Science Fellowship, the William R. Schowalter Travel Fund and the Sir Gordon Wu Fellowship."],
+    quote: "", recording: "https://www.youtube.com/watch?v=sU2xKBpODPQ", linkedin: "", extras: [] },
+
+  { y: "2020", date: "25 July 2020", time: "", venue: "", mode: "",
+    title: "How to Build Products That Users Love", speaker: "Yash Kotak", img: "posters/yash-kotak.jpg", gallery: [], batch: "BTech/EE/2014", role: "Senior Product Manager, Swiggy", theme: "Industry & Entrepreneurship",
+    summary: "Yash shared what it takes to build products that users love.",
+    about: ["Yash Kotak shared how to build products that users love, drawing on his experience across IoT, media, fashion, e-commerce and hyperlocal logistics. The full talk is available to watch below."],
+    bio: ["Yash is a product manager with six years of experience building products in the IoT, media, fashion, e-commerce and hyperlocal logistics domains. At Swiggy, he leads maps and delivery experience products. Before Swiggy, he was a product manager at Myntra, where his team commercially sold the world’s first fashion designed entirely by AI. Earlier, he co-founded Lumos, a start-up by IITGN alumni building smart devices that automate air conditioners and save power.",
+      "Yash graduated from IIT Gandhinagar in 2014 with a BTech in Electrical Engineering and minors in Management and Computer Science, receiving the Director’s Gold Medal for Outstanding Overall Performance and the Medal for Outstanding Innovation."],
+    quote: "", recording: "https://www.youtube.com/watch?v=lgxVyo6btiA", linkedin: "", extras: [] },
+
+  { y: "2020", date: "11 July 2020", time: "", venue: "", mode: "",
+    title: "My Journey with Artificial Intelligence So Far", speaker: "Dr. Aishwarya Agrawal", img: "posters/aishwarya-agrawal.jpg", gallery: [], batch: "BTech/EE/2014", role: "Research Scientist, DeepMind · incoming Assistant Professor, University of Montreal and Mila", theme: "Technology & AI",
+    summary: "Aishwarya shared her journey in artificial intelligence, from IITGN to DeepMind.",
+    about: ["Dr. Aishwarya Agrawal shared her journey with artificial intelligence so far, from IIT Gandhinagar to research at the intersection of computer vision, deep learning and natural language processing. The full talk is available to watch below."],
+    bio: ["Dr. Aishwarya Agrawal is a Research Scientist at DeepMind in London and was set to join the University of Montreal and Mila as an Assistant Professor in Fall 2020. She completed her PhD at Georgia Tech, working with Dhruv Batra and Devi Parikh. Her Visual Question Answering (VQA) work with her colleagues has drawn tremendous interest.",
+      "She is a recipient of the Canada CIFAR AI Chair Award, the Georgia Tech 2020 Sigma Xi Best PhD Thesis Award, the Georgia Tech 2020 College of Computing Dissertation Award, and the NVIDIA Graduate Fellowship 2018–2019, and was selected for Rising Stars in EECS 2018. She co-organises the annual VQA challenge and workshop and has twice received an Outstanding Reviewer award (NIPS 2017 and CVPR 2017)."],
+    quote: "", recording: "https://www.youtube.com/watch?v=I81QmPkivYg", linkedin: "", extras: [] },
+
+  { y: "2020", date: "29 April 2020", time: "", venue: "", mode: "",
+    title: "How to Build a Profile That Can’t Be Refused", speaker: "Deepti Chopra", img: "posters/deepti-chopra.jpg", gallery: [], batch: "BTech/EE/2014", role: "Co-founder, Adaface", theme: "Industry & Entrepreneurship",
+    summary: "Deepti shared how to build a profile that can’t be refused.",
+    about: ["Deepti Chopra shared how to build a profile that can’t be refused, drawing on a career that has spanned research, a start-up that failed, and building products used by some of India’s largest companies. The full talk is available to watch below."],
+    bio: ["Deepti graduated with a BTech (EE, CS Minor) from IIT Gandhinagar in 2014. She interned at the California Institute of Technology, working on machine learning for earthquake early-warning systems. After graduating, she started a company that tried to fix the hiring problem using machine learning. It bombed.",
+      "She also did a short stint as a waiter and pizza assembler at Pizza Hut to step out of her comfort zone. As engineer #2 at vahan.in, she built a WhatsApp chatbot for the recruitment and training of blue-collar workers, used by Swiggy, Dunzo, Flipkart and others. She is a co-founder of Adaface, which helps companies identify top candidates for tech roles."],
+    quote: "", recording: "https://www.youtube.com/watch?v=Gy7sOgGLqL0", linkedin: "", extras: [] }
+];
+
+const THEMES = [
+  { name: "Research & Academia", blurb: "Faculty careers, frontier research and the road to a PhD." },
+  { name: "Technology & AI", blurb: "AI, edge computing, visual media and electric mobility." },
+  { name: "Public Service", blurb: "The civil services, governance and India’s cities." },
+  { name: "Industry & Entrepreneurship", blurb: "Building products, start-ups and careers in industry." },
+  { name: "Communication & Skills", blurb: "Writing, presenting and creating content." }
+];
+
+/* ============================ PAGE LOGIC ============================ */
+(function () {
+  "use strict";
+  var LI = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.84-2.06 3.8-2.06 4.06 0 4.84 2.67 4.84 6.15V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>';
+  var PLAY = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function first(n) { return n.charAt(0) === "[" ? "the speaker" : n.replace("Dr. ", "").split(" ")[0]; }
+  function $(id) { return document.getElementById(id); }
+
+  /* stats */
+  var names = {}, depts = {};
+  SESSIONS.forEach(function (s) {
+    if (s.speaker.charAt(0) !== "[") names[s.speaker] = 1;
+    var b = s.batch.split("/"); if (b.length === 3) depts[b[1]] = 1;
+  });
+  var stats = { speakers: Object.keys(names).length, sessions: SESSIONS.length, depts: Object.keys(depts).length, nextNo: SESSIONS.length + 1 };
+  document.querySelectorAll("[data-stat]").forEach(function (el) { var k = el.getAttribute("data-stat"); if (k in stats) el.textContent = stats[k]; });
+
+  /* recent */
+  $("recentList").innerHTML = SESSIONS.slice(0, 3).map(function (s) {
+    var i = SESSIONS.indexOf(s);
+    return '<article class="recent">' +
+      '<button class="recent-img" type="button" data-open="' + i + '" aria-label="Know more about ' + esc(s.speaker) + '’s MasterClass"><img src="' + esc(s.img) + '" alt="' + esc(s.speaker) + ', Alumni MasterClass" loading="lazy"></button>' +
+      '<div class="recent-body"><span class="tag">MasterClass speaker · ' + esc(s.date) + '</span>' +
+      '<h3>' + esc(s.speaker) + ' <span>(' + esc(s.batch) + ')</span></h3>' +
+      (s.role ? '<p class="role">' + esc(s.role) + '</p>' : '') +
+      '<p class="shared">Shared <strong>“' + esc(s.title) + '”</strong></p>' +
+      '<p style="max-width:70ch;font-size:15px">' + esc(s.summary) + '</p>' +
+      '<div class="row-btns" style="margin-top:6px"><button class="btn btn-navy" type="button" data-open="' + i + '">Know more about this MasterClass</button>' +
+      (s.linkedin ? '<a class="li-btn" href="' + esc(s.linkedin) + '" target="_blank" rel="noopener">' + LI + 'LinkedIn</a>' : '') +
+      '</div></div></article>';
+  }).join("");
+
+  /* honour roll */
+  var years = ["All years"]; SESSIONS.forEach(function (s) { if (years.indexOf(s.y) < 0) years.push(s.y); });
+  var current = "All years";
+  var recorded = SESSIONS.filter(function (s) { return s.recording; }).length;
+  function renderChips() {
+    $("chips").innerHTML = years.map(function (y) { return '<button class="chip" type="button" data-year="' + y + '" aria-pressed="' + (y === current) + '">' + y + '</button>'; }).join("");
+  }
+  function renderGrid() {
+    var list = SESSIONS.filter(function (s) { return current === "All years" || s.y === current; });
+    $("count").textContent = "Showing " + list.length + " of " + SESSIONS.length + " · " + recorded + " available as recordings";
+    $("grid").innerHTML = list.map(function (s) {
+      var i = SESSIONS.indexOf(s);
+      return '<button class="card" type="button" data-open="' + i + '" aria-label="Know more about ' + esc(s.speaker) + '’s MasterClass">' +
+        '<span class="card-img"><img src="' + esc(s.img) + '" alt="" loading="lazy"></span>' +
+        '<span class="card-who"><b>' + esc(s.speaker) + '</b><span>' + esc(s.batch) + '</span>' + (s.role ? '<em>' + esc(s.role) + '</em>' : '') + '</span>' +
+        '<span class="card-body"><small>Gave a MasterClass on</small><strong>' + esc(s.title) + '</strong>' +
+        '<span class="card-foot"><span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="d">' + esc(s.date) + '</span>' +
+        (s.recording ? '<span class="rec"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Recorded</span>' : '') +
+        '</span><span class="more">Know more →</span></span></span></button>';
+    }).join("") +
+    '<a class="card-you" href="#alumni"><span class="plus"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span><b>Your name belongs here</b><span>Share your journey with the next generation of IITGN students.</span><em>Lead a MasterClass →</em></a>';
+  }
+  $("chips").addEventListener("click", function (e) { var b = e.target.closest("[data-year]"); if (!b) return; current = b.getAttribute("data-year"); renderChips(); renderGrid(); });
+  renderChips(); renderGrid();
+
+  /* themes */
+  $("themes").innerHTML = THEMES.map(function (t) {
+    var n = SESSIONS.filter(function (s) { return s.theme === t.name; }).length;
+    return '<div class="theme"><p><b>' + n + '</b><small>' + (n === 1 ? "MasterClass" : "MasterClasses") + '</small></p><h3>' + esc(t.name) + '</h3><p>' + esc(t.blurb) + '</p></div>';
+  }).join("");
+
+  /* modal */
+  var modal = $("modal"), dialog = $("dialog"), lastFocus = null;
+  function open(i) {
+    var s = SESSIONS[i]; if (!s) return;
+    var facts = [["Date", s.date]];
+    if (s.time) facts.push(["Time", s.time]);
+    if (s.mode) facts.push(["Format", s.mode]);
+    if (s.attended) facts.push(["Attended by", s.attended]);
+    if (s.venue && s.venue !== "IIT Gandhinagar" && s.venue !== "Zoom") facts.push(["Venue", s.venue + ", IITGN"]);
+    var f = first(s.speaker);
+    dialog.innerHTML =
+      '<div class="d-head"><div class="who"><small>Alumni MasterClass speaker</small><b>' + esc(s.speaker) + ' <span>(' + esc(s.batch) + ')</span></b>' + (s.role ? '<em>' + esc(s.role) + '</em>' : '') + '</div>' +
+      '<button class="x" type="button" aria-label="Close" data-close><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>' +
+      '<div class="d-poster"><img src="' + esc(s.img) + '" alt="' + esc(s.speaker) + ', Alumni MasterClass"></div>' +
+      '<div class="d-body">' +
+      '<div><span class="tag" style="background:var(--sky-soft);color:var(--navy)">' + esc(s.theme) + '</span><h2 id="dTitle">' + esc(s.title) + '</h2></div>' +
+      '<dl class="facts">' + facts.map(function (x) { return '<div><dt>' + x[0] + '</dt><dd>' + esc(x[1]) + '</dd></div>'; }).join("") + '</dl>' +
+      '<div class="d-sec"><h3>About the session</h3>' + s.about.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join("") + '</div>' +
+      (s.quote ? '<blockquote class="quote">“' + esc(s.quote) + '”<cite>— ' + esc(s.speaker) + '</cite></blockquote>' : '') +
+      (s.bio && s.bio.length ? '<div class="d-sec"><h3>About ' + esc(f) + '</h3>' + s.bio.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join("") + '</div>' : '') +
+      (s.gallery && s.gallery.length ? '<div class="gallery">' + s.gallery.map(function (u) { return '<img src="' + esc(u) + '" alt="From the session with ' + esc(s.speaker) + '" loading="lazy">'; }).join("") + '</div>' : '') +
+      (s.recording ? '<a class="watch" href="' + esc(s.recording) + '" target="_blank" rel="noopener">' + PLAY + 'Watch the recording on YouTube</a>' : '<p class="norec">This MasterClass was held live for students and is not available as a recording.</p>') +
+      (s.extras && s.extras.length ? '<div class="extras">' + s.extras.map(function (x) { return '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(x.label) + ' →</a>'; }).join("") + '</div>' : '') +
+      '<div class="tagbox"><small>Thank and tag ' + esc(f) + ' on LinkedIn</small><div class="row-btns">' +
+      (s.linkedin ? '<a class="li-solid" href="' + esc(s.linkedin) + '" target="_blank" rel="noopener">' + LI + 'View ' + esc(f) + '’s LinkedIn profile</a>' : '') +
+      '<a class="li-line" href="https://www.linkedin.com/feed/?shareActive=true" target="_blank" rel="noopener">Write a post and tag ' + esc(f) + '</a></div>' +
+      '<p class="fine">Roles are shown as they were at the time of the MasterClass.</p></div>' +
+      '</div>';
+    lastFocus = document.activeElement;
+    modal.classList.add("open"); modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    dialog.scrollTop = 0; dialog.focus();
+    history.replaceState(null, "", "#session-" + (SESSIONS.length - i));
+  }
+  function close() {
+    modal.classList.remove("open"); modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    history.replaceState(null, "", location.pathname);
+    if (lastFocus) lastFocus.focus();
+  }
+  document.addEventListener("click", function (e) {
+    var o = e.target.closest("[data-open]"); if (o) { open(+o.getAttribute("data-open")); return; }
+    if (e.target.closest("[data-close]")) close();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!modal.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "Tab") {
+      var f = dialog.querySelectorAll("a[href],button"); if (!f.length) return;
+      var a = f[0], z = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+      else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+    }
+  });
+  /* open a session from a shared link: #session-N (N = 1 for the first MasterClass) */
+  var m = location.hash.match(/^#session-(\d+)$/);
+  if (m) { var idx = SESSIONS.length - +m[1]; if (SESSIONS[idx]) open(idx); }
+
+  /* mobile menu */
+  var btn = document.querySelector(".menu-btn"), nav = $("nav");
+  btn.addEventListener("click", function () { var o = nav.classList.toggle("open"); btn.setAttribute("aria-expanded", o); });
+  nav.addEventListener("click", function (e) { if (e.target.closest("a")) { nav.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); } });
+})();
+</script>
+</body>
+</html>
