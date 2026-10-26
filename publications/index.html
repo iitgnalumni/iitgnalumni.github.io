@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Newsletters &amp; Annual Reports · IITGN Alumni</title>
+<meta name="description" content="Read Footprints in Palaj, the alumni newsletter of IIT Gandhinagar, the Alumni Relations annual reports, and every past issue of Footprints since 2015, as flip-books you can download.">
+<meta property="og:title" content="Newsletters & Annual Reports · IITGN Alumni">
+<meta property="og:description" content="Footprints in Palaj, annual reports and the Footprints archive from IIT Gandhinagar Alumni Relations.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/iitgn-campus-1400.webp">
+<meta name="theme-color" content="#163850">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="library.json" as="fetch" crossorigin>
+<link rel="preload" as="image" href="assets/iitgn-campus-1400.webp" imagesrcset="assets/iitgn-campus-800.webp 800w, assets/iitgn-campus-1400.webp 1400w" imagesizes="100vw" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  color-scheme:light;
+  --navy:#163850; --navy-deep:#0f2a3d; --sky:#b3eaf9; --link:#2f7fd6;
+  --ink:#232a31; --text:#454b52; --muted:#737b84; --line:#dfe5ea;
+  --panel:#f1f5f8; --white:#ffffff;
+  --f:"Public Sans","Open Sans",Helvetica,Arial,sans-serif;
+  --h:"Manrope","Public Sans",Helvetica,Arial,sans-serif;
+  --r:14px;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--f);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--h);color:var(--ink);margin:0;font-weight:800;line-height:1.12;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+img{max-width:100%}
+.container{max-width:1200px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+section[id]{scroll-margin-top:72px}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--link)}
+.sec-title{font-size:clamp(2rem,4.2vw,3rem);margin-top:14px}
+
+/* ---------- header ---------- */
+.site-head{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .25s,box-shadow .25s}
+.site-head .container{display:flex;align-items:center;gap:24px;min-height:74px}
+.site-head.solid{background:rgba(255,255,255,.97);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--line),0 8px 24px -16px rgba(15,42,61,.35)}
+.wordmark{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.wordmark .t{display:flex;flex-direction:column;line-height:1.15}
+.wordmark b{font:800 1.06rem var(--h);color:#fff;letter-spacing:-.01em;transition:color .25s}
+.wordmark small{font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);transition:color .25s}
+.solid .wordmark b{color:var(--navy)} .solid .wordmark small{color:var(--muted)}
+.mainnav{display:flex;align-items:center;gap:6px;margin-left:auto}
+.mainnav a{color:#e8f1f6;text-decoration:none;font-size:.88rem;font-weight:600;padding:8px 14px;border-radius:999px;transition:background .2s,color .2s}
+.mainnav a:hover{background:rgba(255,255,255,.12);color:#fff}
+.solid .mainnav a{color:var(--ink)}
+.solid .mainnav a:hover,.solid .mainnav a.on{background:var(--panel);color:var(--navy)}
+.mainnav a.cta{background:var(--sky);color:var(--navy);margin-left:8px}
+.mainnav a.cta:hover{background:#fff}
+.solid .mainnav a.cta{background:var(--navy);color:#fff}
+.solid .mainnav a.cta:hover{background:var(--navy-deep)}
+.menu-btn{display:none;width:44px;height:44px;border:0;border-radius:12px;background:rgba(255,255,255,.14);cursor:pointer;margin-left:auto;align-items:center;justify-content:center}
+.solid .menu-btn{background:var(--panel)}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:20px;height:2px;background:#fff;position:relative;transition:transform .2s,background .2s}
+.solid .menu-btn span,.solid .menu-btn span::before,.solid .menu-btn span::after{background:var(--navy)}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-btn[aria-expanded="true"] span{background:transparent!important}
+.menu-btn[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:920px){
+  .menu-btn{display:inline-flex}
+  .mainnav{display:none;position:absolute;left:12px;right:12px;top:calc(100% + 4px);background:#fff;flex-direction:column;align-items:stretch;gap:2px;border-radius:var(--r);box-shadow:0 20px 40px -16px rgba(15,42,61,.45);padding:10px}
+  .mainnav.open{display:flex}
+  .mainnav a,.solid .mainnav a{color:var(--ink);padding:12px 14px;border-radius:10px}
+  .mainnav a:hover{background:var(--panel)}
+  .mainnav a.cta,.solid .mainnav a.cta{margin:6px 0 0;background:var(--navy);color:#fff;text-align:center}
+}
+
+/* ---------- buttons ---------- */
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;text-decoration:none;font:700 .95rem var(--h);padding:.9em 1.5em;border-radius:999px;border:1.5px solid var(--navy);cursor:pointer;transition:transform .15s,background .15s,color .15s}
+.btn:hover{background:var(--navy-deep);transform:translateY(-1px)}
+.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn.sm{font-size:.86rem;padding:.7em 1.2em}
+.btn.sky{background:var(--sky);border-color:var(--sky);color:var(--navy)}
+.btn.sky:hover{background:#fff;border-color:#fff}
+.btn.line-w{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
+.btn.line-w:hover{background:#fff;color:var(--navy)}
+.btn.line{background:transparent;color:var(--navy)}
+.btn.line:hover{background:var(--navy);color:#fff}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(88vh,800px);display:flex;align-items:center;color:#fff;background:var(--navy-deep);overflow:hidden}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block}
+.hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,42,61,.97) 0%,rgba(15,42,61,.9) 45%,rgba(22,56,80,.6) 100%),linear-gradient(0deg,rgba(15,42,61,.9) 0%,rgba(15,42,61,0) 45%)}
+.hero .container{position:relative;width:100%;padding-top:130px;padding-bottom:72px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
+.hero .kicker{color:var(--sky)}
+.hero h1{color:#fff;font-size:clamp(2.5rem,6.2vw,4.6rem);margin-top:14px;line-height:1.03;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--sky)}
+.hero .lede{margin-top:22px;max-width:52ch;font-size:clamp(1rem,1.6vw,1.12rem);color:#d6e3ec}
+.hero .btns{margin-top:32px}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin-top:44px;padding-top:24px;border-top:1px solid rgba(179,234,249,.2)}
+.stats div{display:flex;flex-direction:column;line-height:1.2}
+.stats b{font:800 1.9rem var(--h);color:#fff;letter-spacing:-.02em}
+.stats span{font-size:.8rem;color:#9fb3c2;margin-top:4px}
+/* latest issue */
+.latest{justify-self:center;display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;max-width:360px;width:100%}
+.latest .lbl{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--sky);display:inline-flex;align-items:center;gap:8px}
+.latest .lbl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sky);box-shadow:0 0 0 4px rgba(179,234,249,.25)}
+.latest button{all:unset;cursor:pointer;display:block;width:min(300px,72vw);border-radius:6px;position:relative;transition:transform .3s}
+.latest button:focus-visible{outline:2px solid var(--sky);outline-offset:6px}
+.latest button:hover{transform:translateY(-6px) rotate(-1deg)}
+.latest .cv{box-shadow:0 40px 70px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}
+.latest button::after{content:"";position:absolute;top:8px;bottom:8px;right:-10px;width:10px;border-radius:0 4px 4px 0;background:linear-gradient(90deg,#c9d6df,#eef3f6);z-index:-1}
+.latest h2{color:#fff;font-size:1.3rem;margin-top:4px}
+.latest p{font-size:.86rem;color:#9fb3c2}
+@media (max-width:900px){.hero .container{grid-template-columns:1fr;gap:44px;padding-top:120px;padding-bottom:56px}.latest{display:none!important}}
+
+/* ---------- covers ---------- */
+.cv{position:relative;display:block;width:100%;background:linear-gradient(150deg,#e6eef3,#cfdde6);border-radius:6px;overflow:hidden}
+.cv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .35s;z-index:1}
+.cv img.ok{opacity:1}
+.cv .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:16px;background:linear-gradient(160deg,var(--navy),var(--navy-deep));color:#fff;font:800 1rem var(--h);line-height:1.2}
+.cv .ph small{font:700 .66rem var(--f);letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
+
+/* ---------- shelves ---------- */
+.shelf{padding-block:96px}
+.shelf .top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.shelf .top p{max-width:56ch;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:36px 28px}
+.book{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:14px;border-radius:10px;min-width:0}
+.book:focus-visible{outline:2px solid var(--link);outline-offset:6px}
+.book .cv{box-shadow:0 18px 34px -20px rgba(15,42,61,.55),0 0 0 1px rgba(15,42,61,.06);transition:transform .25s,box-shadow .25s}
+.book:hover .cv{transform:translateY(-6px);box-shadow:0 28px 44px -22px rgba(15,42,61,.6),0 0 0 1px rgba(15,42,61,.08)}
+.book .cv::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.14) 0,rgba(255,255,255,.12) 3px,transparent 9px);pointer-events:none}
+.book .read{position:absolute;left:50%;bottom:14px;transform:translate(-50%,8px);opacity:0;transition:opacity .2s,transform .2s;background:var(--navy);color:#fff;font:700 .78rem var(--h);padding:.55em 1em;border-radius:999px;white-space:nowrap;display:inline-flex;gap:6px;align-items:center;z-index:2}
+.book .read svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.book:hover .read,.book:focus-visible .read{opacity:1;transform:translate(-50%,0)}
+.book .meta{display:flex;flex-direction:column;gap:3px}
+.book .vol{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--link)}
+.book h3{font-size:1.05rem;letter-spacing:-.01em;line-height:1.3}
+.book .pg{font-size:.8rem;color:var(--muted)}
+.new{display:inline-block;align-self:flex-start;font-size:.64rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:var(--sky);padding:2px 8px;border-radius:999px;margin-bottom:2px}
+@media (max-width:620px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}.book h3{font-size:.95rem}.shelf{padding-block:72px}}
+
+/* Footprints in Palaj (white) */
+.palaj .lead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:center;margin-bottom:64px;background:var(--panel);border-radius:22px;padding:44px 48px}
+.palaj .lead .book{justify-self:center;width:min(280px,100%)}
+.palaj .lead .book > span{width:100%}
+.palaj .lead .txt{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.palaj .lead h3{font-size:clamp(1.6rem,3vw,2.2rem)}
+.palaj .lead p{max-width:48ch}
+.chip{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);background:var(--sky);padding:4px 11px;border-radius:999px}
+.facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.facts span{font-size:.8rem;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);padding:4px 12px;border-radius:999px}
+@media (max-width:860px){.palaj .lead{grid-template-columns:1fr;gap:28px;padding:28px 22px}.palaj .lead .book{justify-self:start;width:min(220px,70%)}}
+
+/* Annual reports (navy) */
+.reports{background:var(--navy-deep);color:#c6d6e1;position:relative;overflow:hidden}
+.reports::before{content:"";position:absolute;width:640px;height:640px;right:-220px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(179,234,249,.12),transparent 65%)}
+.reports .container{position:relative}
+.reports .kicker{color:var(--sky)}
+.reports .sec-title{color:#fff}
+.reports .book h3{color:#fff}
+.reports .book .vol{color:var(--sky)}
+.reports .book .pg{color:#9fb3c2}
+.reports .book .cv{box-shadow:0 22px 40px -22px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06)}
+.reports .book .read{background:var(--sky);color:var(--navy)}
+
+/* Archive (panel) */
+.archive{background:var(--panel)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{font:700 .84rem var(--h);color:var(--navy);background:#fff;border:1px solid var(--line);padding:.55em 1.1em;border-radius:999px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.tabs button:hover{border-color:var(--navy)}
+.tabs button[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.archive .grid{grid-template-columns:repeat(auto-fill,minmax(168px,1fr))}
+.yr{grid-column:1/-1;display:flex;align-items:center;gap:16px;font:800 .82rem var(--h);letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-top:12px}
+.yr::after{content:"";flex:1;height:1px;background:var(--line)}
+.yr:first-child{margin-top:0}
+@media (max-width:620px){.archive .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.empty{grid-column:1/-1;padding:44px 24px;text-align:center;border:1.5px dashed var(--line);border-radius:var(--r);color:var(--muted)}
+.empty b{display:block;font:800 1.05rem var(--h);color:var(--ink);margin-bottom:4px}
+.reports .empty{border-color:rgba(179,234,249,.25);color:#9fb3c2}.reports .empty b{color:#fff}
+.skel .cv{animation:pulse 1.4s ease-in-out infinite}
+.skel .ln{height:12px;border-radius:6px;background:var(--line);animation:pulse 1.4s ease-in-out infinite}
+.reports .skel .ln,.reports .skel .cv{background:rgba(255,255,255,.08)}
+@keyframes pulse{50%{opacity:.55}}
+
+/* ---------- contact + footer ---------- */
+.contact{background:var(--sky);padding-block:64px}
+.contact .container{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.contact h2{font-size:clamp(1.7rem,3.4vw,2.4rem);color:var(--navy)}
+.contact p{color:var(--navy);margin-top:8px;opacity:.85;max-width:52ch}
+.mailbox{display:flex;align-items:center;gap:14px;background:#fff;border-radius:16px;padding:10px 10px 10px 20px;box-shadow:0 14px 30px -18px rgba(15,42,61,.5);max-width:100%}
+.mailbox .who{display:flex;flex-direction:column;min-width:0;line-height:1.35}
+.mailbox small{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mailbox a{font:700 1rem var(--h);color:var(--navy);text-decoration:none;overflow-wrap:anywhere}
+.mailbox a:hover{text-decoration:underline}
+.copy{flex:none;font:700 .82rem var(--h);padding:.75em 1.2em;border:0;border-radius:999px;background:var(--navy);color:#fff;cursor:pointer}
+.copy:hover{background:var(--navy-deep)}
+@media (max-width:420px){.mailbox a{font-size:.9rem}.mailbox{padding-left:16px;gap:10px}}
+footer{background:var(--navy-deep);color:#9fb3c2;font-size:.88rem}
+footer .container{padding-block:48px 28px}
+.foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:flex-start}
+footer .wordmark b{color:#fff} footer .wordmark small{color:var(--sky)}
+footer .addr{margin-top:14px}
+footer nav{display:flex;gap:6px 24px;flex-wrap:wrap}
+footer nav a{color:#cfdbe4;text-decoration:none;font-weight:600}
+footer nav a:hover{color:var(--sky)}
+.copyright{margin-top:36px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.78rem}
+
+/* ---------- flip-book pop-up ---------- */
+.ml{position:fixed;inset:0;z-index:110;background:rgba(15,42,61,.72);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px}
+.ml-box{position:relative;background:#fff;width:min(1180px,100%);height:min(92vh,960px);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 40px 80px -30px rgba(15,42,61,.6);animation:pop .25s ease-out}
+@keyframes pop{from{transform:translateY(16px) scale(.98);opacity:0}}
+.ml-hd{background:var(--navy);color:#d6e3ec;padding:26px 36px 22px;position:relative;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding-right:80px}
+.ml-hd .kicker{color:var(--sky)}
+.ml-hd h2{color:#fff;font-size:clamp(1.3rem,2.6vw,1.9rem);margin-top:8px}
+.ml-hd p{margin-top:4px;font-size:.9rem}
+.ml-hd .acts{display:flex;gap:10px;flex-wrap:wrap}
+.ml-hd .btn{flex:none}
+.x{position:absolute;right:16px;top:16px;width:40px;height:40px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:1.4rem;line-height:1;cursor:pointer}
+.x:hover{background:rgba(255,255,255,.22)}
+.fb-stage{flex:1;min-height:0;background:radial-gradient(circle at 50% 40%,#f7fafc,#dfe7ed);display:flex;align-items:center;justify-content:center;padding:22px;position:relative;overflow:hidden}
+.fb-book{box-shadow:0 30px 60px -30px rgba(15,42,61,.55)}
+.fb-page{background:#fff}
+.fb-page img{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.fb-nav{position:absolute;top:50%;margin-top:-24px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--navy);box-shadow:0 10px 24px -12px rgba(15,42,61,.55);cursor:pointer;display:grid;place-items:center;z-index:5;transition:background .15s,color .15s,opacity .15s}
+.fb-nav:hover{background:var(--navy);color:#fff}
+.fb-nav:disabled{opacity:.35;cursor:default;background:#fff;color:var(--navy)}
+.fb-nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fb-prev{left:18px}.fb-next{right:18px}
+.fb-bar{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 24px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted);background:#fff}
+.fb-bar b{color:var(--ink);font-family:var(--h)}
+.fb-bar label{display:inline-flex;align-items:center;gap:8px}
+.fb-bar input{width:64px;font:600 .9rem var(--f);text-align:center;padding:.45em .5em;border:1px solid var(--line);border-radius:10px;color:var(--ink)}
+.fb-bar input:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(179,234,249,.6)}
+.fb-hint{font-size:.8rem}
+.ml-msg{padding:60px 36px;text-align:center;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:14px}
+.ml-msg b{font:800 1.1rem var(--h);color:var(--ink)}
+.spin{width:34px;height:34px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--navy);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.share{background:transparent;border:1.5px solid rgba(255,255,255,.5);color:#fff}
+.share:hover{background:#fff;color:var(--navy)}
+@media (max-width:820px){
+  .ml{padding:0}
+  .ml-box{height:100%;width:100%;border-radius:0}
+  .ml-hd{padding:20px 64px 18px 20px}
+  .ml-hd .btn{font-size:.8rem;padding:.6em 1em}
+  .fb-stage{padding:12px}
+  .fb-nav{width:40px;height:40px;margin-top:-20px}
+  .fb-prev{left:6px}.fb-next{right:6px}
+  .fb-hint{display:none}
+}
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+</style>
+</head>
+<body id="top">
+<script src="/alumni-nav.js"></script>
+
+<script>
+/* =====================================================================
+   EDIT HERE
+   The newsletters and reports themselves come from Google Drive
+   (see README.md). Only the texts below are set here.
+   ===================================================================== */
+const SITE = {
+  email: "alumnirelations@iitgn.ac.in",
+  palajIntro: "The official newsletter of the IIT Gandhinagar Alumni Relations Office: campus news, student achievements and stories from alumni around the world. Published every three months since October 2025.",
+  reportsIntro: "A year of alumni engagement at IIT Gandhinagar in one place: events, reunions, giving, scholarships and the numbers behind them.",
+  archiveIntro: "Footprints, the alumni newsletter as it was published twice a year from 2015 until 2025, before it became Footprints in Palaj.",
+  newDays: 120          /* "New" label on items added to Drive in the last N days */
+};
+/* ===================================================================== */
+</script>
+
+<header class="site-head" id="head"><div class="container">
+  <a class="wordmark" href="#top" aria-label="IITGN Alumni Newsletters and Reports, home"><span class="t"><b>Newsletters &amp; Reports</b><small>IITGN Alumni Relations</small></span></a>
+  <button class="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+  <nav class="mainnav" id="nav" aria-label="Main">
+    <a href="#palaj">Footprints in Palaj</a>
+    <a href="#reports">Annual Reports</a>
+    <a href="#archive">Archive</a>
+    <a href="#contact" class="cta">Contact us</a>
+  </nav>
+</div></header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="bg"><img src="assets/iitgn-campus-1400.webp" srcset="assets/iitgn-campus-800.webp 800w, assets/iitgn-campus-1400.webp 1400w" sizes="100vw" width="1400" height="934" alt="" fetchpriority="high" decoding="async"></div>
+    <div class="container">
+      <div>
+        <span class="kicker">IITGN Alumni Relations</span>
+        <h1 id="hero-h">Newsletters &amp; <em>Annual Reports</em></h1>
+        <p class="lede">Every issue of the alumni newsletter and every annual report from IIT Gandhinagar Alumni Relations, in one place. Open any of them as a flip-book, or download the PDF.</p>
+        <div class="btns">
+          <a class="btn sky" href="#palaj">Read Footprints in Palaj <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn line-w" href="#reports">Annual Reports</a>
+        </div>
+        <div class="stats" id="stats" aria-live="polite"></div>
+      </div>
+      <div class="latest" id="latest" hidden></div>
+    </div>
+  </section>
+
+  <section class="shelf palaj" id="palaj" aria-labelledby="palaj-h"><div class="container">
+    <div class="top rv">
+      <div>
+        <span class="kicker">Alumni newsletter</span>
+        <h2 class="sec-title" id="palaj-h">Footprints in Palaj</h2>
+        <p id="palaj-intro"></p>
+      </div>
+    </div>
+    <div id="palaj-lead"></div>
+    <div class="grid" id="palaj-grid"></div>
+  </div></section>
+
+  <section class="shelf reports" id="reports" aria-labelledby="reports-h"><div class="container">
+    <div class="top rv">
+      <div>
+        <span class="kicker">Year in review</span>
+        <h2 class="sec-title" id="reports-h">Annual Reports</h2>
+        <p id="reports-intro"></p>
+      </div>
+    </div>
+    <div class="grid" id="reports-grid"></div>
+  </div></section>
+
+  <div id="extra"></div>
+
+  <section class="shelf archive" id="archive" aria-labelledby="archive-h"><div class="container">
+    <div class="top rv">
+      <div>
+        <span class="kicker">Archive · 2015 – 2025</span>
+        <h2 class="sec-title" id="archive-h">Footprints</h2>
+        <p id="archive-intro"></p>
+      </div>
+      <div class="tabs" id="archive-tabs" role="group" aria-label="Filter by year" hidden></div>
+    </div>
+    <div class="grid" id="archive-grid"></div>
+  </div></section>
+
+  <section class="contact" id="contact" aria-labelledby="ct-h"><div class="container">
+    <div><h2 id="ct-h">Have a story for the next issue?</h2><p>Share your news, milestones and memories with the Alumni Relations Office. We'd love to feature them in Footprints in Palaj.</p></div>
+    <div class="mailbox" id="mailbox"></div>
+  </div></section>
+</main>
+
+<footer><div class="container">
+  <div class="foot">
+    <div>
+      <a class="wordmark" href="#top"><span class="t"><b>Newsletters &amp; Reports</b><small>IITGN Alumni Relations</small></span></a>
+      <p class="addr">Palaj, Gandhinagar, Gujarat 382055, India</p>
+    </div>
+    <nav aria-label="Footer"><a href="#palaj">Footprints in Palaj</a><a href="#reports">Annual Reports</a><a href="#archive">Archive</a><a href="#contact">Contact</a></nav>
+  </div>
+  <div class="copyright"><span>© <span id="yr"></span> Alumni Relations, IIT Gandhinagar</span><span>IITGN</span></div>
+</div></footer>
+
+<div class="ml" id="fb" hidden role="dialog" aria-modal="true" aria-labelledby="fb-h">
+  <div class="ml-box">
+    <div class="ml-hd">
+      <button class="x" type="button" aria-label="Close">×</button>
+      <div>
+        <span class="kicker" id="fb-k"></span>
+        <h2 id="fb-h"></h2>
+        <p id="fb-sub"></p>
+      </div>
+      <div class="acts">
+        <button class="btn sm share" id="fb-share" type="button">Copy link</button>
+        <a class="btn sky sm" id="fb-dl" target="_blank" rel="noopener">Download PDF <svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></a>
+      </div>
+    </div>
+    <div class="fb-stage" id="fb-stage">
+      <button class="fb-nav fb-prev" id="fb-prev" type="button" aria-label="Previous page"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="ml-msg" id="fb-load"><div class="spin"></div>Opening…</div>
+      <button class="fb-nav fb-next" id="fb-next" type="button" aria-label="Next page"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <div class="fb-bar">
+      <span id="fb-pg"></span>
+      <label>Go to page <input id="fb-go" type="number" min="1" inputmode="numeric" aria-label="Go to page"></label>
+      <span class="fb-hint">Tip: use the ← → keys or drag a page corner</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+  const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const ICON_READ='<svg viewBox="0 0 24 24"><path d="M2 5.5C4.5 4 7.5 4 12 6c4.5-2 7.5-2 10-.5V19c-2.5-1.5-5.5-1.5-10 .5-4.5-2-7.5-2-10-.5z"/><path d="M12 6v13.5"/></svg>';
+  $("#yr").textContent=new Date().getFullYear();
+  $("#palaj-intro").textContent=SITE.palajIntro;
+  $("#reports-intro").textContent=SITE.reportsIntro;
+  $("#archive-intro").textContent=SITE.archiveIntro;
+  $("#mailbox").innerHTML='<span class="who"><small>Alumni Relations Office</small><a href="mailto:'+esc(SITE.email)+'">'+esc(SITE.email).replace("@","@<wbr>")+'</a></span><button class="copy" type="button">Copy</button>';
+  $("#mailbox .copy").onclick=e=>{ if(navigator.clipboard) navigator.clipboard.writeText(SITE.email).then(()=>{e.target.textContent="Copied";setTimeout(()=>e.target.textContent="Copy",1500);}); };
+
+  /* ---------- tidy titles: "Vol IX, Issue II – July-December 2023" -> period + volume ---------- */
+  const MONTHS="January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec";
+  function parts(it){
+    let t=it.title.replace(/\s+/g," ").trim(), vol="", main=t;
+    t=t.replace(/^Footprints( in| of)? Palaj\s*[–—|:-]\s*/i,"");
+    const m=t.match(/^(Vol\.?\s*[IVXL\d]+\s*,?\s*Issue\s*[IVXL\d]+)\s*[–—:-]\s*(.+)$/i);
+    if(m){ vol=m[1].replace(/\s*,\s*/," · ").replace(/Vol\.?\s*/i,"Vol "); main=m[2]; } else main=t;
+    main=main.replace(new RegExp("("+MONTHS+")\\s*-\\s*("+MONTHS+")","gi"),"$1 – $2");
+    return {main, vol};
+  }
+  let FIRST_DAY="";   /* the day of the first import: nothing from that day is "new" */
+  const isNew=it=>{ if(!it.added||it.added<=FIRST_DAY) return false; const d=(Date.now()-new Date(it.added).getTime())/864e5; return d<=SITE.newDays && d>=0; };
+  const base=it=>"library/"+it.id+"/";
+  function cover(it){
+    const p=parts(it);
+    return '<span class="cv" style="aspect-ratio:1/'+(it.ratio||1.414)+'"><img src="'+base(it)+'cover.webp" alt="" loading="lazy" decoding="async" onload="this.classList.add(\'ok\')" onerror="this.remove()"><span class="ph"><small>'+esc(it.shelfLabel||"")+'</small>'+esc(p.main)+'</span></span>';
+  }
+  function book(it,opts){
+    opts=opts||{}; const p=parts(it);
+    return '<button class="book" type="button" data-id="'+esc(it.id)+'" aria-label="Read '+esc(it.title)+'">'+
+      '<span style="position:relative;display:block">'+cover(it)+'<span class="read">'+ICON_READ+'Read</span></span>'+
+      (opts.noMeta?'':'<span class="meta">'+(isNew(it)?'<span class="new">New</span>':'')+(p.vol?'<span class="vol">'+esc(p.vol)+'</span>':'')+'<h3>'+esc(p.main)+'</h3><span class="pg">'+it.pages+' pages</span></span>')+
+    '</button>';
+  }
+  function skeleton(n){ return Array.from({length:n},()=>'<div class="book skel" aria-hidden="true"><span class="cv" style="aspect-ratio:1/1.414"></span><span class="ln" style="width:80%"></span><span class="ln" style="width:40%"></span></div>').join(""); }
+  function empty(where){ return '<div class="empty"><b>Nothing here yet</b>Issues appear here automatically within an hour of being added to the "'+esc(where)+'" folder in Drive.</div>'; }
+
+  ["#palaj-grid","#reports-grid","#archive-grid"].forEach((s,i)=>$(s).innerHTML=skeleton(i===2?6:4));
+
+  let LIB=null; const byId={};
+  fetch("library.json",{cache:"no-cache"}).then(r=>{ if(!r.ok) throw 0; return r.json(); }).then(render).catch(()=>render({items:[],shelves:[]}));
+
+  function render(lib){
+    LIB=lib; const items=lib.items||[];
+    items.forEach(it=>byId[it.id]=it);
+    FIRST_DAY=items.map(it=>it.added||"").filter(Boolean).sort()[0]||"";
+    const shelf=k=>items.filter(it=>it.shelf===k).sort((a,b)=>(b.sort||0)-(a.sort||0));
+    const palaj=shelf("footprints-in-palaj"), reps=shelf("annual-reports"), arch=shelf("footprints-archive");
+
+    // hero
+    const latest=palaj[0];
+    if(latest){
+      const p=parts(latest);
+      $("#latest").innerHTML='<span class="lbl">Latest issue</span><button type="button" data-id="'+esc(latest.id)+'" aria-label="Read the latest issue, '+esc(latest.title)+'">'+cover(latest)+'</button><div><h2>'+esc(p.main)+'</h2><p>Footprints in Palaj · '+latest.pages+' pages</p></div>';
+      $("#latest").hidden=false;
+    }
+    const pages=items.reduce((s,it)=>s+(it.pages||0),0);
+    const firstYear=Math.min(...items.map(it=>Math.floor((it.sort||999999)/100)).filter(y=>y>1990));
+    $("#stats").innerHTML=items.length?[
+      [palaj.length+arch.length,"newsletter issues"],[reps.length,"annual reports"],[isFinite(firstYear)?firstYear:"",'publishing since']
+    ].filter(s=>s[0]!=="" ).map(s=>'<div><b>'+s[0]+'</b><span>'+s[1]+'</span></div>').join(""):"";
+
+    // Footprints in Palaj: lead + rest
+    if(latest){
+      const p=parts(latest);
+      $("#palaj-lead").innerHTML='<div class="lead rv">'+book(latest,{noMeta:true})+'<div class="txt"><span class="chip">Latest issue</span><h3>'+esc(p.main)+'</h3><p>Catch up on campus news, student achievements and alumni stories from the most recent issue of Footprints in Palaj.</p><div class="facts"><span>'+latest.pages+' pages</span><span>Published quarterly</span></div><div class="btns" style="margin-top:8px"><button class="btn" type="button" data-id="'+esc(latest.id)+'">Read this issue <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><a class="btn line" href="'+esc(latest.download||"#")+'" target="_blank" rel="noopener">Download PDF</a></div></div></div>';
+      const rest=palaj.slice(1);
+      $("#palaj-grid").innerHTML=rest.map(it=>book(it)).join("");
+      $("#palaj-grid").hidden=!rest.length;
+    } else { $("#palaj-lead").innerHTML=""; $("#palaj-grid").innerHTML=empty("Footprints in Palaj"); }
+
+    $("#reports-grid").innerHTML=reps.length?reps.map(it=>book(it)).join(""):empty("Annual Reports");
+
+    // any other shelves (a new folder in Drive becomes a new section)
+    const known=["footprints-in-palaj","annual-reports","footprints-archive"];
+    $("#extra").innerHTML=(lib.shelves||[]).filter(s=>!known.includes(s.key)).map(s=>{ const list=shelf(s.key); if(!list.length) return "";
+      return '<section class="shelf" id="'+esc(s.key)+'"><div class="container"><div class="top rv"><div><span class="kicker">From the Alumni Relations Office</span><h2 class="sec-title">'+esc(s.label)+'</h2></div></div><div class="grid">'+list.map(it=>book(it)).join("")+'</div></div></section>'; }).join("");
+
+    // archive with year filter
+    const years=[...new Set(arch.map(it=>Math.floor((it.sort||0)/100)).filter(Boolean))].sort((a,b)=>b-a);
+    const tabs=$("#archive-tabs");
+    if(years.length>2){
+      tabs.innerHTML='<button type="button" aria-pressed="true" data-y="">All</button>'+years.map(y=>'<button type="button" aria-pressed="false" data-y="'+y+'">'+y+'</button>').join("");
+      tabs.hidden=false;
+      tabs.onclick=e=>{ const b=e.target.closest("button"); if(!b) return; tabs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b)); drawArchive(b.dataset.y); };
+    }
+    function drawArchive(y){
+      const list=y?arch.filter(it=>String(Math.floor(it.sort/100))===y):arch;
+      if(!list.length){ $("#archive-grid").innerHTML=empty("Footprints Archive"); return; }
+      let html="", cur=null;
+      list.forEach(it=>{ const yr=Math.floor((it.sort||0)/100)||""; if(!y&&yr!==cur){ cur=yr; html+='<div class="yr">'+(yr||"Undated")+'</div>'; } html+=book(it); });
+      $("#archive-grid").innerHTML=html;
+    }
+    drawArchive("");
+
+    document.addEventListener("click",e=>{ const b=e.target.closest("[data-id]"); if(b&&byId[b.dataset.id]){ e.preventDefault(); Flip.open(byId[b.dataset.id]); } });
+    reveal();
+    // open straight from a shared link: #read=<id>
+    const m=location.hash.match(/^#read=([\w-]+)/); if(m&&byId[m[1]]) Flip.open(byId[m[1]],true);
+    // warm the flip-book library once the page is idle
+    setTimeout(()=>Flip.lib().catch(()=>{}),2500);
+  }
+
+  /* ---------- flip-book ---------- */
+  const Flip=(function(){
+    const fb=$("#fb"), stage=$("#fb-stage"), load=$("#fb-load"), prev=$("#fb-prev"), next=$("#fb-next"), pg=$("#fb-pg"), go=$("#fb-go");
+    let pf=null, book=null, cur=0, libP=null, lastFocus=null, rt=null, doc=null, N=0, RATIO=1.414;
+    const src=i=>base(doc)+"p-"+String(i+1).padStart(3,"0")+".webp";
+    function lib(){
+      if(window.St&&St.PageFlip) return Promise.resolve();
+      if(!libP) libP=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src="assets/page-flip.js"; s.onload=res; s.onerror=()=>{libP=null;rej();}; document.head.appendChild(s); });
+      return libP;
+    }
+    function label(){
+      const portrait=pf&&pf.getOrientation()==="portrait"; const i=cur; let txt;
+      if(portrait||i===0||i>=N-1) txt="Page <b>"+(i+1)+"</b> of <b>"+N+"</b>";
+      else { const l=i%2? i : i-1; txt="Pages <b>"+(l+1)+"–"+Math.min(l+2,N)+"</b> of <b>"+N+"</b>"; }
+      pg.innerHTML=txt; prev.disabled=i<=0; next.disabled=i>=N-1;
+    }
+    function destroy(){ if(pf){ try{ pf.destroy(); }catch(e){} pf=null; } if(book){ book.remove(); book=null; } }
+    function build(){
+      if(pf){ try{ cur=pf.getCurrentPageIndex(); }catch(e){} }
+      destroy();
+      const small=innerWidth<=820;
+      const W=stage.clientWidth-(small?24:44), H=stage.clientHeight-(small?24:44);
+      // landscape pages, or a narrow screen: one page at a time
+      const portrait=W<760 || RATIO<1;
+      let pw=portrait? Math.min(W-(small?0:96), H/RATIO) : Math.min((W-140)/2, H/RATIO);
+      pw=Math.max(160,Math.floor(pw)); const ph=Math.floor(pw*RATIO);
+      book=document.createElement("div"); book.className="fb-book";
+      book.innerHTML=Array.from({length:N},(_,i)=>'<div class="fb-page" data-density="soft"><img data-k="'+i+'" alt="Page '+(i+1)+'" decoding="async"></div>').join("");
+      stage.insertBefore(book,next);
+      pf=new St.PageFlip(book,{width:pw,height:ph,size:"fixed",showCover:true,usePortrait:portrait,maxShadowOpacity:.35,mobileScrollSupport:false,flippingTime:700,startPage:Math.min(cur,N-1)});
+      pf.loadFromHTML(book.querySelectorAll(".fb-page"));
+      pf.on("flip",e=>{ cur=e.data; label(); near(cur); });
+      pf.on("changeOrientation",()=>label());
+      load.hidden=true; label(); near(cur);
+    }
+    function near(i){
+      if(!book) return;
+      book.querySelectorAll("img[data-k]").forEach(img=>{ const k=+img.dataset.k; if(k>=i-2&&k<=i+5){ img.src=src(k); img.removeAttribute("data-k"); } });
+    }
+    function open(it,fromHash){
+      doc=it; N=it.pages||1; RATIO=it.ratio||1.414; cur=0;
+      const p=parts(it);
+      $("#fb-k").textContent=it.shelfLabel||"";
+      $("#fb-h").textContent=p.main;
+      $("#fb-sub").textContent=(p.vol?p.vol+" · ":"")+N+" pages";
+      $("#fb-dl").href=it.download||"#"; $("#fb-dl").hidden=!it.download;
+      go.max=N; go.value="";
+      load.hidden=false; load.innerHTML='<div class="spin"></div>Opening…';
+      destroy();
+      if(fb.hidden) lastFocus=document.activeElement;
+      fb.hidden=false; document.body.style.overflow="hidden";
+      history.replaceState(null,"","#read="+it.id);
+      [0,1,2].forEach(i=>{ const im=new Image(); im.src=src(i); });
+      lib().then(()=>requestAnimationFrame(build)).catch(()=>{ load.innerHTML='<b>The flip-book could not be opened here.</b>'+(it.download?'<a class="btn sm" href="'+esc(it.download)+'" target="_blank" rel="noopener">Open the PDF</a>':''); });
+      setTimeout(()=>fb.querySelector(".x").focus(),50);
+    }
+    function close(){
+      fb.hidden=true; document.body.style.overflow=""; destroy(); doc=null;
+      history.replaceState(null,"",location.pathname+location.search);
+      if(lastFocus) lastFocus.focus();
+    }
+    prev.onclick=()=>pf&&pf.flipPrev();
+    next.onclick=()=>pf&&pf.flipNext();
+    go.addEventListener("change",()=>{ const n=Math.min(Math.max(parseInt(go.value,10)||1,1),N); go.value=""; if(pf){ pf.turnToPage(n-1); cur=n-1; label(); near(cur); } });
+    document.addEventListener("keydown",e=>{
+      if(fb.hidden) return;
+      if(e.key==="Escape") close();
+      else if(e.target!==go && e.key==="ArrowRight"){ e.preventDefault(); pf&&pf.flipNext(); }
+      else if(e.target!==go && e.key==="ArrowLeft"){ e.preventDefault(); pf&&pf.flipPrev(); }
+    });
+    window.addEventListener("resize",()=>{ if(fb.hidden||!pf) return; clearTimeout(rt); rt=setTimeout(build,200); });
+    fb.querySelector(".x").onclick=close;
+    fb.addEventListener("click",e=>{ if(e.target===fb) close(); });
+    $("#fb-share").onclick=()=>{ const b=$("#fb-share"); const url=location.origin+location.pathname+"#read="+(doc&&doc.id);
+      (navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(()=>{ b.textContent="Link copied"; setTimeout(()=>b.textContent="Copy link",1600); }).catch(()=>prompt("Copy this link",url)); };
+    window.addEventListener("hashchange",()=>{ const m=location.hash.match(/^#read=([\w-]+)/); if(m&&byId[m[1]]&&(!doc||doc.id!==m[1])) open(byId[m[1]],true); });
+    return {open, lib};
+  })();
+
+  // header: transparent over hero, solid after
+  const head=$("#head"), btn=$(".menu-btn"), nav=$("#nav");
+  const setHead=()=>head.classList.toggle("solid", window.scrollY>40 || nav.classList.contains("open"));
+  btn.onclick=()=>{ const o=nav.classList.toggle("open"); btn.setAttribute("aria-expanded",o); setHead(); };
+  nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{ nav.classList.remove("open"); btn.setAttribute("aria-expanded","false"); setHead(); }));
+  window.addEventListener("scroll",setHead,{passive:true}); setHead();
+  const links=[...nav.querySelectorAll("a")];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id)); }),{rootMargin:"-45% 0px -50% 0px"});
+  ["palaj","reports","archive"].forEach(id=>{ const s=document.getElementById(id); if(s) io.observe(s); });
+
+  function reveal(){
+    if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+      const ro=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); ro.unobserve(e.target);} }),{rootMargin:"0px 0px -8% 0px"});
+      $$(".rv:not(.in)").forEach(el=>ro.observe(el));
+    } else $$(".rv").forEach(el=>el.classList.add("in"));
+  }
+  reveal();
+})();
+</script>
+</body>
+</html>

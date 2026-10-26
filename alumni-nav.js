@@ -21,7 +21,8 @@
     { label: 'Homecoming 2026',   href: '/homecoming2026/' },
     { label: 'MasterClass',       href: '/masterclass/' },
     { label: 'YAE Awards',        href: '/YAEA/' },
-    { label: 'Alumni Collective', href: '/IITGNAC/' }
+    { label: 'Alumni Collective', href: '/IITGNAC/' },
+    { label: 'Newsletters & Reports', href: '/publications/' }
   ];
   var EMAIL = 'alumnirelations@iitgn.ac.in';
   /* ------------------------------------------- */
