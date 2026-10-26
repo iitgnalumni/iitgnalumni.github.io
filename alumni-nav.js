@@ -18,6 +18,7 @@
   /* ---------------- EDIT HERE ---------------- */
   var PORTAL = 'https://alumni.iitgn.ac.in/';
   var LINKS = [
+    { label: 'Home',              href: '/' },
     { label: 'Homecoming 2026',   href: '/homecoming2026/' },
     { label: 'MasterClass',       href: '/masterclass/' },
     { label: 'YAE Awards',        href: '/YAEA/' },
@@ -36,6 +37,7 @@
 
   function isCurrent(href) {
     if (href.charAt(0) !== '/') return false;
+    if (href === '/') return path === '/' || path === '/index.html';
     return path.indexOf(href.toLowerCase()) === 0;
   }
   function esc(s) {
