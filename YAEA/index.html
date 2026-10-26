@@ -258,7 +258,7 @@ footer a:hover{color:var(--sky)}
 
   <section id="recipients">
     <div class="container intro"><div class="inner">
-      <h2 id="recTitle">Young Alumni Excellence Award 2025 Recipients</h2>
+      <h2 id="recTitle">2025 Young Alumni Excellence Award Recipients</h2>
       <p>The Young Alumni Excellence Award, IIT Gandhinagar’s honour for its young alumni, is presented this year to <span id="recCount">three</span> alumni whose early careers have already made a remarkable impact in their fields and in society.</p>
     </div></div>
     <div class="container rows" id="rows"></div>
@@ -485,7 +485,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp
 function ini(n){var p=n.split(" ");return (p[0][0]+(p.length>1?p[p.length-1][0]:"")).toUpperCase()}
 function full(a){return (a.title?a.title+" ":"")+a.name}
 function yy(g){return "’"+String(g).slice(-2)}
-function cred(a){return a.prog+"/"+a.dept+"/"+a.grad}
+function cred(a){return a.prog+"/"+a.dept+"/"+String(a.grad).slice(-2)}
 function photoFail(img){var alt=img.getAttribute("data-alt");if(alt){img.removeAttribute("data-alt");img.src=alt}else img.remove()}
 function photo(a){
   return '<div class="photo"><div class="ini">'+ini(a.name)+'</div><img src="'+esc(PHOTO_FOLDER+a.slug+".jpg")+'"'+(a.oldphoto?' data-alt="'+esc(a.oldphoto)+'"':'')+' alt="'+esc(full(a))+'" loading="lazy" onerror="photoFail(this)"></div>';
@@ -501,7 +501,7 @@ var NUM=["zero","one","two","three","four","five","six","seven","eight","nine","
 
 /* current recipients: full rows */
 var cur=byYear(FEATURED_YEAR);
-document.getElementById("recTitle").textContent = "Young Alumni Excellence Award "+FEATURED_YEAR+" Recipients";
+document.getElementById("recTitle").textContent = FEATURED_YEAR+" Young Alumni Excellence Award Recipients";
 document.getElementById("recCount").textContent = NUM[cur.length]||cur.length;
 document.getElementById("navRecip").textContent = FEATURED_YEAR+" Recipients";
 document.getElementById("poster").src = (window.POSTER_DATA || POSTER);
