@@ -21,8 +21,7 @@
     { label: 'Homecoming 2026',   href: '/homecoming2026/' },
     { label: 'MasterClass',       href: '/masterclass/' },
     { label: 'YAE Awards',        href: '/YAEA/' },
-    { label: 'Alumni Collective', href: '/IITGNAC/' },
-    { label: 'Give',              href: 'https://donate.iitgn.ac.in/alumni/donate/alumni_giving.php', cta: true }
+    { label: 'Alumni Collective', href: '/IITGNAC/' }
   ];
   var EMAIL = 'alumnirelations@iitgn.ac.in';
   /* ------------------------------------------- */
@@ -104,20 +103,26 @@
   /* Pages whose own header (or full-screen frame) is position:fixed at the
      very top would sit over the bar. Shift them down by the bar's height,
      and let them slide back to the top as the visitor scrolls, so the
-     page's own header looks and behaves exactly as before. */
-  var fixed = [];
+     page's own header looks and behaves exactly as before.
+     This runs again once the page has finished loading, because the bar is
+     added before the rest of the page (including its header) exists. */
+  var fixed = [], listening = false;
   function fixFixedElements() {
     var kids = document.body.children;
     for (var i = 0; i < kids.length; i++) collect(kids[i]);
     var heads = document.querySelectorAll('header,.site-head');
     for (var j = 0; j < heads.length; j++) collect(heads[j]);
     if (!fixed.length) return;
-    window.addEventListener('scroll', place, { passive: true });
-    window.addEventListener('resize', place);
+    if (!listening) {
+      listening = true;
+      window.addEventListener('scroll', place, { passive: true });
+      window.addEventListener('resize', place);
+    }
     place();
   }
   function collect(el) {
-    if (el === bar || el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || fixed.indexOf(el) > -1) return;
+    if (el === bar || el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return;
+    for (var k = 0; k < fixed.length; k++) if (fixed[k].el === el) return;
     var cs = getComputedStyle(el);
     if (cs.position !== 'fixed' || parseFloat(cs.top) !== 0) return;
     fixed.push({ el: el, fullHeight: parseFloat(cs.bottom) === 0 || el.offsetHeight >= window.innerHeight - 1 });
@@ -152,6 +157,8 @@
 
   if (document.body) addBar();
   else document.addEventListener('DOMContentLoaded', addBar);
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addFooter);
-  else addFooter();
+  function whenReady() { addFooter(); fixFixedElements(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', whenReady);
+  else whenReady();
+  window.addEventListener('load', fixFixedElements);
 })();
