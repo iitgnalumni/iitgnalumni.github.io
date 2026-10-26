@@ -1,0 +1,9 @@
+name: probe
+on: { push: { branches: [probe] }, workflow_dispatch: {} }
+jobs:
+  p:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -sSL "https://drive.google.com/embeddedfolderview?id=1nf7Njmy8O_8BMq_Y3AdlX4I_awW7Y3MQ" -o list.html -w "%{http_code}\n"; wc -c list.html; head -c 4000 list.html | sed 's/></>\n</g' | grep -i 'entry\|title\|href' | head -40
+          curl -sSL "https://drive.usercontent.google.com/download?id=1e-x9uUkX6x3n0kNg9CJd8na94JAM7mDa&export=download&confirm=t" -o a.pdf -w "%{http_code} %{content_type}\n"; ls -la a.pdf; head -c 200 a.pdf | strings | head -3
