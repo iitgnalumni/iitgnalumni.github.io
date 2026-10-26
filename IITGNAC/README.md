@@ -20,13 +20,13 @@ Open `index.html` (pencil icon on GitHub) and search for **EDIT HERE**.
 - `COMMITTEE` – name, degree, role, biography, `linkedin` and `email` of each person. A person's email is shown as text only when filled in; until a LinkedIn link is filled in, its icon shows faded. Everyone is listed as an Office Bearer, one below the other, in the order they appear in COMMITTEE.
 
 ## Constitution
-The "Read the Constitution" links open a flip-book built from page images in `docs/constitution/` (p-01.jpg … p-20.jpg). The download button gives `docs/IITGN-AC-Constitution.pdf`. If the Constitution is amended, replace the PDF and the page images, and update `constitutionPages` in the EDIT HERE block.
+The "Read the Constitution" links open a flip-book built from page images in `docs/constitution/` (p-01.webp … p-20.webp). The download button gives `docs/IITGN-AC-Constitution.pdf`. If the Constitution is amended, replace the PDF and the page images, and update `constitutionPages` in the EDIT HERE block.
 
 ## Participating Members
 The member list pop-up reads the Google Sheet linked in `LINKS.members` each time it opens. Keep the sheet shared as "Anyone with the link can view" and keep its four column headings unchanged.
 
 ## Photos
-Each person's photo is `photos/<slug>.jpg` (square, about 600 × 600 px), named exactly:
+Each person's photo is `photos/<slug>.webp` (small, fast) with `photos/<slug>.jpg` as a backup (square, about 600 × 600 px), named exactly:
 
     abhishek-kandoi.jpg   eepsit-tiwari.jpg      sujay-kadam.jpg
     shashwat-jain.jpg     samarpita-mallick.jpg  ihsan-k.jpg

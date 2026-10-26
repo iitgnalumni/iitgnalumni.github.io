@@ -11,7 +11,10 @@
 <meta property="og:image" content="images/iitgn-campus.jpg">
 <meta name="theme-color" content="#163850">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://docs.google.com">
+<link rel="preload" as="image" href="images/iitgn-campus-1400.webp" imagesrcset="images/iitgn-campus-800.webp 800w, images/iitgn-campus-1400.webp 1400w" imagesizes="100vw" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{
   color-scheme:light;
@@ -77,7 +80,8 @@ section[id]{scroll-margin-top:72px}
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:min(92vh,820px);display:flex;align-items:flex-end;color:#fff;background:var(--navy-deep);overflow:hidden}
-.hero .bg{position:absolute;inset:0;background:url("images/iitgn-campus.jpg") center 35%/cover no-repeat}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block}
 .hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,42,61,.96) 0%,rgba(15,42,61,.86) 42%,rgba(22,56,80,.45) 100%),linear-gradient(0deg,rgba(15,42,61,.9) 0%,rgba(15,42,61,0) 45%)}
 .hero .container{position:relative;width:100%;padding-top:140px;padding-bottom:56px}
 .hero .kicker{color:var(--sky)}
@@ -372,7 +376,6 @@ footer nav a:hover{color:var(--sky)}
 </style>
 </head>
 <body id="top">
-<script src="/alumni-nav.js"></script>
 
 <script>
 /* =====================================================================
@@ -380,7 +383,7 @@ footer nav a:hover{color:var(--sky)}
    ===================================================================== */
 const LINKS = {
   constitution: "docs/IITGN-AC-Constitution.pdf",   /* PDF for download */
-  constitutionPages: 20,                           /* page images: docs/constitution/p-01.jpg ... p-20.jpg */
+  constitutionPages: 20,                           /* page images: docs/constitution/p-01.webp ... p-20.webp */
   pay:          "https://donate.iitgn.ac.in/alumni/donate/alumni_giving.php?gift=",   /* membership fee payment */
   members:      "https://docs.google.com/spreadsheets/d/1ME8PRy-NJPC4RH5qBVO1jpWLhbiGLSvmUC_WDfvtzmI/edit?usp=sharing",
   /* Emails shown in "Get in touch" */
@@ -390,7 +393,7 @@ const LINKS = {
   ]
 };
 
-/* Committee. Photo: photos/<slug>.jpg in the photos folder (square, about 600 x 600).
+/* Committee. Photo: photos/<slug>.webp (fast) or photos/<slug>.jpg in the photos folder (square, about 600 x 600).
    If a photo is missing, the person's initials are shown. */
 /* linkedin: full profile link, email: their address. Leave "" until you have it. */
 const COMMITTEE = [
@@ -453,7 +456,7 @@ const COMMITTEE = [
 
 <main>
   <section class="hero" aria-labelledby="hero-h">
-    <div class="bg" role="img" aria-label="IIT Gandhinagar campus"></div>
+    <div class="bg"><img src="images/iitgn-campus-1400.webp" srcset="images/iitgn-campus-800.webp 800w, images/iitgn-campus-1400.webp 1400w" sizes="100vw" width="1400" height="934" alt="IIT Gandhinagar campus" fetchpriority="high" decoding="async"></div>
     <div class="container">
       <h1 id="hero-h">IITGN <em>Alumni Collective</em></h1>
       <p class="lede">A dedicated platform that brings IITGN alumni together across batches, programmes and continents, to support one another and to help shape the institute that shaped us.</p>
@@ -622,8 +625,8 @@ const COMMITTEE = [
   // photo: local file -> old Google Site picture -> initials
   function photo(p,id){
     const box=document.createElement("div"); box.className="photo"; if(id) box.id=id;
-    const srcs=["photos/"+p.slug+".jpg", p.oldPhoto].filter(Boolean);
-    const img=new Image(); img.alt=""; img.loading="lazy"; let i=0;
+    const srcs=["photos/"+p.slug+".webp","photos/"+p.slug+".jpg"];
+    const img=new Image(); img.alt=""; img.loading="lazy"; img.decoding="async"; img.width=420; img.height=420; let i=0;
     img.onerror=()=>{ i++; if(i<srcs.length) img.src=srcs[i]; else { img.remove(); box.innerHTML='<div class="ini" aria-hidden="true">'+ini(p.name)+'</div>'; } };
     img.src=srcs[0]; box.appendChild(img); return box;
   }
@@ -660,7 +663,7 @@ const COMMITTEE = [
   (function(){
     const fb=$("#fb"), stage=$("#fb-stage"), load=$("#fb-load"), prev=$("#fb-prev"), next=$("#fb-next"), pg=$("#fb-pg"), go=$("#fb-go");
     const N=LINKS.constitutionPages||0, RATIO=1414/1000;
-    const src=i=>"docs/constitution/p-"+String(i+1).padStart(2,"0")+".jpg";
+    const src=i=>"docs/constitution/p-"+String(i+1).padStart(2,"0")+".webp";
     let pf=null, book=null, cur=0, libP=null, lastFocus=null, rt=null;
     $("#fb-dl").href=LINKS.constitution; go.max=N;
 
@@ -684,14 +687,23 @@ const COMMITTEE = [
       let pw=portrait? Math.min(W-(innerWidth<=820?0:96), H/RATIO) : Math.min((W-140)/2, H/RATIO);
       pw=Math.max(160,Math.floor(pw)); const ph=Math.floor(pw*RATIO);
       book=document.createElement("div"); book.className="fb-book";
-      book.innerHTML=Array.from({length:N},(_,i)=>'<div class="fb-page" data-density="soft"><img src="'+src(i)+'" alt="Constitution page '+(i+1)+'"></div>').join("");
+      book.innerHTML=Array.from({length:N},(_,i)=>'<div class="fb-page" data-density="soft"><img data-src="'+src(i)+'" alt="Constitution page '+(i+1)+'" decoding="async"></div>').join("");
       stage.insertBefore(book,next);
       pf=new St.PageFlip(book,{width:pw,height:ph,size:"fixed",showCover:true,usePortrait:portrait,maxShadowOpacity:.35,mobileScrollSupport:false,flippingTime:700,startPage:Math.min(cur,N-1)});
       pf.loadFromHTML(book.querySelectorAll(".fb-page"));
-      pf.on("flip",e=>{ cur=e.data; label(); });
+      pf.on("flip",e=>{ cur=e.data; label(); near(cur); });
       pf.on("changeOrientation",()=>label());
-      load.hidden=true; label();
+      load.hidden=true; label(); near(cur);
     }
+    // load only the pages around the one being read (plus a few ahead)
+    function near(i){
+      if(!book) return;
+      const imgs=book.querySelectorAll("img[data-src]");
+      imgs.forEach(img=>{ const k=+img.dataset.src.match(/p-(\d+)/)[1]-1; if(k>=i-2&&k<=i+4){ img.src=img.dataset.src; img.removeAttribute("data-src"); } });
+    }
+    // warm the library and first pages once the main page has finished loading
+    function warm(){ lib().catch(()=>{}); [0,1,2].forEach(i=>{ const im=new Image(); im.src=src(i); }); }
+    if(document.readyState==="complete") setTimeout(warm,2500); else addEventListener("load",()=>setTimeout(warm,2500));
     function open(e){
       if(e) e.preventDefault();
       lastFocus=document.activeElement; fb.hidden=false; document.body.style.overflow="hidden";
@@ -724,19 +736,24 @@ const COMMITTEE = [
     const fmt=n=>n.toLocaleString("en-IN");
 
     function fail(){
-      loading=false;
+      loading=false; failed=true;
+      if(rows) return;   /* keep showing the saved copy */
       body.innerHTML='<div class="ml-msg"><b>The member list could not be loaded right now.</b><span>Please check your connection and try again.</span><button class="ml-more" type="button" id="ml-retry">Try again</button></div>';
       $("#ml-retry").onclick=()=>{ body.innerHTML='<div class="ml-msg"><div class="spin"></div>Loading members…</div>'; load(); };
     }
+    const CK="iitgnac-members-v1";
+    function cached(){ try{ const c=JSON.parse(localStorage.getItem(CK)||"null"); return c&&Array.isArray(c.rows)?c.rows:null; }catch(e){ return null; } }
+    let fresh=false, failed=false;
     function load(){
-      if(loading||rows) return; loading=true;
+      if(!rows){ const c=cached(); if(c&&c.length) setRows(c); }
+      if(loading||fresh) return; loading=true; failed=false;
       const cb="__iitgnacMembers"+Date.now();
       const s=document.createElement("script");
       const to=setTimeout(()=>{ cleanup(); fail(); },20000);
       function cleanup(){ clearTimeout(to); try{ delete window[cb]; }catch(e){ window[cb]=undefined; } s.remove(); }
       window[cb]=resp=>{ cleanup(); try{ parse(resp); }catch(e){ fail(); } };
       s.onerror=()=>{ cleanup(); fail(); };
-      s.src="https://docs.google.com/spreadsheets/d/"+sheetId+"/gviz/tq?headers=1&tqx=responseHandler:"+cb;
+      s.src="https://docs.google.com/spreadsheets/d/"+sheetId+"/gviz/tq?headers=1&tq="+encodeURIComponent("select A,B,C,D")+"&tqx=responseHandler:"+cb;
       document.head.appendChild(s);
     }
     function parse(resp){
@@ -747,13 +764,20 @@ const COMMITTEE = [
       if(labels.every(l=>!l) && data.length){ labels=data.shift(); }
       const find=(re,d)=>{ const i=labels.findIndex(l=>re.test(l)); return i<0?d:i; };
       const iR=find(/roll/i,0), iN=find(/name/i,1), iC=find(/course/i,2), iM=find(/membership|status/i,3);
-      rows=data.map(r=>{ const o={roll:r[iR]||"",name:r[iN]||"",course:r[iC]||"",status:r[iM]||""};
+      const arr=data.map(r=>[r[iR]||"",r[iN]||"",r[iC]||"",r[iM]||""]).filter(r=>r[1]);
+      loading=false; fresh=true;
+      try{ localStorage.setItem(CK,JSON.stringify({t:Date.now(),rows:arr})); }catch(e){}
+      setRows(arr);
+    }
+    function setRows(arr){
+      rows=arr.map(r=>{ const o={roll:r[0],name:r[1],course:r[2],status:r[3]};
         const p=o.course.split("/"); o.prog=(p[0]||"").trim(); o.year=(p[2]||"").trim();
-        o.key=norm(o.name+" "+o.roll+" "+o.course); return o; }).filter(o=>o.name);
-      loading=false;
+        o.key=norm(o.name+" "+o.roll+" "+o.course); return o; });
+      [fp,fy].forEach(s=>{ const v=s.value; while(s.options.length>1) s.remove(1); s.dataset.keep=v; });
       const uniq=k=>[...new Set(rows.map(r=>r[k]).filter(Boolean))];
       uniq("prog").sort().forEach(v=>fp.add(new Option(v,v)));
       uniq("year").sort((a,b)=>b.localeCompare(a)).forEach(v=>fy.add(new Option(v,v)));
+      [fp,fy].forEach(s=>{ s.value=s.dataset.keep||""; });
       const act=rows.filter(r=>/^active$/i.test(r.status)).length;
       $("#ml-stats").innerHTML='<span><b>'+fmt(rows.length)+'</b>members</span><span><b>'+fmt(act)+'</b>active</span>';
       render();
@@ -786,8 +810,11 @@ const COMMITTEE = [
     function open(e){
       if(e){ e.preventDefault(); }
       lastFocus=document.activeElement; ml.hidden=false; document.body.style.overflow="hidden";
+      if(failed&&!rows) body.innerHTML='<div class="ml-msg"><div class="spin"></div>Loading members…</div>';
       load(); setTimeout(()=>q.focus(),50);
     }
+    // fetch the list quietly in the background, so it is ready when someone opens it
+    if(document.readyState==="complete") setTimeout(load,1500); else addEventListener("load",()=>setTimeout(load,1500));
     function close(){ ml.hidden=true; document.body.style.overflow=""; if(lastFocus) lastFocus.focus(); }
     $$(".js-members").forEach(a=>{ a.removeAttribute("target"); a.addEventListener("click",open); });
     ml.querySelector(".x").onclick=close;
