@@ -3,12 +3,270 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IITGN Alumni</title>
-<!-- for now the main address forwards to this year's Homecoming website -->
-<meta http-equiv="refresh" content="0; url=/homecoming2026/">
-<link rel="canonical" href="https://iitgnalumni.github.io/homecoming2026/">
-<script>location.replace('/homecoming2026/' + location.hash);</script>
-<style>body{margin:0;background:#0f1420;color:#e2a33a;font:italic 18px Georgia,serif;display:flex;align-items:center;justify-content:center;height:100vh}</style>
+<title>IITGN Alumni | IIT Gandhinagar</title>
+<meta name="description" content="The Office of Alumni Relations at IIT Gandhinagar keeps graduates connected with the Institute, with one another and with today's students. Six ways to stay part of IITGN's story.">
+<meta property="og:title" content="IITGN Alumni | IIT Gandhinagar">
+<meta property="og:description" content="Once IITGN, always IITGN. Six ways to stay part of IITGN's story.">
+<meta property="og:image" content="https://iitgnalumni.github.io/images/campus-monsoon.jpg">
+<meta property="og:url" content="https://iitgnalumni.github.io/">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://iitgnalumni.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Open+Sans:wght@400;600;700&display=swap">
+<style>html,body{margin:0;background:#fff}html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style>
 </head>
-<body><a style="color:#e2a33a" href="/homecoming2026/">Coming home&hellip;</a></body>
+<body>
+<script src="/alumni-nav.js"></script>
+<!-- Home page = Alumni Relations "About". Content is generated from the same block used on alumni.iitgn.ac.in/about -->
+<style>
+/* Layout: navy hero band -> facts strip -> two-column story -> service grid -> institute -> team -> contact band */
+.ar-about{
+  --ar-navy:#163850; --ar-navy-2:#0f2a3d; --ar-teal:#045F82; --ar-sky:#B3EAF9;
+  --ar-ink:#1d2b36; --ar-muted:#566673; --ar-line:#dbe4ea; --ar-paper:#ffffff; --ar-mist:#f2f6f8;
+  --ar-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --ar-body:'Open Sans','Segoe UI',Arial,sans-serif;
+  font-family:var(--ar-body); color:var(--ar-ink); background:var(--ar-paper);
+  font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+.ar-about *,.ar-about *::before,.ar-about *::after{box-sizing:border-box}
+.ar-about img{max-width:100%;display:block}
+.ar-about a{color:var(--ar-teal)}
+.ar-about a:focus-visible{outline:3px solid var(--ar-sky);outline-offset:2px;border-radius:4px}
+.ar-wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.ar-sec{padding-block:72px}
+.ar-eyebrow{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ar-teal);margin:0 0 12px}
+.ar-h2{font-family:var(--ar-display);font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.15;color:var(--ar-navy);margin:0 0 18px;text-wrap:balance}
+.ar-lead{font-size:18px;color:var(--ar-muted);max-width:62ch;margin:0}
+.ar-about p{margin:0 0 16px}
+.ar-about p:last-child{margin-bottom:0}
+
+/* Hero */
+.ar-hero{background:var(--ar-navy);color:#fff;overflow:hidden}
+.ar-hero .ar-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:64px}
+.ar-hero .ar-eyebrow{color:var(--ar-sky)}
+.ar-hero h1{font-family:var(--ar-display);font-weight:600;font-size:clamp(38px,5.4vw,64px);line-height:1.04;margin:0 0 20px;color:#fff;text-wrap:balance}
+.ar-hero h1 em{font-style:italic;color:var(--ar-sky);font-weight:500}
+.ar-hero .ar-lead{color:#d3e2ec}
+.ar-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.ar-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.ar-about .ar-btn--solid{background:var(--ar-sky);color:var(--ar-navy)}
+.ar-about .ar-btn--solid:hover{background:#fff}
+.ar-about .ar-btn--ghost{border:1.5px solid rgba(179,234,249,.6);color:#fff}
+.ar-about .ar-btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.ar-photo{position:relative;margin:0}
+.ar-photo img,.ar-photo .ar-ph{width:100%;aspect-ratio:4/3.3;object-fit:cover;border-radius:6px 120px 6px 6px}
+.ar-photo figcaption{font-size:13px;color:#a9c3d3;margin-top:10px}
+
+/* Facts */
+.ar-facts{background:var(--ar-navy-2);color:#fff}
+.ar-facts ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+.ar-facts li{padding:28px 22px;border-left:1px solid rgba(179,234,249,.18)}
+.ar-facts li:first-child{border-left:0;padding-left:0}
+.ar-num{display:block;font-family:var(--ar-display);font-size:40px;font-weight:600;line-height:1;color:var(--ar-sky);font-variant-numeric:tabular-nums;margin-bottom:8px}
+.ar-facts span:last-child{font-size:14px;color:#c8d9e4;line-height:1.45;display:block}
+
+/* Who we are */
+.ar-story{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.ar-story blockquote{margin:28px 0 0;padding:0 0 0 20px;border-left:3px solid var(--ar-teal);font-family:var(--ar-display);font-size:21px;line-height:1.4;color:var(--ar-navy)}
+.ar-story .ar-body p{font-size:17px}
+
+/* What we do */
+.ar-do{background:var(--ar-mist)}
+.ar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.ar-tile{background:var(--ar-paper);border:1px solid var(--ar-line);border-radius:10px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.ar-ico{width:44px;height:44px;border-radius:10px;background:#e3f4fa;color:var(--ar-teal);display:grid;place-items:center}
+.ar-ico svg{width:22px;height:22px}
+.ar-tile h3{font-family:var(--ar-display);font-weight:600;font-size:21px;color:var(--ar-navy);margin:4px 0 0}
+.ar-tile p{font-size:15px;color:var(--ar-muted);margin:0;flex:1}
+.ar-tile a{font-weight:600;font-size:14px;text-decoration:none}
+.ar-tile a:hover{text-decoration:underline}
+
+/* Institute */
+.ar-inst{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+.ar-pillars{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.ar-pillars li{padding:18px 20px;border:1px solid var(--ar-line);border-radius:10px;background:var(--ar-paper)}
+.ar-pillars strong{display:block;color:var(--ar-navy);font-size:16px;margin-bottom:2px}
+.ar-pillars span{font-size:14.5px;color:var(--ar-muted)}
+
+/* Team */
+.ar-team{background:var(--ar-mist)}
+.ar-people{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.ar-person{background:var(--ar-paper);border:1px solid var(--ar-line);border-radius:10px;padding:24px;display:flex;gap:18px;align-items:center;min-width:0}
+.ar-person img,.ar-person .ar-ph{width:84px;height:84px;border-radius:50%;object-fit:cover;flex:none;border:3px solid #e3f4fa}
+.ar-person div{min-width:0}
+.ar-person h3{font-size:17px;margin:0;color:var(--ar-navy)}
+.ar-role{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ar-teal);margin:2px 0 6px!important}
+.ar-person p{font-size:14px;color:var(--ar-muted);margin:0 0 2px}
+.ar-person a{font-size:14px;overflow-wrap:anywhere}
+
+/* Contact */
+.ar-contact{background:var(--ar-navy);color:#fff}
+.ar-contact .ar-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-block:56px}
+.ar-contact .ar-h2{color:#fff}
+.ar-contact .ar-lead{color:#d3e2ec}
+.ar-cl{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.ar-cl li{display:flex;gap:14px;align-items:flex-start;font-size:15.5px}
+.ar-cl small{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ar-sky);font-weight:700}
+.ar-about .ar-contact a{color:#fff}
+.ar-social{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.ar-about .ar-social a{font-size:13px;font-weight:600;text-decoration:none;padding:7px 14px;border:1px solid rgba(179,234,249,.45);border-radius:999px}
+.ar-about .ar-social a:hover{background:rgba(255,255,255,.1)}
+
+
+/* Pathway */
+.ar-path{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:none}
+.ar-path li{position:relative;background:var(--ar-paper);border:1px solid var(--ar-line);border-radius:10px;padding:26px 24px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ar-step{width:40px;height:40px;border-radius:50%;background:var(--ar-navy);color:var(--ar-sky);display:grid;place-items:center;font-family:var(--ar-display);font-weight:600;font-size:18px}
+.ar-path h3{font-family:var(--ar-display);font-weight:600;font-size:22px;color:var(--ar-navy);margin:6px 0 0}
+.ar-path p{font-size:15px;color:var(--ar-muted);margin:0;flex:1}
+.ar-path a{font-weight:600;font-size:14px;text-decoration:none}
+.ar-path a:hover{text-decoration:underline}
+.ar-mistbg{background:var(--ar-mist)}
+.ar-quote{background:var(--ar-teal);color:#fff}
+.ar-quote .ar-wrap{padding-block:56px;max-width:920px}
+.ar-quote blockquote{margin:0 0 14px;font-family:var(--ar-display);font-size:clamp(22px,2.6vw,30px);line-height:1.35;font-weight:500;text-wrap:balance}
+.ar-quote p{color:var(--ar-sky);font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin:0}
+@media (max-width:900px){.ar-path{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.ar-path{grid-template-columns:1fr}}
+
+/* Placeholder used only when a photo can't load in the preview */
+.ar-ph{background:linear-gradient(135deg,#1f4d6b,#045F82);color:var(--ar-sky);display:grid;place-items:center;font-family:var(--ar-display);font-size:26px;font-weight:600}
+
+@media (max-width:900px){
+  .ar-hero .ar-wrap,.ar-story,.ar-inst,.ar-contact .ar-wrap{grid-template-columns:1fr;gap:36px}
+  .ar-grid,.ar-people{grid-template-columns:1fr 1fr}
+  .ar-facts ul{grid-template-columns:1fr 1fr}
+  .ar-facts li:nth-child(3){border-left:0;padding-left:0}
+  .ar-facts li{border-top:1px solid rgba(179,234,249,.18)}
+  .ar-facts li:nth-child(-n+2){border-top:0}
+}
+@media (max-width:600px){
+  .ar-sec{padding-block:52px}
+  .ar-grid,.ar-people{grid-template-columns:1fr}
+  .ar-facts li{padding:22px 12px}
+  .ar-num{font-size:32px}
+}
+@media (prefers-reduced-motion:reduce){.ar-about *{transition:none!important}}
+</style>
+<div class="ar-about">
+
+<!-- ===== HERO ===== -->
+<section class="ar-hero">
+ <div class="ar-wrap">
+  <div>
+   <p class="ar-eyebrow">Office of Alumni Relations &middot; IIT Gandhinagar</p>
+   <h1>Once IITGN, <em>always</em> IITGN.</h1>
+   <p class="ar-lead">Wherever life has taken you since graduation, this is your way back. We keep IIT Gandhinagar&rsquo;s graduates connected with the Institute, with one another, and with the students who walk the campus today.</p>
+   <div class="ar-btns">
+    <a class="ar-btn ar-btn--solid" href="https://alumni.iitgn.ac.in/login?source=portfolio">Join the alumni network</a>
+    <a class="ar-btn ar-btn--ghost" href="#ar-contact">Get in touch</a>
+   </div>
+  </div>
+  <figure class="ar-photo">
+      <img src="/images/campus-monsoon.jpg" alt="IIT Gandhinagar campus during the monsoon" loading="eager">
+   <figcaption>The IIT Gandhinagar campus in the monsoon.</figcaption>
+  </figure>
+ </div>
+</section>
+
+<!-- ===== FACTS (update numbers each year) ===== -->
+<section class="ar-facts" aria-label="IITGN at a glance">
+ <div class="ar-wrap">
+  <ul>
+   <li><span class="ar-num">2008</span><span>Year IIT Gandhinagar was established</span></li>
+   <li><span class="ar-num">~3,300</span><span>Students on campus today, 55% of them postgraduate and PhD</span></li>
+   <li><span class="ar-num">150+</span><span>Faculty members, trained at leading universities worldwide</span></li>
+   <li><span class="ar-num">73%</span><span>Of IITGN alumni have contributed to the Institute at least once</span></li>
+  </ul>
+ </div>
+</section>
+
+<!-- ===== WHO WE ARE ===== -->
+<section class="ar-sec">
+ <div class="ar-wrap ar-story">
+  <div>
+   <p class="ar-eyebrow">Who we are</p>
+   <h2 class="ar-h2">Your lifelong link to IIT Gandhinagar</h2>
+   <blockquote>Graduation should not be the end of the relationship.</blockquote>
+  </div>
+  <div class="ar-body">
+   <p>The Office of Alumni Relations is the bridge between IIT Gandhinagar and its graduates. We help alumni stay in touch with the Institute and with each other, and we open doors for them to shape the IITGN of tomorrow.</p>
+   <p>Our aim is not to ask alumni for more. It is to give them more ways to belong. Every alumnus can contribute in the way that suits them, through time, expertise, networks or resources, and as mentors, advisors, collaborators, recruiters or donors.</p>
+   <p>IITGN alumni are building careers in industry, research, academia, entrepreneurship, government and the social sector. With 73% of alumni having contributed to IITGN at least once, the Institute has one of the strongest cultures of alumni giving in India. Whatever you need from the Institute after graduation, start with us.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ===== THE PATHWAY (from the Director's alumni presentation, Sept 2026) ===== -->
+<section class="ar-sec ar-do">
+ <div class="ar-wrap">
+  <p class="ar-eyebrow">The pathway</p>
+  <h2 class="ar-h2">Six ways to stay part of IITGN&rsquo;s story</h2>
+  <p class="ar-lead">Start wherever suits you, and go as far along the path as you choose.</p>
+  <ol class="ar-path">
+   <li><span class="ar-step">1</span><h3>Connect</h3><p>Stay in touch with the Institute and your batch through the alumni portal, reunions, meet-ups and your Batch Representative.</p><a href="https://alumni.iitgn.ac.in/login?source=portfolio">Join the portal &rarr;</a></li>
+   <li><span class="ar-step">2</span><h3>Contribute</h3><p>Share your time, expertise, network or resources. Mentor students, and offer internships and jobs.</p><a href="/masterclass/">Alumni Masterclass &rarr;</a></li>
+   <li><span class="ar-step">3</span><h3>Collaborate</h3><p>Work with faculty, students and Institute teams on research, sponsored projects and industry partnerships.</p><a href="mailto:alumnirelations@iitgn.ac.in">Write to us &rarr;</a></li>
+   <li><span class="ar-step">4</span><h3>Create</h3><p>Build something meaningful for IITGN, such as a research project, a startup with faculty, or a new opportunity for students.</p><a href="mailto:alumnirelations@iitgn.ac.in">Email us your idea &rarr;</a></li>
+   <li><span class="ar-step">5</span><h3>Give</h3><p>Support the initiatives you believe in, from Alumni Giving and batch gifts to scholarships and student activities.</p><a href="https://donate.iitgn.ac.in/alumni/">Alumni Giving &rarr;</a></li>
+   <li><span class="ar-step">6</span><h3>Legacy</h3><p>Leave something that remains after you: an endowed scholarship, a named space, a fellowship or a faculty chair.</p><a href="https://donate.iitgn.ac.in/alumni/alumni_scholarship/">Alumni scholarships &rarr;</a></li>
+  </ol>
+ </div>
+</section>
+
+<!-- ===== ABOUT THE INSTITUTE ===== -->
+<section class="ar-sec">
+ <div class="ar-wrap ar-inst">
+  <div>
+   <p class="ar-eyebrow">About IIT Gandhinagar</p>
+   <h2 class="ar-h2">A young IIT with a different idea of education</h2>
+   <p>Established in 2008, IIT Gandhinagar sits on a 400-acre green campus on the banks of the Sabarmati. It is part of the IIT system and is known for its emphasis on research, interdisciplinary learning and global engagement. Around 3,300 students study here today, taught by more than 150 faculty members.</p>
+   <p>Learning goes well beyond the classroom. Every new undergraduate begins with an immersive Foundation Programme, and students take courses in design, the humanities and the sciences alongside their discipline. Programmes span engineering (including artificial intelligence, integrated circuit design and maritime engineering), the natural sciences, cognitive science, and the humanities and social sciences.</p>
+   <p>Research is organised around today&rsquo;s big challenges, through interdisciplinary centres for cognitive and brain sciences, sustainable development, biomedical engineering, AI-driven innovations, archaeological sciences, safety engineering, design and innovation, creative learning, and research commercialisation. The Institute sits among some of India&rsquo;s leading institutions, including ISRO&rsquo;s Space Applications Centre, IIM Ahmedabad, NID, PRL and GIFT City, and works with partners around the world, including through the AIT&ndash;IITGN Collaborative Center in Thailand.</p>
+   <p>The campus also gives back to its neighbours. Through Nyasa, the Institute supports the education of children of migrant construction workers around the campus.</p>
+  </div>
+  <ul class="ar-pillars">
+   <li><strong>SAMARTH semiconductor hub</strong><span>A &#8377;190 crore hub with MeitY and the Government of Gujarat to train engineers for India&rsquo;s chip industry.</span></li>
+   <li><strong>PARAM Ananta supercomputer</strong><span>838 teraflops of computing, plus dedicated GPU clusters for AI research.</span></li>
+   <li><strong>IITGN Research Park</strong><span>About 19,000 sq m of R&amp;D space shared with industry partners and deep-tech startups.</span></li>
+   <li><strong>150 patent applications</strong><span>Filed or published in 2025&ndash;26, with around 660 research publications.</span></li>
+   <li><strong>A 5-star GRIHA green campus</strong><span>A fully residential campus on the banks of the Sabarmati.</span></li>
+  </ul>
+ </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="ar-quote">
+ <div class="ar-wrap">
+  <blockquote>&ldquo;IIT Gandhinagar is still young enough to decide what its traditions will be. One of those traditions should be that our alumni never stop building IITGN.&rdquo;</blockquote>
+  <p>From the Director&rsquo;s address to alumni, September 2026</p>
+ </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="ar-contact" id="ar-contact">
+ <div class="ar-wrap">
+  <div>
+   <p class="ar-eyebrow" style="color:#B3EAF9">Contact us</p>
+   <h2 class="ar-h2">We would love to hear from you</h2>
+   <p class="ar-lead">Share news, plan a visit, ask for help, or tell us how you would like to get involved.</p>
+   <div class="ar-social">
+    <a href="https://www.linkedin.com/company/ariitgn/">LinkedIn</a>
+    <a href="https://www.instagram.com/iitgn.alumnirelations/">Instagram</a>
+    <a href="https://www.facebook.com/AR.IITGN">Facebook</a>
+    <a href="https://twitter.com/alumni_iitgn">X</a>
+    <a href="https://www.youtube.com/channel/UCeFG6XW2oO0YAkIkEP5Py2w">YouTube</a>
+   </div>
+  </div>
+  <ul class="ar-cl">
+   <li><div><small>Email</small><a href="mailto:alumnirelations@iitgn.ac.in">alumnirelations@iitgn.ac.in</a></div></li>
+   <li><div><small>Phone</small>+91 79 2395 2100</div></li>
+   <li><div><small>Address</small>Office of Alumni Relations, Indian Institute of Technology Gandhinagar, Palaj, Gandhinagar, Gujarat 382055, India</div></li>
+  </ul>
+ </div>
+</section>
+
+</div>
+</body>
 </html>
