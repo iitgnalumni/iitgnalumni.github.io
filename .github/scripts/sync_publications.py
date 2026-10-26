@@ -178,7 +178,9 @@ def walk(folder_id, shelf, depth=0, seen=None):
             sub_shelf = shelf if shelf else shelf_for(e["name"])
             docs += walk(e["id"], sub_shelf, depth + 1, seen)
             continue
-        if re.search(r"draft", e["name"], re.I):
+        if depth == 0:
+            continue                      # loose files in the main folder (e.g. the READ ME) are not shown
+        if re.search(r"draft|read ?me", e["name"], re.I):
             log("  skip (draft):", e["name"])
             continue
         is_pdf = e["name"].lower().endswith(".pdf") or e["kind"] in ("gdoc", "gslides")
