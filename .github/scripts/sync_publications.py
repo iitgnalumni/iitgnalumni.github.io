@@ -249,7 +249,7 @@ def download_pdf(e):
             data = get(m.group(1) + "?" + urllib.parse.urlencode(params), binary=True)
             if data[:5] == b"%PDF-":
                 return data
-    raise RuntimeError("could not download a PDF (is it shared?)")
+    raise RuntimeError("could not download a PDF (is it shared?) last bytes: %r" % (locals().get("data", b"")[:80],))
 
 
 def render(e, pdf_bytes):
@@ -351,7 +351,7 @@ def main():
         return 0
     log("Found %d documents" % len(found))
 
-    items, changed = [], False
+    items, changed, errors = [], False, []
     for e in found:
         prev = old.get(e["id"])
         have_pages = prev and os.path.exists(os.path.join(LIB, e["id"], "p-001.webp"))
@@ -376,6 +376,7 @@ def main():
             info = render(e, pdf)
         except Exception as ex:  # noqa: BLE001
             log("   failed:", ex)
+            errors.append({"name": e["name"], "error": str(ex)[:300]})
             if prev and have_pages:
                 items.append(prev)          # keep the old copy
             continue
@@ -426,12 +427,14 @@ def main():
         "shelves": [{"key": k, "label": lbl} for k, lbl in shelves],
         "items": items,
     }
+    if errors:
+        meta["errors"] = errors   # files that could not be added (shown nowhere on the page)
     # keep the scheduled job alive: GitHub pauses hourly jobs after 60 days
     # without commits, so refresh "checked" once a month even if nothing changed
     last = old_meta.get("checked", "")
     today = dt.date.today().isoformat()
     stale = not last or (dt.date.today() - dt.date.fromisoformat(last)).days >= 30
-    if changed or stale or old_meta.get("status") != "ok":
+    if changed or stale or old_meta.get("status") != "ok" or errors != old_meta.get("errors", []):
         meta["checked"] = today
         with open(INDEX, "w", encoding="utf-8") as f:
             json.dump(meta, f, ensure_ascii=False, indent=1)
