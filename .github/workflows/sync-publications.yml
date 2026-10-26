@@ -1,0 +1,45 @@
+# Copies the newsletters and annual reports from Google Drive into the
+# Publications website (/publications). Runs every hour, and can be run
+# straight away from GitHub: Actions tab -> "Sync publications from Drive" -> Run workflow.
+name: Sync publications from Drive
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - ".github/scripts/sync_publications.py"
+      - ".github/workflows/sync-publications.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-publications
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install tools
+        run: pip install --quiet pypdfium2 pillow
+      - name: Read Drive and update the website
+        env:
+          DRIVE_API_KEY: ${{ secrets.DRIVE_API_KEY }}
+        run: python .github/scripts/sync_publications.py
+      - name: Publish changes
+        run: |
+          if [ -z "$(git status --porcelain publications)" ]; then echo "Nothing new."; exit 0; fi
+          git config user.name "iitgnalumni-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add publications
+          git commit -q -m "Publications: update from Google Drive"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
