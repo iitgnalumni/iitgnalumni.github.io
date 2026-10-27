@@ -17,6 +17,22 @@
  ],
  "items": [
   {
+   "id": "1P1UQd0rGkLqHZwath9VClT47LfH76QMJ",
+   "name": "Footprints in Palaj - July - September 2026.pdf",
+   "title": "Footprints in Palaj - July - September 2026",
+   "shelf": "footprints-in-palaj",
+   "shelfLabel": "Footprints in Palaj",
+   "kind": "file",
+   "modified": "10:03 pm",
+   "pages": 24,
+   "ratio": 1.414,
+   "bytes": 19421580,
+   "year": "2026",
+   "sort": 202609,
+   "download": "https://drive.usercontent.google.com/download?id=1P1UQd0rGkLqHZwath9VClT47LfH76QMJ&export=download",
+   "added": "2026-10-27"
+  },
+  {
    "id": "1R7mAyCPh2FCVAHgab7hXjcwlmdFMG_a_",
    "name": "Footprints in Palaj – April-June 2026.pdf",
    "title": "Footprints in Palaj – April-June 2026",
@@ -463,22 +479,6 @@
    "sort": 201502,
    "download": "https://alumni.iitgn.ac.in/api/campusfeed/downloadCfFile?blog_id=10154&file_name=102_1625989986_0232ab784800b16d735db7d8c4fb0958.pdf",
    "added": "2026-10-26"
-  },
-  {
-   "id": "1P1UQd0rGkLqHZwath9VClT47LfH76QMJ",
-   "name": "Footprints in Palaj - July - September.pdf",
-   "title": "Footprints in Palaj - July - September",
-   "shelf": "footprints-in-palaj",
-   "shelfLabel": "Footprints in Palaj",
-   "kind": "file",
-   "modified": "9:52 pm",
-   "pages": 24,
-   "ratio": 1.414,
-   "bytes": 19421580,
-   "year": "",
-   "sort": 9,
-   "download": "https://drive.usercontent.google.com/download?id=1P1UQd0rGkLqHZwath9VClT47LfH76QMJ&export=download",
-   "added": "2026-10-27"
   }
  ],
  "checked": "2026-10-27"
