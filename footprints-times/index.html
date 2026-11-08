@@ -118,6 +118,11 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
           <div class="status" id="s-photo" role="status"></div>
         </div>
         <div class="field">
+          <label for="psize">Photo size <span id="psize-val" style="text-transform:none;letter-spacing:0;font-weight:400">664 px</span></label>
+          <input type="range" id="psize" min="460" max="664" step="4" value="664">
+          <div class="hint">Stays square. Shrinking it (from the right side) widens the story column, so more text fits. The story must still end level with the bottom of the photo.</div>
+        </div>
+        <div class="field">
           <label for="zoom">Zoom</label>
           <input type="range" id="zoom" min="1" max="3" step="0.01" value="1">
         </div>
@@ -204,7 +209,8 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <summary>Rules this page enforces</summary>
         <ul class="small">
           <li>Headline on a single line.</li>
-          <li>Photo always fills the same 664 × 664 square, whatever size you upload. Under 664 px on its short side gives a blurriness warning.</li>
+          <li>Photo is always a square, whatever size you upload: 664 × 664 by default, and adjustable down to 460 × 460 with "Photo size" (it shrinks from the right and the story column widens to fill the space). A photo smaller than the square gives a blurriness warning.</li>
+          <li>The story is justified on both sides.</li>
           <li>Name in at most two lines; batch and caption on one line each.</li>
           <li>The story column starts level with the top of the photo and ends level with its bottom. If the write-up is too long or too short, the page tells you roughly how many words to cut or add.</li>
           <li>Download stays locked until every red item is fixed.</li>
@@ -214,6 +220,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
   </div>
 </div>
 
+<script src="vendor/hyphenate.js"></script>
 <script>
 (function () {
   'use strict';
@@ -221,8 +228,20 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
   /* ============ FIXED DESIGN (do not change: matches the approved poster) ============ */
   var W = 1080, H = 1350, M = 56, CW = 968;           // canvas, side margin, content width
   var INK = '#1A1814', PAPER = '#E9DFC7';
-  var PHOTO = { x: 56, y: 442.5, size: 664, border: 2 };
-  var COL = { x: 748, y: 442.5, w: 276, h: 664 };     // story column beside the photo
+  var PHOTO = { x: 56, y: 442.5, size: 664, border: 2 };   // size is adjustable (square, shrinks from the right)
+  var COL = { x: 748, y: 442.5, w: 276, h: 664 };     // story column beside the photo (follows the photo size)
+  var COL_GAP = 28, PHOTO_MIN = 460, PHOTO_MAX = 664;
+  var MID_TOP = 246.2, MID_BOTTOM = 1211, HEAD_H = 54, CAPTION_GAP = 10, CAPTION_H = 23.4;
+  var headTop = 317.4, captionTop = 1116.5;
+  // photo size -> positions (headline, photo+caption evenly spaced between masthead and footer)
+  function applySize(s) {
+    PHOTO.size = s;
+    var gap = (MID_BOTTOM - MID_TOP - (HEAD_H + s + CAPTION_GAP + CAPTION_H)) / 3;
+    headTop = MID_TOP + gap;
+    PHOTO.y = headTop + HEAD_H + gap;
+    captionTop = PHOTO.y + s + CAPTION_GAP;
+    COL.x = PHOTO.x + s + COL_GAP; COL.w = CW - s - COL_GAP; COL.y = PHOTO.y; COL.h = s;
+  }
   var GAP_MIN = 12;                                    // smallest gap between column items
   var GAP_MAX = 34;                                    // more than this = write-up too short
   var PARA = { size: 22, lh: 31.24 };
@@ -296,6 +315,16 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     for (var i = 0; i < s.length; i++) { ctx.fillText(s[i], x0, y); x0 += ctx.measureText(s[i]).width + ls; }
     return w;
   }
+  // justified line: spread the extra room evenly between words
+  function drawJustified(f, s, x, top, lh, width) {
+    var words = s.split(' ');
+    if (words.length < 2) { draw(f, s, x, top, lh); return; }
+    ctx.font = f; ctx.fillStyle = INK; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+    var y = baseline(f, top, lh);
+    var sum = words.reduce(function (a, w) { return a + ctx.measureText(w).width; }, 0);
+    var gap = (width - sum) / (words.length - 1);
+    words.forEach(function (w) { ctx.fillText(w, x, y); x += ctx.measureText(w).width + gap; });
+  }
   // greedy word-wrap; widths[] gives the width of each line (last value repeats)
   function wrap(f, text, widths) {
     setFont(meas, f);
@@ -310,6 +339,41 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     return lines;
   }
   function clean(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+
+  // word-wrap with newspaper-style hyphenation, so justified lines don't get big gaps
+  function syllables(word) {
+    var H = window.footprintsHyphenator;
+    // leave names/acronyms with 2+ capitals, numbers, links and already-hyphenated words alone
+    if (!H || /\d|[@\/-]/.test(word) || (word.match(/[A-Z]/g) || []).length > 1) return [word];
+    var m = word.match(/^([^A-Za-z]*)([A-Za-z]+)([^A-Za-z]*)$/);
+    if (!m) return [word];
+    var parts = H.hyphenate(m[2]);
+    if (parts.length < 2) return [word];
+    parts[0] = m[1] + parts[0]; parts[parts.length - 1] += m[3];
+    return parts;
+  }
+  function wrapHyphen(f, text, widths) {
+    setFont(meas, f);
+    var words = text.split(/\s+/).filter(Boolean), lines = [], cur = '';
+    var maxW = function () { return widths[Math.min(lines.length, widths.length - 1)]; };
+    var fits = function (s) { return meas.measureText(s).width <= maxW(); };
+    var i = 0, pending = null;
+    while (i < words.length || pending) {
+      var word = pending || words[i++]; pending = null;
+      var test = cur ? cur + ' ' + word : word;
+      if (fits(test) || !cur && !fits(word) && syllables(word).length < 2) { cur = test; continue; }
+      // try to break the word at a hyphenation point so the line is filled
+      var parts = syllables(word), placed = false;
+      for (var k = parts.length - 1; k >= 1; k--) {
+        var head = parts.slice(0, k).join('') + '-';
+        var t2 = cur ? cur + ' ' + head : head;
+        if (fits(t2)) { lines.push(t2); cur = ''; pending = parts.slice(k).join(''); placed = true; break; }
+      }
+      if (!placed) { if (cur) { lines.push(cur); cur = ''; pending = word; } else { cur = word; } }
+    }
+    if (cur) lines.push(cur);
+    return lines;
+  }
 
   /* ============ PHOTO ============ */
   function buildGray() {
@@ -343,7 +407,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     var nameH = nameLines.length * NAME.lh;
     var capChar = v.story.charAt(0), rest = v.story.slice(1);
     var capW = textW(F.cap, capChar) + CAP.padR;
-    var paraLines = wrap(F.para, rest, [COL.w - capW, COL.w - capW, COL.w]);
+    var paraLines = wrapHyphen(F.para, rest, [COL.w - capW, COL.w - capW, COL.w]);
     var paraH = Math.max(paraLines.length * PARA.lh, 50.8);
     var closingLines = v.closing ? wrap(F.closing, v.closing, [COL.w]) : [];
     var closingH = closingLines.length * PARA.lh;
@@ -396,7 +460,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     if (!photo) add(errors, 's-photo', 'Upload the alumnus photo.');
     else {
       var shortSide = Math.min(photo.naturalWidth, photo.naturalHeight) / view.zoom;
-      if (shortSide < 664) add(warnings, 's-photo', 'Photo is small (' + photo.naturalWidth + ' × ' + photo.naturalHeight + ' px' + (view.zoom > 1 ? ', zoomed in' : '') + '). It may look blurry; use a photo at least 664 px on its short side' + (view.zoom > 1 ? ' or zoom out' : '') + '.');
+      if (shortSide < PHOTO.size) add(warnings, 's-photo', 'Photo is small (' + photo.naturalWidth + ' × ' + photo.naturalHeight + ' px' + (view.zoom > 1 ? ', zoomed in' : '') + '). It may look blurry; use a photo at least ' + PHOTO.size + ' px on its short side' + (view.zoom > 1 ? ' or zoom out' : '') + '.');
       else setStatus('s-photo', 'ok', 'Photo ' + photo.naturalWidth + ' × ' + photo.naturalHeight + ' px, cropped to the square ✓');
     }
 
@@ -464,6 +528,9 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
   function render() {
     if (!ready) return;
     var v = values();
+    var newSize = +$('psize').value;
+    if (newSize !== PHOTO.size) { applySize(newSize); buildGray(); }
+    $('psize-val').textContent = newSize + ' px';
     $('wc').textContent = (v.story ? v.story.split(' ').length : 0) + ' words';
     var L = v.story ? layoutColumn(v) : null;
 
@@ -495,7 +562,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     ctx.fillRect(M, 245.2, CW, 1);
 
     // --- headline (one line, centred)
-    draw(F.head, (v.headline || 'HEADLINE').toUpperCase(), 540, 317.4, 54, 'center', INK, -0.54);
+    draw(F.head, (v.headline || 'HEADLINE').toUpperCase(), 540, headTop, HEAD_H, 'center', INK, -0.54);
 
     // --- photo square
     if (gray) ctx.drawImage(gray, PHOTO.x + 2, PHOTO.y + 2, PHOTO.size - 4, PHOTO.size - 4);
@@ -507,7 +574,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     }
     ctx.lineWidth = 2; ctx.strokeStyle = INK;
     ctx.strokeRect(PHOTO.x + 1, PHOTO.y + 1, PHOTO.size - 2, PHOTO.size - 2);
-    draw(F.caption, v.caption, PHOTO.x, 1116.5, 23.4);
+    draw(F.caption, v.caption, PHOTO.x, captionTop, CAPTION_H);
 
     // --- story column (starts at photo top, ends at photo bottom)
     if (L) {
@@ -524,8 +591,9 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
       ctx.font = F.cap; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
       ctx.fillText(L.capChar, COL.x, y + 51.7);
       L.paraLines.forEach(function (ln, i) {
-        var x = i < 2 ? COL.x + L.capW : COL.x;
-        draw(F.para, ln, x, y + i * PARA.lh, PARA.lh);
+        var x = i < 2 ? COL.x + L.capW : COL.x, w = COL.x + COL.w - x;
+        if (i < L.paraLines.length - 1) drawJustified(F.para, ln, x, y + i * PARA.lh, PARA.lh, w);
+        else draw(F.para, ln, x, y + i * PARA.lh, PARA.lh);
       });
       y += L.paraH + g;
       L.closingLines.forEach(function (ln, i) { draw(F.closing, ln, COL.x, y + i * PARA.lh, PARA.lh); });
@@ -548,7 +616,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
   /* ============ EVENTS ============ */
   var timer = null;
   function schedule() { clearTimeout(timer); timer = setTimeout(render, 60); }
-  ['vol','month','year','headline','caption','name','degree','dept','gradyear','story','closing'].forEach(function (id) {
+  ['vol','month','year','headline','caption','name','degree','dept','gradyear','story','closing','psize'].forEach(function (id) {
     $(id).addEventListener('input', schedule); $(id).addEventListener('change', schedule);
   });
   $('zoom').addEventListener('input', function () { view.zoom = +this.value; buildGray(); syncPan(); render(); });
@@ -572,7 +640,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     if (!photo) return; var r = panRange(); view.cy = r.maxY - (+this.value) * (r.maxY - r.minY); buildGray(); render();
   });
   $('resetpos').addEventListener('click', function () {
-    if (!photo) return; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; buildGray(); syncPan(); render();
+    if (!photo) return; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; $('psize').value = PHOTO_MAX; applySize(PHOTO_MAX); buildGray(); syncPan(); render();
   });
 
   function isHeic(file) { return /\.(heic|heif)$/i.test(file.name || '') || /image\/hei[cf]/i.test(file.type || ''); }
