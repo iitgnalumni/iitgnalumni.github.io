@@ -1,0 +1,36 @@
+# The Footprints Times: Achievement poster maker
+
+Live at **https://iitgnalumni.github.io/footprints-times/** (internal tool: not linked from the site menu and hidden from search engines, but anyone with the link can open it).
+
+Makes the approved "The Footprints Times · Achievement Edition" Instagram/LinkedIn poster (1080 × 1350 px) in the browser. Nothing is uploaded anywhere: the photo and text stay on the computer of whoever uses the page.
+
+## How the team uses it
+
+1. Open the link, fill in the edition (volume, month, year), headline, name, batch, story and closing line.
+2. Upload the alumnus photo. Any size or shape works: it is cropped to the fixed square and turned black & white. Drag the photo in the preview and use **Zoom** to frame the face.
+3. Fix anything the **Checks** panel marks in red. The download stays locked until all red items are fixed.
+4. Click **Download PNG** (sharpest) or **Download JPG** (smaller file).
+
+## What the page enforces
+
+| Item | Rule |
+| --- | --- |
+| Headline | Must fit on one line (about 28 characters). The page says how many characters to remove. |
+| Photo | Always the same 664 × 664 square. Warning (not blocking) if the photo is under 664 px on its short side. |
+| Name | At most two lines in the story column. |
+| Batch | One line inside the box, e.g. `BTECH · ME · 2018`. |
+| Caption | One line under the photo. |
+| Story | The column must start level with the top of the photo and end level with its bottom. Too long or too short gives "remove/add about N words". |
+
+## Files
+
+| Path | What it is |
+| --- | --- |
+| `index.html` | The whole tool: form, checks and the poster drawing code |
+| `assets/alumni-relations-logo.webp` | Alumni Relations logo (top-left of the poster) |
+| `assets/paper-texture.jpg` | The aged-paper texture laid over the poster |
+| `fonts/` | Playfair Display, Old Standard TT and Oswald (SIL Open Font License), served locally so the poster looks the same on every computer |
+
+## Changing the design
+
+All fixed positions and sizes are in the `FIXED DESIGN` block at the top of the script in `index.html`. The fixed wording (masthead, "Where IITGN shines", "Congratulations from the IITGN family", `#IITGNAlumni`) is in the `RENDER` section.

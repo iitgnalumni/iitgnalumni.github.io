@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Footprints Times · Achievement Poster Maker</title>
+<style>
+@font-face{font-family:"Playfair Display";src:url("fonts/playfair-display-latin-900-normal.woff2") format("woff2");font-weight:900;font-style:normal}
+@font-face{font-family:"Playfair Display";src:url("fonts/playfair-display-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Old Standard TT";src:url("fonts/old-standard-tt-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Old Standard TT";src:url("fonts/old-standard-tt-latin-400-italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Oswald";src:url("fonts/oswald-latin-500-normal.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Oswald";src:url("fonts/oswald-latin-700-normal.woff2") format("woff2");font-weight:700}
+
+:root{
+  --ink:#1A1814; --paper:#E9DFC7; --paper-2:#F4EEDF; --line:#CDBF9F;
+  --muted:#5C5446; --ok:#2E6B3A; --ok-bg:#E3EFE0; --err:#9B2C1F; --err-bg:#F6E1DC; --warn:#7A5A00; --warn-bg:#F7EDCB;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper-2);color:var(--ink);font-family:"Old Standard TT",Georgia,serif;font-size:17px;line-height:1.45}
+.wrap{max-width:1280px;margin:0 auto;padding:28px 20px 60px}
+header.top{border-top:4px solid var(--ink);border-bottom:1px solid var(--ink);padding:14px 0 10px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline;justify-content:space-between}
+header.top h1{margin:0;font-family:"Playfair Display",Georgia,serif;font-weight:900;font-size:clamp(26px,4vw,40px);letter-spacing:-0.01em;text-transform:uppercase;line-height:1}
+header.top p{margin:0;font-style:italic;color:var(--muted)}
+.grid{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.form{flex:1 1 400px;min-width:0}
+.preview{flex:1 1 460px;min-width:0;position:sticky;top:16px}
+fieldset{border:1px solid var(--line);background:#FBF8F0;margin:0 0 18px;padding:16px 18px 6px}
+legend{font-family:"Oswald",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:14px;padding:0 6px}
+.field{margin-bottom:14px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.row .field{flex:1 1 140px;min-width:0}
+label{display:block;font-family:"Oswald",sans-serif;font-weight:500;font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+input[type=text],input[type=number],select,textarea{width:100%;font:inherit;font-size:17px;color:var(--ink);background:#fff;border:1px solid #A89A7C;border-radius:4px;padding:9px 11px;min-height:44px}
+textarea{min-height:190px;resize:vertical;line-height:1.45}
+input:focus,select:focus,textarea:focus,button:focus-visible,.drop:focus-within{outline:3px solid #1F6BBF;outline-offset:1px}
+.hint{font-size:14px;color:var(--muted);margin-top:4px}
+.status{font-size:14px;margin-top:6px;padding:6px 10px;border-radius:4px;display:none}
+.status.show{display:block}
+.status.ok{background:var(--ok-bg);color:var(--ok)}
+.status.err{background:var(--err-bg);color:var(--err)}
+.status.warn{background:var(--warn-bg);color:var(--warn)}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:2px dashed #A89A7C;border-radius:6px;background:#fff;padding:18px;text-align:center;cursor:pointer;min-height:110px}
+.drop.drag{background:#F2ECDD}
+.drop input{position:absolute;width:1px;height:1px;opacity:0}
+.drop strong{font-family:"Oswald",sans-serif;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.drop .small{font-family:"Old Standard TT",Georgia,serif;text-transform:none;letter-spacing:0;font-weight:400}
+input[type=range]{width:100%;min-height:44px}
+.meter{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-top:4px}
+.canvasbox{border:1px solid var(--line);background:#fff;padding:10px}
+canvas#poster{display:block;width:100%;height:auto;touch-action:none}
+canvas#poster.dragging{cursor:grabbing}
+.panel{margin-top:14px;border:1px solid var(--line);background:#FBF8F0;padding:14px 16px}
+.panel h2{margin:0 0 8px;font-family:"Oswald",sans-serif;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase}
+.panel ul{margin:0;padding-left:20px}
+.panel li{margin:4px 0}
+.panel li.err{color:var(--err)}
+.panel li.warn{color:var(--warn)}
+.panel .allgood{color:var(--ok);font-weight:700}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+button{font-family:"Oswald",sans-serif;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:16px;min-height:48px;padding:0 22px;border:2px solid var(--ink);border-radius:2px;cursor:pointer;background:var(--ink);color:var(--paper)}
+button.secondary{background:transparent;color:var(--ink)}
+button:disabled{opacity:.4;cursor:not-allowed}
+.small{font-size:14px;color:var(--muted)}
+details{margin-top:18px}
+summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-size:14px}
+@media (max-width:900px){.preview{position:static}}
+</style>
+</head>
+<body>
+<script src="/alumni-nav.js" data-footer="false"></script>
+<div class="wrap">
+  <header class="top">
+    <h1>The Footprints Times</h1>
+    <p>Achievement poster maker · IITGN Alumni Relations (internal)</p>
+  </header>
+
+  <div class="grid">
+    <!-- ================= FORM ================= -->
+    <form class="form" id="form" autocomplete="off" onsubmit="return false">
+      <fieldset>
+        <legend>Edition</legend>
+        <div class="row">
+          <div class="field">
+            <label for="vol">Volume no.</label>
+            <input type="text" id="vol" value="02" inputmode="numeric" maxlength="4">
+          </div>
+          <div class="field">
+            <label for="month">Month</label>
+            <select id="month"></select>
+          </div>
+          <div class="field">
+            <label for="year">Year</label>
+            <input type="number" id="year" min="2008" max="2100">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Headline</legend>
+        <div class="field">
+          <label for="headline">Headline (one line)</label>
+          <input type="text" id="headline" value="Alumnus Returns as Professor" maxlength="60">
+          <div class="hint">Short news headline about the achievement. It must fit on one line, so roughly 28 characters or fewer.</div>
+          <div class="status" id="s-headline" role="status"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Photo</legend>
+        <div class="field">
+          <label class="drop" id="drop" for="photo">
+            <input type="file" id="photo" accept="image/*">
+            <strong>Upload alumnus photo</strong>
+            <span class="small">Click to choose, or drag a JPG/PNG here. Any size works: it is cropped to the square frame and turned black &amp; white automatically.</span>
+          </label>
+          <div class="status" id="s-photo" role="status"></div>
+        </div>
+        <div class="field">
+          <label for="zoom">Zoom</label>
+          <input type="range" id="zoom" min="1" max="3" step="0.01" value="1">
+          <div class="hint">Drag the photo in the preview to reposition it inside the square.</div>
+        </div>
+        <div class="field">
+          <label for="caption">Photo caption (one line)</label>
+          <input type="text" id="caption" value="Back at IITGN — this time at the lectern." maxlength="90">
+          <div class="status" id="s-caption" role="status"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Alumnus</legend>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" value="Dr. Vinod Ramakrishnan" maxlength="60">
+          <div class="status" id="s-name" role="status"></div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="degree">Degree</label>
+            <input type="text" id="degree" value="BTech" list="degrees" maxlength="12">
+            <datalist id="degrees"><option>BTech</option><option>MTech</option><option>MSc</option><option>MA</option><option>PhD</option><option>BTech-MTech</option><option>MSc-PhD</option><option>PGD</option></datalist>
+          </div>
+          <div class="field">
+            <label for="dept">Discipline</label>
+            <input type="text" id="dept" value="ME" list="depts" maxlength="12">
+            <datalist id="depts"><option>CSE</option><option>EE</option><option>ME</option><option>CL</option><option>CE</option><option>MSE</option><option>BE</option><option>PHY</option><option>CHE</option><option>MA</option><option>HSS</option><option>CGS</option><option>ES</option></datalist>
+          </div>
+          <div class="field">
+            <label for="gradyear">Grad. year</label>
+            <input type="number" id="gradyear" value="2018" min="2008" max="2100">
+          </div>
+        </div>
+        <div class="hint">Shown as <b>BTECH · ME · 2018</b>, in your usual (Degree/Dept/Year) style.</div>
+        <div class="status" id="s-batch" role="status"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Write-up</legend>
+        <div class="field">
+          <label for="story">Story</label>
+          <textarea id="story">Joins IIT Gandhinagar as Assistant Professor in the Department of Mechanical Engineering, becoming the second IITGN alumnus to return to the Institute as a faculty member. From learning at IITGN to now teaching and contributing to the same academic community, his journey reflects the strong bond our alumni share with their alma mater.</textarea>
+          <div class="meter"><span id="wc">0 words</span><span>Must end level with the bottom of the photo</span></div>
+          <div class="hint">The first letter becomes the large drop capital. Don't repeat the name or batch here; they already appear above the story.</div>
+          <div class="status" id="s-story" role="status"></div>
+        </div>
+        <div class="field">
+          <label for="closing">Closing line (italic)</label>
+          <input type="text" id="closing" value="Welcome back home!" maxlength="80">
+          <div class="status" id="s-closing" role="status"></div>
+        </div>
+      </fieldset>
+    </form>
+
+    <!-- ================= PREVIEW ================= -->
+    <section class="preview" aria-label="Poster preview">
+      <div class="canvasbox"><canvas id="poster" width="1080" height="1350" role="img" aria-label="Poster preview"></canvas></div>
+
+      <div class="panel" id="checks" aria-live="polite">
+        <h2>Checks</h2>
+        <div id="checklist">Loading fonts…</div>
+      </div>
+
+      <div class="buttons">
+        <button type="button" id="dl-png" disabled>Download PNG</button>
+        <button type="button" id="dl-jpg" class="secondary" disabled>Download JPG</button>
+      </div>
+      <p class="small">Output: 1080 × 1350 px (Instagram/LinkedIn 4:5). PNG is sharpest; JPG is a smaller file.</p>
+
+      <details>
+        <summary>Rules this page enforces</summary>
+        <ul class="small">
+          <li>Headline on a single line.</li>
+          <li>Photo always fills the same 664 × 664 square, whatever size you upload. Under 664 px on its short side gives a blurriness warning.</li>
+          <li>Name in at most two lines; batch and caption on one line each.</li>
+          <li>The story column starts level with the top of the photo and ends level with its bottom. If the write-up is too long or too short, the page tells you roughly how many words to cut or add.</li>
+          <li>Download stays locked until every red item is fixed.</li>
+        </ul>
+      </details>
+    </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============ FIXED DESIGN (do not change: matches the approved poster) ============ */
+  var W = 1080, H = 1350, M = 56, CW = 968;           // canvas, side margin, content width
+  var INK = '#1A1814', PAPER = '#E9DFC7';
+  var PHOTO = { x: 56, y: 442.5, size: 664, border: 2 };
+  var COL = { x: 748, y: 442.5, w: 276, h: 664 };     // story column beside the photo
+  var GAP_MIN = 12;                                    // smallest gap between column items
+  var GAP_MAX = 34;                                    // more than this = write-up too short
+  var PARA = { size: 22, lh: 31.24 };
+  var CAP = { size: 56, padR: 8 };                     // drop capital
+  var NAME = { size: 37, lh: 39.22, maxLines: 2 };
+  var BATCH = { size: 20, ls: 2.4, padX: 14, padY: 6, border: 2, h: 46 };
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  var F = {
+    strip:   '500 18px "Oswald"',
+    mast:    '900 77px "Playfair Display"',
+    sub:     'italic 400 19px "Old Standard TT"',
+    head:    '900 54px "Playfair Display"',
+    caption: 'italic 400 18px "Old Standard TT"',
+    name:    '900 37px "Playfair Display"',
+    batch:   '700 20px "Oswald"',
+    para:    '400 22px "Old Standard TT"',
+    cap:     '900 56px "Playfair Display"',
+    closing: 'italic 400 22px "Old Standard TT"',
+    congrats:'italic 400 30px "Playfair Display"',
+    tag:     '700 28px "Oswald"'
+  };
+
+  /* ============ STATE ============ */
+  var $ = function (id) { return document.getElementById(id); };
+  var canvas = $('poster'), ctx = canvas.getContext('2d');
+  var meas = document.createElement('canvas').getContext('2d');
+  var logo = new Image(), texture = new Image();
+  var photo = null;            // HTMLImageElement
+  var gray = null;             // cached grayscale square (canvas)
+  var view = { zoom: 1, cx: 0.5, cy: 0.5 };   // crop centre (0..1) and zoom
+  var ready = false, errors = [], warnings = [];
+
+  /* ============ INIT ============ */
+  MONTHS.forEach(function (m, i) { var o = document.createElement('option'); o.value = i; o.textContent = m; $('month').appendChild(o); });
+  var now = new Date();
+  $('month').value = now.getMonth();
+  $('year').value = now.getFullYear();
+
+  function loadImg(img, src) { return new Promise(function (res, rej) { img.onload = res; img.onerror = rej; img.src = src; }); }
+  var fontsToLoad = Object.keys(F).map(function (k) { return document.fonts.load(F[k], 'AaQ·—'); });
+
+  Promise.all(fontsToLoad.concat([loadImg(logo, 'assets/alumni-relations-logo.webp'), loadImg(texture, 'assets/paper-texture.jpg')]))
+    .then(function () { ready = true; render(); })
+    .catch(function () { $('checklist').textContent = 'Could not load the fonts or images. Check your connection and reload the page.'; });
+
+  /* ============ TEXT HELPERS ============ */
+  function setFont(c, f) { c.font = f; }
+  function hasLS(c) { return 'letterSpacing' in c; }
+  function textW(f, s, ls) {
+    setFont(meas, f);
+    if (!ls) return meas.measureText(s).width;
+    var w = 0; for (var i = 0; i < s.length; i++) w += meas.measureText(s[i]).width + ls;
+    return w;
+  }
+  // baseline for a line box exactly like CSS: half-leading + font ascent
+  function baseline(f, top, lh) {
+    setFont(meas, f);
+    var m = meas.measureText('Hg');
+    var a = m.fontBoundingBoxAscent, d = m.fontBoundingBoxDescent;
+    if (a === undefined) { a = lh * 0.8; d = lh * 0.2; }
+    return top + (lh - (a + d)) / 2 + a;
+  }
+  function draw(f, s, x, top, lh, align, color, ls) {
+    ctx.font = f; ctx.fillStyle = color || INK; ctx.textBaseline = 'alphabetic';
+    var y = baseline(f, top, lh);
+    var w = textW(f, s, ls);
+    var x0 = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x;
+    if (!ls) { ctx.textAlign = 'left'; ctx.fillText(s, x0, y); return w; }
+    ctx.textAlign = 'left';
+    for (var i = 0; i < s.length; i++) { ctx.fillText(s[i], x0, y); x0 += ctx.measureText(s[i]).width + ls; }
+    return w;
+  }
+  // greedy word-wrap; widths[] gives the width of each line (last value repeats)
+  function wrap(f, text, widths) {
+    setFont(meas, f);
+    var words = text.split(/\s+/).filter(Boolean), lines = [], cur = '';
+    for (var i = 0; i < words.length; i++) {
+      var maxW = widths[Math.min(lines.length, widths.length - 1)];
+      var test = cur ? cur + ' ' + words[i] : words[i];
+      if (meas.measureText(test).width <= maxW || !cur) { cur = test; }
+      else { lines.push(cur); cur = words[i]; }
+    }
+    if (cur) lines.push(cur);
+    return lines;
+  }
+  function clean(s) { return (s || '').replace(/\s+/g, ' ').trim(); }
+
+  /* ============ PHOTO ============ */
+  function buildGray() {
+    if (!photo) { gray = null; return; }
+    var S = PHOTO.size - 2 * PHOTO.border;              // 660 inner square
+    var scale = 2;                                       // render crop at 2x for quality, drawn at 1x
+    var c = document.createElement('canvas'); c.width = c.height = S * scale;
+    var g = c.getContext('2d');
+    var iw = photo.naturalWidth, ih = photo.naturalHeight;
+    var side = Math.min(iw, ih) / view.zoom;             // square crop in source px
+    var sx = Math.max(0, Math.min(iw - side, view.cx * iw - side / 2));
+    var sy = Math.max(0, Math.min(ih - side, view.cy * ih - side / 2));
+    g.imageSmoothingQuality = 'high';
+    g.drawImage(photo, sx, sy, side, side, 0, 0, c.width, c.height);
+    var d = g.getImageData(0, 0, c.width, c.height), p = d.data;
+    for (var i = 0; i < p.length; i += 4) {
+      var v = 0.2126 * p[i] + 0.7152 * p[i + 1] + 0.0722 * p[i + 2];   // grayscale(1)
+      v = (v - 127.5) * 1.1 + 127.5;                                   // contrast(1.1)
+      v = v < 0 ? 0 : v > 255 ? 255 : v;
+      p[i] = p[i + 1] = p[i + 2] = v;
+    }
+    g.putImageData(d, 0, 0);
+    gray = c;
+    // keep crop centre valid after clamping
+    view.cx = (sx + side / 2) / iw; view.cy = (sy + side / 2) / ih;
+  }
+
+  /* ============ LAYOUT OF THE STORY COLUMN ============ */
+  function layoutColumn(v) {
+    var nameLines = wrap(F.name, v.name, [COL.w]);
+    var nameH = nameLines.length * NAME.lh;
+    var capChar = v.story.charAt(0), rest = v.story.slice(1);
+    var capW = textW(F.cap, capChar) + CAP.padR;
+    var paraLines = wrap(F.para, rest, [COL.w - capW, COL.w - capW, COL.w]);
+    var paraH = Math.max(paraLines.length * PARA.lh, 50.8);
+    var closingLines = v.closing ? wrap(F.closing, v.closing, [COL.w]) : [];
+    var closingH = closingLines.length * PARA.lh;
+    var items = [nameH, BATCH.h, 3, paraH].concat(closingLines.length ? [closingH] : []);
+    var content = items.reduce(function (a, b) { return a + b; }, 0);
+    var gaps = items.length - 1;
+    var gap = (COL.h - content) / gaps;
+    return { nameLines: nameLines, nameH: nameH, capChar: capChar, capW: capW, paraLines: paraLines, paraH: paraH,
+             closingLines: closingLines, closingH: closingH, items: items, gap: gap, gaps: gaps, content: content };
+  }
+
+  /* ============ VALIDATION ============ */
+  function values() {
+    return {
+      vol: clean($('vol').value), month: MONTHS[+$('month').value], year: clean($('year').value),
+      headline: clean($('headline').value), caption: clean($('caption').value),
+      name: clean($('name').value), degree: clean($('degree').value), dept: clean($('dept').value),
+      gradyear: clean($('gradyear').value), story: clean($('story').value), closing: clean($('closing').value)
+    };
+  }
+  function setStatus(id, kind, msg) {
+    var el = $(id); if (!el) return;
+    el.className = 'status' + (kind ? ' show ' + kind : ''); el.textContent = msg || '';
+  }
+  function wordsPerLine(L) {
+    var words = L.paraLines.join(' ').split(' ').length;
+    return Math.max(3, words / Math.max(1, L.paraLines.length));
+  }
+
+  function validate(v, L) {
+    errors = []; warnings = [];
+    var add = function (list, id, msg) { list.push(msg); setStatus(id, list === errors ? 'err' : 'warn', msg); };
+    ['s-headline','s-photo','s-caption','s-name','s-batch','s-story','s-closing'].forEach(function (id) { setStatus(id); });
+
+    // edition
+    if (!v.vol) errors.push('Enter the volume number.');
+    if (!/^\d{4}$/.test(v.year)) errors.push('Enter a 4-digit year for the edition.');
+
+    // headline: one line
+    if (!v.headline) add(errors, 's-headline', 'Headline is empty.');
+    else {
+      var hw = textW(F.head, v.headline.toUpperCase(), -0.54);
+      if (hw > CW) {
+        var over = Math.ceil((hw - CW) / (hw / v.headline.length));
+        add(errors, 's-headline', 'Headline is too long for one line. Remove about ' + over + ' character' + (over > 1 ? 's' : '') + '.');
+      } else setStatus('s-headline', 'ok', 'Fits on one line ✓');
+    }
+
+    // photo
+    if (!photo) add(errors, 's-photo', 'Upload the alumnus photo.');
+    else {
+      var shortSide = Math.min(photo.naturalWidth, photo.naturalHeight) / view.zoom;
+      if (shortSide < 664) add(warnings, 's-photo', 'Photo is small (' + photo.naturalWidth + ' × ' + photo.naturalHeight + ' px' + (view.zoom > 1 ? ', zoomed in' : '') + '). It may look blurry; use a photo at least 664 px on its short side' + (view.zoom > 1 ? ' or zoom out' : '') + '.');
+      else setStatus('s-photo', 'ok', 'Photo ' + photo.naturalWidth + ' × ' + photo.naturalHeight + ' px, cropped to the square ✓');
+    }
+
+    // caption: one line
+    if (!v.caption) add(errors, 's-caption', 'Add a one-line photo caption.');
+    else {
+      var cw = textW(F.caption, v.caption);
+      if (cw > PHOTO.size) {
+        var co = Math.ceil((cw - PHOTO.size) / (cw / v.caption.length));
+        add(errors, 's-caption', 'Caption is longer than one line. Remove about ' + co + ' characters.');
+      }
+    }
+
+    // name: max 2 lines, no single word wider than the column
+    if (!v.name) add(errors, 's-name', 'Enter the alumnus name.');
+    else {
+      var longest = v.name.split(' ').reduce(function (m, w) { return Math.max(m, textW(F.name, w)); }, 0);
+      if (longest > COL.w) add(errors, 's-name', 'One word of the name is too wide for the column. Try a shorter form or initials.');
+      else if (L.nameLines.length > NAME.maxLines) add(errors, 's-name', 'Name runs to ' + L.nameLines.length + ' lines; the limit is 2. Use a shorter form (e.g. initials for middle names).');
+    }
+
+    // batch: one line inside the box
+    if (!v.degree || !v.dept || !/^\d{4}$/.test(v.gradyear)) add(errors, 's-batch', 'Fill in degree, discipline and a 4-digit graduation year.');
+    else {
+      var bw = textW(F.batch, batchText(v), BATCH.ls) + 2 * (BATCH.padX + BATCH.border);
+      if (bw > COL.w) add(errors, 's-batch', 'Batch text is too wide. Use short forms (e.g. ME, CSE).');
+    }
+
+    // story length: column must end level with the photo
+    if (!v.story) add(errors, 's-story', 'Write the story.');
+    else if (L) {
+      var wpl = wordsPerLine(L);
+      if (L.gap < GAP_MIN) {
+        var extra = (GAP_MIN - L.gap) * L.gaps;
+        var cut = Math.max(1, Math.ceil(extra / PARA.lh * wpl));
+        add(errors, 's-story', 'Write-up is too long: it runs past the bottom of the photo. Remove about ' + cut + ' word' + (cut > 1 ? 's' : '') + '.');
+      } else if (L.gap > GAP_MAX) {
+        var short = (L.gap - GAP_MAX) * L.gaps;
+        var addW = Math.max(1, Math.ceil(short / PARA.lh * wpl));
+        add(errors, 's-story', 'Write-up is too short: it ends well above the bottom of the photo. Add about ' + addW + ' word' + (addW > 1 ? 's' : '') + '.');
+      } else setStatus('s-story', 'ok', 'Length is right: ends level with the photo ✓');
+    }
+    if (v.closing && L && L.closingLines.length > 2) add(errors, 's-closing', 'Closing line is too long; keep it to one short line.');
+
+    // panel
+    var box = $('checklist');
+    if (!errors.length && !warnings.length) box.innerHTML = '<span class="allgood">All checks passed. Ready to download.</span>';
+    else {
+      var html = '<ul>';
+      errors.forEach(function (e) { html += '<li class="err">' + esc(e) + '</li>'; });
+      warnings.forEach(function (w) { html += '<li class="warn">Warning: ' + esc(w) + '</li>'; });
+      box.innerHTML = html + '</ul>' + (errors.length ? '<p class="small">Fix the red items to unlock the download.</p>' : '<p class="small">You can download, but please check the warning.</p>');
+    }
+    $('dl-png').disabled = $('dl-jpg').disabled = errors.length > 0;
+  }
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function batchText(v) { return (v.degree + ' · ' + v.dept + ' · ' + v.gradyear).toUpperCase(); }
+
+  /* ============ RENDER ============ */
+  function spaceBetween(items, totalW, y, h, drawFns) {
+    var gap = (totalW - items.reduce(function (a, b) { return a + b; }, 0)) / (items.length - 1), x = M;
+    items.forEach(function (w, i) { drawFns[i](x, y, h); x += w + gap; });
+  }
+
+  function render() {
+    if (!ready) return;
+    var v = values();
+    $('wc').textContent = (v.story ? v.story.split(' ').length : 0) + ' words';
+    var L = v.story ? layoutColumn(v) : null;
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = PAPER; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = INK;
+
+    // --- top strip: logo · ACHIEVEMENT EDITION · IITGN ALUMNI RELATIONS
+    var t1 = 'ACHIEVEMENT EDITION', t2 = 'IITGN ALUMNI RELATIONS';
+    spaceBetween([146, textW(F.strip, t1, 2.88), textW(F.strip, t2, 2.88)], CW, 46, 60, [
+      function (x) { ctx.globalCompositeOperation = 'multiply'; ctx.drawImage(logo, x, 46, 146, 146 * logo.naturalHeight / logo.naturalWidth); ctx.globalCompositeOperation = 'source-over'; },
+      function (x) { draw(F.strip, t1, x, 59, 26, 'left', INK, 2.88); },
+      function (x) { draw(F.strip, t2, x, 59, 26, 'left', INK, 2.88); }
+    ]);
+
+    // --- masthead
+    ctx.fillRect(M, 106, CW, 4);
+    draw(F.mast, 'THE FOOTPRINTS TIMES', 540, 116, 86.24, 'center', INK, -1.54);
+    ctx.fillRect(M, 202.2, CW, 4);
+
+    // --- sub line: Vol · tagline · month year
+    var s1 = 'Vol. ' + (v.vol || '00') + ' · Achievement Edition', s2 = '“Where IITGN shines”', s3 = v.month + ' ' + (v.year || '');
+    spaceBetween([textW(F.sub, s1), textW(F.sub, s2), textW(F.sub, s3)], CW, 214.2, 23, [
+      function (x) { draw(F.sub, s1, x, 214.2, 23); },
+      function (x) { draw(F.sub, s2, x, 214.2, 23); },
+      function (x) { draw(F.sub, s3, x, 214.2, 23); }
+    ]);
+    ctx.fillRect(M, 245.2, CW, 1);
+
+    // --- headline (one line, centred)
+    draw(F.head, (v.headline || 'HEADLINE').toUpperCase(), 540, 317.4, 54, 'center', INK, -0.54);
+
+    // --- photo square
+    if (gray) ctx.drawImage(gray, PHOTO.x + 2, PHOTO.y + 2, PHOTO.size - 4, PHOTO.size - 4);
+    else {
+      ctx.fillStyle = '#DAD5CA'; ctx.fillRect(PHOTO.x, PHOTO.y, PHOTO.size, PHOTO.size);
+      ctx.fillStyle = '#9C968A';
+      draw('700 22px "Oswald"', 'UPLOAD PHOTO', PHOTO.x + PHOTO.size / 2, PHOTO.y + PHOTO.size / 2 - 15, 30, 'center', '#6E685C', 3);
+      ctx.fillStyle = INK;
+    }
+    ctx.lineWidth = 2; ctx.strokeStyle = INK;
+    ctx.strokeRect(PHOTO.x + 1, PHOTO.y + 1, PHOTO.size - 2, PHOTO.size - 2);
+    draw(F.caption, v.caption, PHOTO.x, 1116.5, 23.4);
+
+    // --- story column (starts at photo top, ends at photo bottom)
+    if (L) {
+      var g = Math.max(L.gap, GAP_MIN), y = COL.y;
+      L.nameLines.forEach(function (ln, i) { draw(F.name, ln, COL.x, y + i * NAME.lh, NAME.lh); });
+      y += L.nameH + g;
+      var bt = batchText(v), bw = textW(F.batch, bt, BATCH.ls) + 2 * (BATCH.padX + BATCH.border);
+      ctx.lineWidth = 2; ctx.strokeRect(COL.x + 1, y + 1, bw - 2, BATCH.h - 2);
+      draw(F.batch, bt, COL.x + BATCH.border + BATCH.padX, y + BATCH.border + BATCH.padY, BATCH.h - 2 * (BATCH.border + BATCH.padY), 'left', INK, BATCH.ls);
+      y += BATCH.h + g;
+      ctx.fillRect(COL.x, y, COL.w, 3);
+      y += 3 + g;
+      // drop capital spans the first two lines
+      ctx.font = F.cap; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+      ctx.fillText(L.capChar, COL.x, y + 51.7);
+      L.paraLines.forEach(function (ln, i) {
+        var x = i < 2 ? COL.x + L.capW : COL.x;
+        draw(F.para, ln, x, y + i * PARA.lh, PARA.lh);
+      });
+      y += L.paraH + g;
+      L.closingLines.forEach(function (ln, i) { draw(F.closing, ln, COL.x, y + i * PARA.lh, PARA.lh); });
+    }
+
+    // --- footer
+    ctx.fillStyle = INK; ctx.fillRect(M, 1211, CW, 4);
+    draw(F.congrats, 'Congratulations from the IITGN family', M, 1251.5, 40);
+    ctx.fillRect(768, 1237, 256, 69);
+    draw(F.tag, '#IITGNALUMNI', 768 + 26, 1237 + 14, 41, 'left', PAPER, 3.36);
+
+    // --- aged paper texture over everything
+    ctx.globalCompositeOperation = 'multiply';
+    ctx.drawImage(texture, 0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+
+    validate(v, L);
+  }
+
+  /* ============ EVENTS ============ */
+  var timer = null;
+  function schedule() { clearTimeout(timer); timer = setTimeout(render, 60); }
+  ['vol','month','year','headline','caption','name','degree','dept','gradyear','story','closing'].forEach(function (id) {
+    $(id).addEventListener('input', schedule); $(id).addEventListener('change', schedule);
+  });
+  $('zoom').addEventListener('input', function () { view.zoom = +this.value; buildGray(); render(); });
+
+  function readFile(file) {
+    if (!file || !/^image\//.test(file.type)) { setStatus('s-photo', 'err', 'That file is not an image. Upload a JPG or PNG.'); return; }
+    var url = URL.createObjectURL(file), img = new Image();
+    img.onload = function () { photo = img; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; buildGray(); render(); };
+    img.onerror = function () { setStatus('s-photo', 'err', 'Could not read this image. Try saving it as JPG and upload again.'); };
+    img.src = url;
+  }
+  $('photo').addEventListener('change', function () { readFile(this.files[0]); });
+  var drop = $('drop');
+  ['dragenter','dragover'].forEach(function (e) { drop.addEventListener(e, function (ev) { ev.preventDefault(); drop.classList.add('drag'); }); });
+  ['dragleave','drop'].forEach(function (e) { drop.addEventListener(e, function (ev) { ev.preventDefault(); drop.classList.remove('drag'); }); });
+  drop.addEventListener('drop', function (ev) { readFile(ev.dataTransfer.files[0]); });
+
+  // drag the photo inside the square on the preview
+  var dragging = null;
+  function toCanvas(ev) { var r = canvas.getBoundingClientRect(); return { x: (ev.clientX - r.left) * W / r.width, y: (ev.clientY - r.top) * H / r.height }; }
+  canvas.addEventListener('pointerdown', function (ev) {
+    if (!photo) return; var p = toCanvas(ev);
+    if (p.x < PHOTO.x || p.x > PHOTO.x + PHOTO.size || p.y < PHOTO.y || p.y > PHOTO.y + PHOTO.size) return;
+    dragging = { x: p.x, y: p.y, cx: view.cx, cy: view.cy }; canvas.setPointerCapture(ev.pointerId); canvas.classList.add('dragging');
+  });
+  canvas.addEventListener('pointermove', function (ev) {
+    if (!dragging) return; var p = toCanvas(ev);
+    var side = Math.min(photo.naturalWidth, photo.naturalHeight) / view.zoom, k = side / (PHOTO.size - 4);
+    view.cx = dragging.cx - (p.x - dragging.x) * k / photo.naturalWidth;
+    view.cy = dragging.cy - (p.y - dragging.y) * k / photo.naturalHeight;
+    buildGray(); render();
+  });
+  ['pointerup','pointercancel'].forEach(function (e) { canvas.addEventListener(e, function () { dragging = null; canvas.classList.remove('dragging'); }); });
+
+  // downloads
+  function fileName(ext) {
+    var v = values(), slug = (v.name || 'alumnus').toLowerCase().replace(/^(dr|prof|mr|ms|mrs)\.?\s+/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return 'footprints-times-' + slug + '-' + v.month.toLowerCase() + '-' + v.year + '.' + ext;
+  }
+  function download(type, ext) {
+    render();
+    if (errors.length) return;
+    canvas.toBlob(function (blob) {
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = fileName(ext);
+      document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    }, type, 0.95);
+  }
+  $('dl-png').addEventListener('click', function () { download('image/png', 'png'); });
+  $('dl-jpg').addEventListener('click', function () { download('image/jpeg', 'jpg'); });
+})();
+</script>
+</body>
+</html>
