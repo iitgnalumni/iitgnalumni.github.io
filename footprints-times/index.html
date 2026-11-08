@@ -120,8 +120,20 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <div class="field">
           <label for="zoom">Zoom</label>
           <input type="range" id="zoom" min="1" max="3" step="0.01" value="1">
-          <div class="hint">Drag the photo in the preview to reposition it inside the square.</div>
         </div>
+        <div class="row">
+          <div class="field">
+            <label for="panx">Move left ↔ right</label>
+            <input type="range" id="panx" min="0" max="1" step="0.001" value="0.5">
+          </div>
+          <div class="field">
+            <label for="pany">Move up ↕ down</label>
+            <input type="range" id="pany" min="0" max="1" step="0.001" value="0.4">
+          </div>
+        </div>
+        <div class="hint">You can also drag the photo directly in the preview. Zoom in first if a slider doesn't move the photo: a photo that exactly fills the square has no room to shift that way.</div>
+        <div class="buttons" style="margin-top:8px"><button type="button" class="secondary" id="resetpos">Reset photo position</button></div>
+        <div style="height:12px"></div>
         <div class="field">
           <label for="caption">Photo caption (one line)</label>
           <input type="text" id="caption" value="Back at IITGN — this time at the lectern." maxlength="90">
@@ -539,7 +551,29 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
   ['vol','month','year','headline','caption','name','degree','dept','gradyear','story','closing'].forEach(function (id) {
     $(id).addEventListener('input', schedule); $(id).addEventListener('change', schedule);
   });
-  $('zoom').addEventListener('input', function () { view.zoom = +this.value; buildGray(); render(); });
+  $('zoom').addEventListener('input', function () { view.zoom = +this.value; buildGray(); syncPan(); render(); });
+
+  // position sliders: the value is where the PICTURE sits (1 = moved fully right / down)
+  function panRange() {
+    var iw = photo.naturalWidth, ih = photo.naturalHeight, side = Math.min(iw, ih) / view.zoom;
+    return { minX: side / 2 / iw, maxX: 1 - side / 2 / iw, minY: side / 2 / ih, maxY: 1 - side / 2 / ih };
+  }
+  function syncPan() {
+    if (!photo) return;
+    var r = panRange(), sx = r.maxX - r.minX, sy = r.maxY - r.minY;
+    $('panx').disabled = sx < 1e-4; $('pany').disabled = sy < 1e-4;
+    $('panx').value = sx < 1e-4 ? 0.5 : (r.maxX - view.cx) / sx;
+    $('pany').value = sy < 1e-4 ? 0.5 : (r.maxY - view.cy) / sy;
+  }
+  $('panx').addEventListener('input', function () {
+    if (!photo) return; var r = panRange(); view.cx = r.maxX - (+this.value) * (r.maxX - r.minX); buildGray(); render();
+  });
+  $('pany').addEventListener('input', function () {
+    if (!photo) return; var r = panRange(); view.cy = r.maxY - (+this.value) * (r.maxY - r.minY); buildGray(); render();
+  });
+  $('resetpos').addEventListener('click', function () {
+    if (!photo) return; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; buildGray(); syncPan(); render();
+  });
 
   function isHeic(file) { return /\.(heic|heif)$/i.test(file.name || '') || /image\/hei[cf]/i.test(file.type || ''); }
   var heicLib = null;   // loaded only when someone uploads a HEIC photo
@@ -552,7 +586,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
   }
   function showImage(blob, heic) {
     var url = URL.createObjectURL(blob), img = new Image();
-    img.onload = function () { photo = img; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; buildGray(); render(); };
+    img.onload = function () { photo = img; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; buildGray(); syncPan(); render(); };
     img.onerror = function () {
       if (heic) { setStatus('s-photo', 'err', 'Could not read this HEIC photo. On iPhone, share it as JPG (or set Camera › Formats › Most Compatible) and upload again.'); return; }
       setStatus('s-photo', 'err', 'Could not read this image. Upload a JPG, PNG or HEIC photo.');
@@ -594,7 +628,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     var side = Math.min(photo.naturalWidth, photo.naturalHeight) / view.zoom, k = side / (PHOTO.size - 4);
     view.cx = dragging.cx - (p.x - dragging.x) * k / photo.naturalWidth;
     view.cy = dragging.cy - (p.y - dragging.y) * k / photo.naturalHeight;
-    buildGray(); render();
+    buildGray(); syncPan(); render();
   });
   ['pointerup','pointercancel'].forEach(function (e) { canvas.addEventListener(e, function () { dragging = null; canvas.classList.remove('dragging'); }); });
 

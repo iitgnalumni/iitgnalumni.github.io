@@ -9,7 +9,7 @@ Makes the approved "The Footprints Times · Achievement Edition" Instagram/Linke
 ## How the team uses it
 
 1. Open the link, fill in the edition (volume, month, year), headline, name, batch, story and closing line.
-2. Upload the alumnus photo: JPG, PNG or HEIC (iPhone). Any size or shape works: it is cropped to the fixed square and turned black & white. Drag the photo in the preview and use **Zoom** to frame the face.
+2. Upload the alumnus photo: JPG, PNG or HEIC (iPhone). Any size or shape works: it is cropped to the fixed square and turned black & white. Frame the face with **Zoom**, **Move left ↔ right** and **Move up ↕ down** (or drag the photo in the preview). **Reset photo position** starts over.
 3. Fix anything the **Checks** panel marks in red. The download stays locked until all red items are fixed.
 4. Click **Download PNG** (sharpest) or **Download JPG** (smaller file).
 
