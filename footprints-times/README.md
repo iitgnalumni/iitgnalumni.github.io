@@ -1,13 +1,15 @@
 # The Footprints Times: Achievement poster maker
 
-Live at **https://iitgnalumni.github.io/footprints-times/** (internal tool: not linked from the site menu and hidden from search engines, but anyone with the link can open it).
+Live at **https://iitgnalumni.github.io/footprints-times/** (internal team tool).
+
+**Keep it separate from the public alumni site:** do not add it to `alumni-nav.js` or link it from any other page, and do not add the shared top bar (`<script src="/alumni-nav.js">`) to this page. It is hidden from search engines, but anyone with the link can open it, so share the link only within the team.
 
 Makes the approved "The Footprints Times · Achievement Edition" Instagram/LinkedIn poster (1080 × 1350 px) in the browser. Nothing is uploaded anywhere: the photo and text stay on the computer of whoever uses the page.
 
 ## How the team uses it
 
 1. Open the link, fill in the edition (volume, month, year), headline, name, batch, story and closing line.
-2. Upload the alumnus photo. Any size or shape works: it is cropped to the fixed square and turned black & white. Drag the photo in the preview and use **Zoom** to frame the face.
+2. Upload the alumnus photo: JPG, PNG or HEIC (iPhone). Any size or shape works: it is cropped to the fixed square and turned black & white. Drag the photo in the preview and use **Zoom** to frame the face.
 3. Fix anything the **Checks** panel marks in red. The download stays locked until all red items are fixed.
 4. Click **Download PNG** (sharpest) or **Download JPG** (smaller file).
 
@@ -29,6 +31,7 @@ Makes the approved "The Footprints Times · Achievement Edition" Instagram/Linke
 | `index.html` | The whole tool: form, checks and the poster drawing code |
 | `assets/alumni-relations-logo.webp` | Alumni Relations logo (top-left of the poster) |
 | `assets/paper-texture.jpg` | The aged-paper texture laid over the poster |
+| `vendor/heic2any.min.js` | Converts iPhone HEIC photos in the browser (MIT licence; loaded only when a HEIC file is uploaded) |
 | `fonts/` | Playfair Display, Old Standard TT and Oswald (SIL Open Font License), served locally so the poster looks the same on every computer |
 
 ## Changing the design

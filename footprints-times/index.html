@@ -70,7 +70,6 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
 </style>
 </head>
 <body>
-<script src="/alumni-nav.js" data-footer="false"></script>
 <div class="wrap">
   <header class="top">
     <h1>The Footprints Times</h1>
@@ -112,9 +111,9 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <legend>Photo</legend>
         <div class="field">
           <label class="drop" id="drop" for="photo">
-            <input type="file" id="photo" accept="image/*">
+            <input type="file" id="photo" accept="image/*,.heic,.heif">
             <strong>Upload alumnus photo</strong>
-            <span class="small">Click to choose, or drag a JPG/PNG here. Any size works: it is cropped to the square frame and turned black &amp; white automatically.</span>
+            <span class="small">Click to choose, or drag a JPG, PNG or HEIC (iPhone) photo here. Any size works: it is cropped to the square frame and turned black &amp; white automatically.</span>
           </label>
           <div class="status" id="s-photo" role="status"></div>
         </div>
@@ -542,12 +541,39 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
   });
   $('zoom').addEventListener('input', function () { view.zoom = +this.value; buildGray(); render(); });
 
-  function readFile(file) {
-    if (!file || !/^image\//.test(file.type)) { setStatus('s-photo', 'err', 'That file is not an image. Upload a JPG or PNG.'); return; }
-    var url = URL.createObjectURL(file), img = new Image();
+  function isHeic(file) { return /\.(heic|heif)$/i.test(file.name || '') || /image\/hei[cf]/i.test(file.type || ''); }
+  var heicLib = null;   // loaded only when someone uploads a HEIC photo
+  function loadHeicLib() {
+    if (!heicLib) heicLib = new Promise(function (res, rej) {
+      var s = document.createElement('script'); s.src = 'vendor/heic2any.min.js';
+      s.onload = function () { res(window.heic2any); }; s.onerror = rej; document.head.appendChild(s);
+    });
+    return heicLib;
+  }
+  function showImage(blob, heic) {
+    var url = URL.createObjectURL(blob), img = new Image();
     img.onload = function () { photo = img; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; buildGray(); render(); };
-    img.onerror = function () { setStatus('s-photo', 'err', 'Could not read this image. Try saving it as JPG and upload again.'); };
+    img.onerror = function () {
+      if (heic) { setStatus('s-photo', 'err', 'Could not read this HEIC photo. On iPhone, share it as JPG (or set Camera › Formats › Most Compatible) and upload again.'); return; }
+      setStatus('s-photo', 'err', 'Could not read this image. Upload a JPG, PNG or HEIC photo.');
+    };
     img.src = url;
+  }
+  function readFile(file) {
+    if (!file) return;
+    var heic = isHeic(file);
+    if (!heic && !/^image\//.test(file.type)) { setStatus('s-photo', 'err', 'That file is not an image. Upload a JPG, PNG or HEIC photo.'); return; }
+    if (!heic) { showImage(file, false); return; }
+    setStatus('s-photo', 'warn', 'Converting HEIC photo… this takes a few seconds.');
+    // Safari can show HEIC directly; other browsers need converting first
+    var probe = new Image(), probeUrl = URL.createObjectURL(file);
+    probe.onload = function () { showImage(file, true); };
+    probe.onerror = function () {
+      loadHeicLib().then(function (heic2any) { return heic2any({ blob: file, toType: 'image/jpeg', quality: 0.95 }); })
+        .then(function (out) { showImage(Array.isArray(out) ? out[0] : out, true); })
+        .catch(function () { setStatus('s-photo', 'err', 'Could not convert this HEIC photo. On iPhone, share it as JPG and upload again.'); });
+    };
+    probe.src = probeUrl;
   }
   $('photo').addEventListener('change', function () { readFile(this.files[0]); });
   var drop = $('drop');
