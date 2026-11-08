@@ -83,7 +83,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <legend>Edition</legend>
         <div class="row">
           <div class="field">
-            <label for="vol">Volume no.</label>
+            <label for="vol">Post no.</label>
             <input type="text" id="vol" value="02" inputmode="numeric" maxlength="4">
           </div>
           <div class="field">
@@ -101,7 +101,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <legend>Headline</legend>
         <div class="field">
           <label for="headline">Headline (one line)</label>
-          <input type="text" id="headline" value="Alumnus Returns as Professor" maxlength="60">
+          <input type="text" id="headline" value="Alumni Returns to Give Back" maxlength="60">
           <div class="hint">Short news headline about the achievement. It must fit on one line, so roughly 28 characters or fewer.</div>
           <div class="status" id="s-headline" role="status"></div>
         </div>
@@ -113,14 +113,19 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
           <label class="drop" id="drop" for="photo">
             <input type="file" id="photo" accept="image/*,.heic,.heif">
             <strong>Upload alumnus photo</strong>
-            <span class="small">Click to choose, or drag a JPG, PNG or HEIC (iPhone) photo here. Any size works: it is cropped to the square frame and turned black &amp; white automatically.</span>
+            <span class="small">Click to choose, or drag a JPG, PNG or HEIC (iPhone) photo here. Any size works: it is cropped to the square frame automatically and keeps its colours, with a light vintage tone to match the paper.</span>
           </label>
           <div class="status" id="s-photo" role="status"></div>
         </div>
         <div class="field">
-          <label for="psize">Photo size <span id="psize-val" style="text-transform:none;letter-spacing:0;font-weight:400">664 px</span></label>
-          <input type="range" id="psize" min="460" max="664" step="4" value="664">
+          <label for="psize">Photo size <span id="psize-val" style="text-transform:none;letter-spacing:0;font-weight:400">640 px</span></label>
+          <input type="range" id="psize" min="460" max="664" step="4" value="640">
           <div class="hint">Stays square. Shrinking it (from the right side) widens the story column, so more text fits. The story must still end level with the bottom of the photo.</div>
+        </div>
+        <div class="field">
+          <label for="tone">Vintage tone <span id="tone-val" style="text-transform:none;letter-spacing:0;font-weight:400">30%</span></label>
+          <input type="range" id="tone" min="0" max="100" step="5" value="30">
+          <div class="hint">0% keeps the photo's original colours; higher values soften and warm them to match the old-paper look.</div>
         </div>
         <div class="field">
           <label for="zoom">Zoom</label>
@@ -141,7 +146,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <div style="height:12px"></div>
         <div class="field">
           <label for="caption">Photo caption (one line)</label>
-          <input type="text" id="caption" value="Back at IITGN — this time at the lectern." maxlength="90">
+          <input type="text" id="caption" value="Back at IITGN — this time to bring alumni home." maxlength="90">
           <div class="status" id="s-caption" role="status"></div>
         </div>
       </fieldset>
@@ -150,26 +155,26 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <legend>Alumnus</legend>
         <div class="field">
           <label for="name">Full name</label>
-          <input type="text" id="name" value="Dr. Vinod Ramakrishnan" maxlength="60">
+          <input type="text" id="name" value="Devender Singh" maxlength="60">
           <div class="status" id="s-name" role="status"></div>
         </div>
         <div class="row">
           <div class="field">
             <label for="degree">Degree</label>
-            <input type="text" id="degree" value="BTech" list="degrees" maxlength="12">
+            <input type="text" id="degree" value="MSc" list="degrees" maxlength="12">
             <datalist id="degrees"><option>BTech</option><option>MTech</option><option>MSc</option><option>MA</option><option>PhD</option><option>BTech-MTech</option><option>MSc-PhD</option><option>PGD</option></datalist>
           </div>
           <div class="field">
             <label for="dept">Discipline</label>
-            <input type="text" id="dept" value="ME" list="depts" maxlength="12">
+            <input type="text" id="dept" value="MA" list="depts" maxlength="12">
             <datalist id="depts"><option>CSE</option><option>EE</option><option>ME</option><option>CL</option><option>CE</option><option>MSE</option><option>BE</option><option>PHY</option><option>CHE</option><option>MA</option><option>HSS</option><option>CGS</option><option>ES</option></datalist>
           </div>
           <div class="field">
             <label for="gradyear">Grad. year</label>
-            <input type="number" id="gradyear" value="2018" min="2008" max="2100">
+            <input type="number" id="gradyear" value="2025" min="2008" max="2100">
           </div>
         </div>
-        <div class="hint">Shown as <b>BTECH · ME · 2018</b>, in your usual (Degree/Dept/Year) style.</div>
+        <div class="hint">Shown as <b>MSC · MA · 2025</b>, in your usual (Degree/Dept/Year) style.</div>
         <div class="status" id="s-batch" role="status"></div>
       </fieldset>
 
@@ -177,7 +182,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <legend>Write-up</legend>
         <div class="field">
           <label for="story">Story</label>
-          <textarea id="story">Joins IIT Gandhinagar as Assistant Professor in the Department of Mechanical Engineering, becoming the second IITGN alumnus to return to the Institute as a faculty member. From learning at IITGN to now teaching and contributing to the same academic community, his journey reflects the strong bond our alumni share with their alma mater.</textarea>
+          <textarea id="story">Joins IIT Gandhinagar in the Alumni Relations Office. Initiative-driven Alumni Relations &amp; Development professional with a track record of conceiving and launching first-of-their-kind programs at a premier IIT. Organized national and international alumni meets, including IITGN’s highest-ever turnout of 100+ alumni in Bengaluru, and independently built three institutional websites from scratch.</textarea>
           <div class="meter"><span id="wc">0 words</span><span>Must end level with the bottom of the photo</span></div>
           <div class="hint">The first letter becomes the large drop capital. Don't repeat the name or batch here; they already appear above the story.</div>
           <div class="status" id="s-story" role="status"></div>
@@ -209,7 +214,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
         <summary>Rules this page enforces</summary>
         <ul class="small">
           <li>Headline on a single line.</li>
-          <li>Photo is always a square, whatever size you upload: 664 × 664 by default, and adjustable down to 460 × 460 with "Photo size" (it shrinks from the right and the story column widens to fill the space). A photo smaller than the square gives a blurriness warning.</li>
+          <li>Photo is always a square, whatever size you upload: 640 × 640 to start, adjustable from 460 × 460 up to 664 × 664 with "Photo size" (it shrinks from the right and the story column widens to fill the space). A photo smaller than the square gives a blurriness warning.</li>
           <li>The story is justified on both sides.</li>
           <li>Name in at most two lines; batch and caption on one line each.</li>
           <li>The story column starts level with the top of the photo and ends level with its bottom. If the write-up is too long or too short, the page tells you roughly how many words to cut or add.</li>
@@ -230,7 +235,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
   var INK = '#1A1814', PAPER = '#E9DFC7';
   var PHOTO = { x: 56, y: 442.5, size: 664, border: 2 };   // size is adjustable (square, shrinks from the right)
   var COL = { x: 748, y: 442.5, w: 276, h: 664 };     // story column beside the photo (follows the photo size)
-  var COL_GAP = 28, PHOTO_MIN = 460, PHOTO_MAX = 664;
+  var COL_GAP = 28, PHOTO_MIN = 460, PHOTO_MAX = 664, PHOTO_DEFAULT = 640;
   var MID_TOP = 246.2, MID_BOTTOM = 1211, HEAD_H = 54, CAPTION_GAP = 10, CAPTION_H = 23.4;
   var headTop = 317.4, captionTop = 1116.5;
   // photo size -> positions (headline, photo+caption evenly spaced between masthead and footer)
@@ -389,11 +394,17 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     g.imageSmoothingQuality = 'high';
     g.drawImage(photo, sx, sy, side, side, 0, 0, c.width, c.height);
     var d = g.getImageData(0, 0, c.width, c.height), p = d.data;
+    // vintage tone: keep the colours, soften them a little and warm them towards the paper
+    var t = (+$('tone').value) / 100;                  // 0 = original colours, 1 = strong vintage
+    var sat = 1 - 0.65 * t, sep = 0.4 * t, con = 1 + 0.06 * t;
+    var clamp = function (x) { return x < 0 ? 0 : x > 255 ? 255 : x; };
     for (var i = 0; i < p.length; i += 4) {
-      var v = 0.2126 * p[i] + 0.7152 * p[i + 1] + 0.0722 * p[i + 2];   // grayscale(1)
-      v = (v - 127.5) * 1.1 + 127.5;                                   // contrast(1.1)
-      v = v < 0 ? 0 : v > 255 ? 255 : v;
-      p[i] = p[i + 1] = p[i + 2] = v;
+      var r = p[i], gg = p[i + 1], b = p[i + 2];
+      var l = 0.2126 * r + 0.7152 * gg + 0.0722 * b;
+      r = l + (r - l) * sat; gg = l + (gg - l) * sat; b = l + (b - l) * sat;          // soften colours
+      var sr = 0.393 * r + 0.769 * gg + 0.189 * b, sg = 0.349 * r + 0.686 * gg + 0.168 * b, sb = 0.272 * r + 0.534 * gg + 0.131 * b;
+      r = r + (sr - r) * sep; gg = gg + (sg - gg) * sep; b = b + (sb - b) * sep;       // warm (sepia) tint
+      p[i] = clamp((r - 127.5) * con + 127.5); p[i + 1] = clamp((gg - 127.5) * con + 127.5); p[i + 2] = clamp((b - 127.5) * con + 127.5);
     }
     g.putImageData(d, 0, 0);
     gray = c;
@@ -443,7 +454,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     ['s-headline','s-photo','s-caption','s-name','s-batch','s-story','s-closing'].forEach(function (id) { setStatus(id); });
 
     // edition
-    if (!v.vol) errors.push('Enter the volume number.');
+    if (!v.vol) errors.push('Enter the post number.');
     if (!/^\d{4}$/.test(v.year)) errors.push('Enter a 4-digit year for the edition.');
 
     // headline: one line
@@ -553,7 +564,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     ctx.fillRect(M, 202.2, CW, 4);
 
     // --- sub line: Vol · tagline · month year
-    var s1 = 'Vol. ' + (v.vol || '00') + ' · Achievement Edition', s2 = '“Where IITGN shines”', s3 = v.month + ' ' + (v.year || '');
+    var s1 = 'Post No. ' + (v.vol || '00') + ' · Achievement Edition', s2 = '“Where IITGN shines”', s3 = v.month + ' ' + (v.year || '');
     spaceBetween([textW(F.sub, s1), textW(F.sub, s2), textW(F.sub, s3)], CW, 214.2, 23, [
       function (x) { draw(F.sub, s1, x, 214.2, 23); },
       function (x) { draw(F.sub, s2, x, 214.2, 23); },
@@ -620,6 +631,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     $(id).addEventListener('input', schedule); $(id).addEventListener('change', schedule);
   });
   $('zoom').addEventListener('input', function () { view.zoom = +this.value; buildGray(); syncPan(); render(); });
+  $('tone').addEventListener('input', function () { $('tone-val').textContent = this.value + '%'; buildGray(); render(); });
 
   // position sliders: the value is where the PICTURE sits (1 = moved fully right / down)
   function panRange() {
@@ -640,7 +652,7 @@ summary{cursor:pointer;font-family:"Oswald",sans-serif;font-weight:500;letter-sp
     if (!photo) return; var r = panRange(); view.cy = r.maxY - (+this.value) * (r.maxY - r.minY); buildGray(); render();
   });
   $('resetpos').addEventListener('click', function () {
-    if (!photo) return; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; $('psize').value = PHOTO_MAX; applySize(PHOTO_MAX); buildGray(); syncPan(); render();
+    if (!photo) return; view = { zoom: 1, cx: 0.5, cy: 0.4 }; $('zoom').value = 1; $('psize').value = PHOTO_DEFAULT; applySize(PHOTO_DEFAULT); buildGray(); syncPan(); render();
   });
 
   function isHeic(file) { return /\.(heic|heif)$/i.test(file.name || '') || /image\/hei[cf]/i.test(file.type || ''); }
